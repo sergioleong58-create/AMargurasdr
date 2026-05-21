@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actuaciones - A.M. Amargura</title>
+    <style>
+        :root {
+            --granate: #800000;
+            --dorado: #d4af37;
+            --crema: #fdfaf5;
+            --texto: #2c2c2c;
+            --blanco: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--crema);
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--granate);
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .logo-nav { text-decoration: none; display: flex; flex-direction: column; }
+        .logo-nav .main-title { color: white; font-weight: bold; font-size: 1.2rem; text-transform: uppercase; }
+        .logo-nav .sub-title { color: var(--dorado); font-size: 0.75rem; letter-spacing: 2px; }
+
+        .menu-btn {
+            width: 35px;
+            height: 25px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 3001;
+        }
+        .menu-btn span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; }
+
+        /* SIDEBAR */
+         .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: #111;
+            z-index: 2500;
+            transition: 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            padding-top: 100px;
+        }
+
+        .sidebar.active { right: 0; }
+
+        .sidebar a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar a:hover {
+            color: var(--dorado);
+            background: rgba(255,255,255,0.05);
+            border-left: 3px solid var(--dorado);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            z-index: 2400;
+        }
+
+        .overlay.active { display: block; }
+
+        /* --- CONTENIDO --- */
+        .hero-actuaciones {
+            height: 43vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('IMAGES/WhatsApp Image 2026-05-20 at 09.06.55.jpeg');
+            background-size: cover;
+            background-position: center 47%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-actuaciones h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            border-bottom: 3px solid var(--dorado);
+            padding-bottom: 10px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: -40px auto 60px;
+            padding: 0 20px;
+        }
+
+        /* ESTILO ACORDEÓN */
+        .year-block {
+            background: var(--blanco);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border-left: 5px solid var(--granate);
+        }
+
+        .year-header {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            background: var(--blanco);
+            transition: background 0.3s;
+        }
+
+        .year-header:hover { background: #f9f9f9; }
+
+        .year-header span {
+            color: var(--dorado);
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .year-header.active span { transform: rotate(45deg); }
+
+        .year-content {
+            display: none;
+            padding: 10px 25px 25px;
+            border-top: 1px solid #eee;
+            background: #fff;
+        }
+
+        .event-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed #ddd;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-item:last-child { border-bottom: none; }
+
+        .event-name { font-weight: 600; color: #111; }
+        .event-detail { font-size: 0.9rem; color: #666; }
+
+        .badge-especial {
+            background: #fff9e6;
+            color: #b08d1a;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-left: 10px;
+            border: 1px solid #e5c158;
+        }
+
+        @media (max-width: 600px) {
+            .hero-actuaciones h1 { font-size: 1.8rem; }
+            .container { margin-top: -20px; }
+        }
+                /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-nav">
+            <span class="main-title">Amargura</span>
+            <span class="sub-title">SANTANDER</span>
+        </a>
+        <div class="menu-btn" id="menuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+            <a href="index.html">Inicio</a>
+        <div style="padding: 18px 40px 5px; color: var(--dorado); font-size: 0.8rem; letter-spacing: 2px;">HISTORIA</div>
+        <a href="HISTORIA VIRGEN DE LA AMARGURA.html">• La Virgen</a>
+        <a href="HISTORIA DE LA BANDA.html">• La Banda</a>
+        <a href="HISTORIA A.M.C. SAN MIGUEL.html">• San Miguel</a>
+        <a href="REPERTORIO.html">Música</a>
+        <a href="COMPONENTES.html">Componentes</a>
+        <a href="UNIFORMIDAD.html">Uniformidad</a>
+        <a href="ACTUACIONES.html">Actuaciones</a>
+        <a href="CONTACTO.html">Contacto</a>
+        <a href="REDES.html">Redes sociales</a>
+        <a href="VIDEOTECA.html">Vídeos de marchas</a>
+    </div>
+
+    <header class="hero-actuaciones">
+        <h1>Historial de Actuaciones</h1>
+    </header>
+
+    <div class="container">
+        <div class="year-block">
+            <div class="year-header">Año 2026 <span>+</span></div>
+            <div class="year-content">
+                <div class="event-item"><span class="event-name">Cabalgata de Reyes</span><span class="event-detail">5 enero 2026. Castanedo, Carriazo y Galizano (Cantabria).</span></div>
+                <div class="event-item"><span class="event-name">Procesión Infantil Colegio San Agustín</span><span class="event-detail">27 marzo 2026. Santander.</span></div>
+                <div class="event-item"><span class="event-name">Procesión del Domingo de Ramos</span><span class="event-detail">29 marzo 2025. Santander.</span></div>
+                <div class="event-item"><span class="event-name">XIII Concierto de Marchas Procesionales</span><span class="event-detail">29 marzo 2026. Santander.</span></div>
+                <div class="event-item"><span class="event-name">Procesión de las Antorchas</span><span class="event-detail">31 marzo 2026. Selaya.</span></div>
+                <div class="event-item"><span class="event-name">Procesión de la Santa Vera Cruz - Cofradía de la Salud</span><span class="event-detail">2 abril 2026. Santander.</span></div>
+                <div class="event-item"><span class="event-name">Concierto en el santuario de Ntra. Sra de Latas</span><span class="event-detail">3 abril 2025. Latas.</span></div>
+                <div class="event-item"><span class="event-name">Procesión Viernes Santo - Santo Entierro</span><span class="event-detail">3 abril 2026. Carrión de los Condes (Palencia).</span></div>
+                <div class="event-item"><span class="event-name">Procesión del Domingo de Resurrección</span><span class="event-detail">5 abril 2026. Santander.</span></div>        
+                <div class="event-item"><span class="event-name">Procesión de la Virgen del Mar</span><span class="event-detail">25 mayo 2026. Santander.</span></div>        
+            </div>
+        </div>
+
+        <div class="year-block">
+            <div class="year-header">Año 2025 <span>+</span></div>
+            <div class="year-content">
+                <div class="event-item"><span class="event-name">Cabalgata de Reyes</span><span class="event-detail">5 enero 2025. Castanedo, Carriazo y Galizano (Cantabria).</span></div>
+                <div class="event-item"><span class="event-name">Carnaval y Entierro de la Sardina</span><span class="event-detail">2 marzo 2025. Santander.</span></div>
+                <div class="event-item"><span class="event-name">Homenaje a las Víctimas de las FFAA, Cuerpos de Seguridad y Seguridad Privada</span><span class="event-detail">5 abril 2025. Rubayo.</span></div>
+                <div class="event-item"><span class="event-name">Procesión Infantil Colegio San Agustín</span><span class="event-detail">11 abril 2025. Santander.</span></div>
+                <div class="event-item"><span class="event-name">Procesión del Domingo de Ramos</span><span class="event-detail">13 abril 2025. Santander.</span></div>
+                <div class="event-item"><span class="event-name">XII Concierto de Marchas Procesionales</span><span class="event-detail">13 abril 2025. Santander.</span></div>
+                <div class="event-item"><span class="event-name">Procesión de la Santa Vera Cruz - Cofradía de la Salud</span><span class="event-detail">17 abril 2025. Santander.</span></div>
+                <div class="event-item"><span class="event-name">Procesión Viernes Santo - Santo Entierro</span><span class="event-detail">18 abril 2025. Carrión de los Condes (Palencia).</span></div>
+                <div class="event-item"><span class="event-name">Procesión del Domingo de Resurrección</span><span class="event-detail">20 abril 2025. Santander.</span></div>
+                <div class="event-item"><span class="event-name">Procesión de la Virgen del Mar</span><span class="event-detail">9 junio 2025. Santander.</span></div>   
+                <div class="event-item"><span class="event-name">Fiestas Virgen de la Cama</span><span class="event-detail">22 agosto 2025. Escalante.</span></div>             
+            </div>
+        </div>
+
+        <div class="year-block">
+            <div class="year-header">Año 2024 <span>+</span></div>
+            <div class="year-content">
+                <div class="event-item"><span class="event-name">Temporada Completa</span><span class="event-detail">Participación en todos los eventos tradicionales de Santander y región.</span></div>
+            </div>
+        </div>
+
+        <div class="year-block">
+            <div class="year-header">Año 2023 <span>+</span></div>
+            <div class="year-content">
+                <div class="event-item"><span class="event-name">Guerras Cántabras</span><span class="event-detail">Septiembre 2023. Corrales de Buelna.</span></div>
+                <div class="event-item"><span class="event-name">Fiestas Virgen de la Cama</span><span class="event-detail">22 agosto 2023. Escalante.</span></div>
+                <div class="event-item"><span class="event-name">Fiestas del Carmen - Barrio Pesquero</span><span class="event-detail">16 julio 2023. Santander.</span></div>
+                <div class="event-item"><span class="event-name">Semana Santa 2023</span><span class="event-detail">Santander y Carrión de los Condes.</span></div>
+            </div>
+        </div>
+
+        <div class="year-block">
+            <div class="year-header">Año 2022 <span>+</span></div>
+            <div class="year-content">
+                <div class="event-item"><span class="event-name">Guerras Cántabras</span><span class="event-detail">4 septiembre 2022. Corrales de Buelna.</span></div>
+                <div class="event-item"><span class="event-name">Santos Mártires</span><span class="event-detail">30 agosto 2022. Bárcena de Cudón.</span></div>
+                <div class="event-item"><span class="event-name">Chupinazo Semana Grande - Hijos de Julio</span><span class="event-detail">22 julio 2022. Santander.</span></div>
+                <div class="event-item"><span class="event-name">Partidos Balonmano Sinfín</span><span class="event-detail">Acompañamiento en Santander, León y Torrelavega.</span></div>
+                <div class="event-item"><span class="event-name">Semana Santa 2022</span><span class="event-detail">Santander y Carrión de los Condes.</span></div>
+            </div>
+        </div>
+
+        <div class="year-block">
+            <div class="year-header">Periodo 2016 - 2019 <span>+</span></div>
+            <div class="year-content">
+                <div class="event-item"><span class="event-name">VI Encuentro Nacional de Jóvenes Cofrades</span><span class="event-detail">27 octubre 2018. Santander.</span></div>
+                <div class="event-item"><span class="event-name">Concierto Coronación Virgen de la Amargura</span><span class="event-detail">20 octubre 2018. Santander.</span></div>
+                <div class="event-item"><span class="event-name">Inauguración Capilla Ntra. Sra. de la Amargura</span><span class="event-detail">4 agosto 2017. Santander.</span></div>
+                <div class="event-item"><span class="event-name">Homenaje Víctimas del Terrorismo</span><span class="event-detail">4 junio 2016. Noja.</span></div>
+                <div class="event-item"><span class="event-name">Semana Santa (Ciclo Completo)</span><span class="event-detail">Santander, Selaya y Oña.</span></div>
+            </div>
+        </div>
+
+        <div class="year-block">
+            <div class="year-header">Periodo 2006 - 2015 <span>+</span></div>
+            <div class="year-content">
+                <div class="event-item"><span class="event-name">Colaboración A.M. Virgen de la Amargura de Ferrol</span><span class="badge-especial">Hito Histórico</span><span class="event-detail">Procesión del Encuentro 2009. Santander.</span></div>
+                <div class="event-item"><span class="event-name">Concierto Sones Solidarios</span><span class="event-detail">Evento benéfico para diversas causas.</span></div>
+                <div class="event-item"><span class="event-name">Guerras Cántabras 2012</span><span class="event-detail">Participación como banda sonora del desfile general.</span></div>
+                <div class="event-item"><span class="event-name">Ciclos de Semana Santa</span><span class="event-detail">Presencia ininterrumpida en la capital cántabra.</span></div>
+            </div>
+        </div>
+
+        <div class="year-block">
+            <div class="year-header">Décadas 40 al 90 (Nuestra Historia) <span>+</span></div>
+            <div class="year-content">
+                <p>Nuestra agrupación mantiene su presencia ininterrumpida desde su fundación en los años 40, participando en los actos religiosos y civiles más significativos de Cantabria durante el siglo XX.</p>
+                <div class="event-item"><span class="event-name">Décadas 40, 50 y 60</span><span class="event-detail">Orígenes y formación de la Banda de la Pasión.</span></div>
+                <div class="event-item"><span class="event-name">Décadas 70, 80 y 90</span><span class="event-detail">Época dorada de la corneta con transpositor y expansión regional.</span></div>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        A.M. VIRGEN DE LA AMARGURA · SANTANDER
+    </footer>
+    <script>
+        // Menú lateral
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMenu() {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // Acordeón
+        document.querySelectorAll('.year-header').forEach(header => {
+            header.addEventListener('click', () => {
+                header.classList.toggle('active');
+                const content = header.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        });
+    </script>
+        <marquee style="background-color: var(--granate); color: var(--dorado); font-weight: bold; padding: 12px; position: fixed; bottom: 0; width: 100%; z-index: 1000;">
+        ¡Próximas actuaciones! Virgen del Mar 2026 - Santander - Agrupación Musical Virgen de la Amargura de Santander
+    </marquee>
+</body>
+</html>

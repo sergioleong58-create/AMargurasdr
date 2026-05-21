@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.M.C. San Miguel - Amargura</title>
+    <style>
+        :root {
+            --granate: #800000;
+            --dorado: #d4af37;
+            --negro: #1a1a1a;
+            --blanco: #ffffff;
+            --crema: #fdfaf5;
+            --texto: #2c2c2c;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--crema);
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--granate);
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .logo-nav { text-decoration: none; display: flex; flex-direction: column; }
+        .logo-nav .main-title { color: white; font-weight: bold; font-size: 1.2rem; text-transform: uppercase; }
+        .logo-nav .sub-title { color: var(--dorado); font-size: 0.75rem; letter-spacing: 2px; }
+
+        .menu-btn {
+            width: 35px;
+            height: 25px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 3001;
+        }
+        .menu-btn span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; }
+
+        /* SIDEBAR */
+  .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: #111;
+            z-index: 2500;
+            transition: 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            padding-top: 100px;
+        }
+
+        .sidebar.active { right: 0; }
+
+        .sidebar a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar a:hover {
+            color: var(--dorado);
+            background: rgba(255,255,255,0.05);
+            border-left: 3px solid var(--dorado);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            z-index: 2400;
+        }
+
+        .overlay.active { display: block; }
+        /* --- SECCIÓN HERO --- */
+        .hero-sm {
+            height: 50vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('IMAGES/WhatsApp Image 2026-03-05 at 16.20.18.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-sm h1 {
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            border-bottom: 3px solid var(--dorado);
+            padding-bottom: 10px;
+        }
+
+        /* --- CONTENIDO --- */
+        .container {
+            max-width: 900px;
+            margin: -50px auto 60px;
+            padding: 0 20px;
+        }
+
+        .card-info {
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--granate);
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: var(--granate);
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .detail-item {
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            border-left: 4px solid var(--dorado);
+        }
+
+        .detail-item h3 {
+            margin-top: 0;
+            color: var(--negro);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .highlight-box {
+            background: var(--negro);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .highlight-box h2 {
+            color: var(--dorado);
+            margin-top: 0;
+        }
+
+        .btn-colabora {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: var(--dorado);
+            color: var(--negro);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .btn-colabora:hover {
+            transform: scale(1.05);
+            background: var(--blanco);
+        }
+
+        @media (max-width: 600px) {
+            .hero-sm h1 { font-size: 1.8rem; }
+            .card-info { padding: 25px; }
+        }
+                footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-nav">
+            <span class="main-title">Amargura</span>
+            <span class="sub-title">SANTANDER</span>
+        </a>
+        <div class="menu-btn" id="menuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <a href="index.html">Inicio</a>
+        <div style="padding: 18px 40px 5px; color: var(--dorado); font-size: 0.8rem; letter-spacing: 2px;">HISTORIA</div>
+        <a href="HISTORIA VIRGEN DE LA AMARGURA.html">• La Virgen</a>
+        <a href="HISTORIA DE LA BANDA.html">• La Banda</a>
+        <a href="HISTORIA A.M.C. SAN MIGUEL.html">• San Miguel</a>
+        <a href="REPERTORIO.html">Música</a>
+        <a href="COMPONENTES.html">Componentes</a>
+        <a href="UNIFORMIDAD.html">Uniformidad</a>
+        <a href="ACTUACIONES.html">Actuaciones</a>
+        <a href="CONTACTO.html">Contacto</a>
+        <a href="REDES.html">Redes sociales</a>
+        <a href="VIDEOTECA.html">Vídeos de marchas</a>
+    </div>
+
+    <header class="hero-sm">
+        <h1>A.M.C. San Miguel</h1>
+    </header>
+
+    <div class="container">
+        <div class="card-info">
+            <p class="intro-text">LA CARA MÁS ALEGRE Y DINÁMICA DE NUESTRA FORMACIÓN</p>
+            
+            <p style="font-size: 1.3rem;">La <strong>Asociación Musical Cultural San Miguel</strong> está especializada en el "paso ligero". Su música recorre las calles en cabalgatas, dianas y festejos populares, llevando la tradición a todos los rincones con una energía inconfundible.</p>
+
+            <div class="details-grid">
+                <div class="detail-item">
+                    <h3>Versatilidad Musical</h3>
+                    <p style="font-size: 1.3rem;">Repertorio variado que incluye desde éxitos populares hasta composiciones infantiles.</p>
+                </div>
+                <div class="detail-item">
+                    <h3>Marco Legal</h3>
+                    <p style="font-size: 1.3rem;">Fundada en 2017, dota a la Agrupación de personalidad jurídica y estructura administrativa.</p>
+                </div>
+                <div class="detail-item">
+                    <h3>Presencia Regional</h3>
+                    <p style="font-size: 1.3rem;">Participamos activamente en eventos lúdicos, sociales y festivos en toda Cantabria.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 30px; font-size: 1.3rem;">Actualmente, la Asociación cuenta con <strong>más de 40 miembros</strong> que prestan un apoyo vital: no solo en lo musical, sino también en las áreas económica, administrativa y logística, asegurando el futuro de nuestro proyecto cultural.</p>
+
+            <div class="highlight-box">
+                <h2>¿Quieres formar parte?</h2>
+                <p style="font-size: 1.3rem;">Si quieres colaborar con nuestro proyecto cultural y musical, te animamos a unirte a nuestra entidad.</p>
+                <a href="CONTACTO.html" class="btn-colabora">SOLICITAR INFORMACIÓN</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMenu() {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+    </script>
+        <footer>
+        A.M. VIRGEN DE LA AMARGURA · SANTANDER
+    </footer>
+        <marquee style="background-color: var(--granate); color: var(--dorado); font-weight: bold; padding: 12px; position: fixed; bottom: 0; width: 100%; z-index: 1000;">
+        ¡Próximas actuaciones! Virgen del Mar 2026 - Santander - Agrupación Musical Virgen de la Amargura de Santander
+    </marquee>
+</body>
+</html>

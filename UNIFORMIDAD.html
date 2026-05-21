@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uniformidad - A.M. Amargura</title>
+    <style>
+        :root {
+            --granate: #800000;
+            --dorado: #d4af37;
+            --azul-marino: #001a33; /* Azul profundo para el uniforme */
+            --crema: #fdfaf5;
+            --texto: #2c2c2c;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--crema);
+            color: var(--texto);
+            line-height: 1.8;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--granate);
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .logo-nav { text-decoration: none; display: flex; flex-direction: column; }
+        .logo-nav .main-title { color: white; font-weight: bold; font-size: 1.2rem; text-transform: uppercase; }
+        .logo-nav .sub-title { color: var(--dorado); font-size: 0.75rem; letter-spacing: 2px; }
+
+        .menu-btn {
+            width: 35px;
+            height: 25px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 3001;
+        }
+        .menu-btn span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; transition: 0.3s; }
+
+        /* SIDEBAR */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: #111;
+            z-index: 2500;
+            transition: 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            padding-top: 100px;
+        }
+
+        .sidebar.active { right: 0; }
+
+        .sidebar a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar a:hover {
+            color: var(--dorado);
+            background: rgba(255,255,255,0.05);
+            border-left: 3px solid var(--dorado);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            z-index: 2400;
+        }
+
+        .overlay.active { display: block; }
+
+        /* --- CONTENIDO UNIFORMIDAD --- */
+        .hero-uniforme {
+            height: 45vh;
+            background: linear-gradient(rgba(66, 66, 68, 0.6), rgba(0, 0, 0, 0.8)), url('IMAGES/WhatsApp Image 2026-03-03 at 14.43.45.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-uniforme h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            border-bottom: 3px solid var(--dorado);
+            padding-bottom: 15px;
+        }
+
+        .content-wrap {
+            max-width: 1000px;
+            margin: -50px auto 60px;
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .intro-uniforme {
+            font-family: 'Georgia', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            text-align: center;
+            color: var(--azul-marino);
+            margin-bottom: 40px;
+        }
+
+        /* SECCIONES DE UNIFORMES */
+        .seccion-uniforme {
+            margin-bottom: 50px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 40px;
+        }
+
+        .seccion-uniforme:last-of-type {
+            border-bottom: none;
+            padding-bottom: 10px;
+        }
+
+        .seccion-uniforme h2 {
+            color: var(--granate);
+            text-transform: uppercase;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            margin-top: 0;
+            border-bottom: 2px solid #f4f4f4;
+            padding-bottom: 10px;
+        }
+
+        /* DISEÑOS DE REJILLAS PARA FOTOS Y DETALLES */
+        .grid-gala {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .grid-verano {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .fotos-verano-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .foto-uniforme-box {
+            background: #f4f4f4;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .foto-uniforme-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .especificaciones {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .dato-tecnico {
+            border-left: 3px solid var(--dorado);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .dato-tecnico strong {
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            color: var(--granate);
+            letter-spacing: 1px;
+        }
+
+        .dato-tecnico p { margin: 5px 0 0 0; font-weight: 500; }
+
+        .descripcion-larga {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            border-top: 5px solid var(--azul-marino);
+        }
+
+        .galas-instrumento {
+            margin-top: 30px;
+            text-align: center;
+            padding: 20px;
+            border: 1px dashed var(--dorado);
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-gala, .grid-verano { grid-template-columns: 1fr; }
+            .fotos-verano-container { grid-template-columns: 1fr; }
+            .content-wrap { padding: 25px; margin: -20px 15px 40px; }
+            .hero-uniforme h1 { font-size: 1.8rem; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-nav">
+            <span class="main-title">Amargura</span>
+            <span class="sub-title">SANTANDER</span>
+        </a>
+        <div class="menu-btn" id="menuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <a href="index.html">Inicio</a>
+        <div style="padding: 18px 40px 5px; color: var(--dorado); font-size: 0.8rem; letter-spacing: 2px;">HISTORIA</div>
+        <a href="HISTORIA VIRGEN DE LA AMARGURA.html">• La Virgen</a>
+        <a href="HISTORIA DE LA BANDA.html">• La Banda</a>
+        <a href="HISTORIA A.M.C. SAN MIGUEL.html">• San Miguel</a>
+        <a href="REPERTORIO.html">Música</a>
+        <a href="COMPONENTES.html">Componentes</a>
+        <a href="UNIFORMIDAD.html">Uniformidad</a>
+        <a href="ACTUACIONES.html">Actuaciones</a>
+        <a href="CONTACTO.html">Contacto</a>
+        <a href="REDES.html">Redes sociales</a>
+        <a href="VIDEOTECA.html">Vídeos de marchas</a>
+    </div>
+
+    <header class="hero-uniforme">
+        <h1>NUESTRO UNIFORME</h1>
+    </header>
+
+    <div class="content-wrap">
+        <p class="intro-uniforme">
+            "Portar nuestro uniforme es llevar con nosotros la historia y el respeto que nuestra ciudad merece."
+        </p>
+
+        <div class="seccion-uniforme">
+            <h2>Uniforme de Gala</h2>
+            
+            <div class="grid-gala">
+                <div class="foto-uniforme-box">
+                    <img src="IMAGES\WhatsApp Image 2026-03-03 at 14.43.23.jpeg" alt="Uniforme de Gala de la Agrupación">
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">Uniforme de Gala Completo</p>
+                </div>
+
+                <div class="especificaciones">
+                    <div class="dato-tecnico">
+                        <strong>Inspiración</strong>
+                        <p>Cuerpo de Infantería de la Marina Española</p>
+                    </div>
+                    <div class="dato-tecnico">
+                        <strong>Color Principal</strong>
+                        <p>Azul Marino Noche</p>
+                    </div>
+                    <div class="dato-tecnico">
+                        <strong>Prenda Superior</strong>
+                        <p>Guerrera militar de cuello cerrado con bordados en bocamangas y puños</p>
+                    </div>
+                    <div class="dato-tecnico">
+                        <strong>Complementos</strong>
+                        <p>Fajín rojo, gorra de plato blanca y palas con el escudo institucional</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="descripcion-larga">
+                <p>El uniforme principal de la Agrupación se compone de <strong>guerrera azul marino</strong> y pantalón del mismo color con doble franja roja lateral, inspirado en la elegancia de la Infantería de Marina.</p>
+                <p>La guerrera, de cuello cerrado, se ajusta al protocolo más estricto de las grandes ocasiones, destacando los bordados que representan el brillo de nuestra música. Se completa con un vistoso <strong>fajín rojo</strong> y la característica <strong>gorra de plato blanca</strong> con visera negra y barboquejo dorado.</p>
+                <p>La identidad queda reafirmada con el <strong>Escudo de la Agrupación Musical</strong> presente en la galleta de la gorra y en las hombreras de la guerrera, simbolizando nuestra vinculación eterna con la Virgen de la Amargura.</p>
+            </div>
+        </div>
+
+        <div class="seccion-uniforme">
+            <h2>Uniforme de Verano</h2>
+            
+            <div class="grid-verano">
+                <div class="fotos-verano-container">
+                    <div class="foto-uniforme-box">
+                        <img src="IMAGES\WhatsApp Image 2026-05-20 at 15.49.55.jpeg" alt="Uniforme de Verano con gorra">
+                        <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">Modalidad con Gorra de Plato</p>
+                    </div>
+                    <div class="foto-uniforme-box">
+                        <img src="IMAGES\WhatsApp Image 2026-05-20 at 15.44.57.jpeg" alt="Uniforme de Verano sin gorra">
+                        <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">Modalidad sin Gorra</p>
+                    </div>
+                </div>
+
+                <div class="especificaciones">
+                    <div class="dato-tecnico">
+                        <strong>Prenda Superior</strong>
+                        <p>Camisa de botones de manga corta con las palas de la Agrupación</p>
+                    </div>
+                    <div class="dato-tecnico">
+                        <strong>Prenda Inferior</strong>
+                        <p>Pantalón original del uniforme de gala (Azul Marino con doble franja roja)</p>
+                    </div>
+                    <div class="dato-tecnico">
+                        <strong>Uso de la Gorra</strong>
+                        <p>Variable según la solemnidad o exigencia climatológica del acto</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="descripcion-larga" style="border-top-color: var(--dorado);">
+                <p>Para desfiles, certámenes o procesiones en épocas estivales o de altas temperaturas, la agrupación sustituye la guerrera por una opción más ligera y cómoda sin perder el rigor militar.</p>
+                <p>Este conjunto mantiene intacta la parte inferior utilizando los mismos <strong>pantalones de gala azul marino</strong> con sus dobles bandas rojas laterales. En la parte superior se incorpora una <strong>camisa de botones de manga corta</strong> de color reglamentario, sobre la cual se disponen las <strong>palas rígidas distintivas</strong> de la Agrupación en los hombros.</p>
+                <p>Dependiendo de las directrices del acto, el protocolo climatológico o el momento de la actuación, esta modalidad puede lucirse tanto portando la <strong>gorra de plato blanca</strong> como prescindiendo de ella.</p>
+            </div>
+        </div>
+
+        <div class="galas-instrumento">
+            <strong style="color: var(--azul-marino); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Ornamentación de Instrumentos</strong>
+            <p style="margin-top: 10px; font-size: 0.95rem;">Actualmente, se ha renovado la sección de percusión con baquetas nuevas y nuevos <strong>redoblantes NP Sayón Pasión del Sur</strong>, decorados con aros personalizados que reafirman la identidad de nuestra Agrupación Musical, y dos <strong>bombos NP</strong> que completan nuestra batería.</p>
+        </div>
+    </div>
+
+    <footer>
+        A.M. VIRGEN DE LA AMARGURA · SANTANDER
+    </footer>
+    <marquee style="background-color: var(--granate); color: var(--dorado); font-weight: bold; padding: 12px; position: fixed; bottom: 0; width: 100%; z-index: 1000;">
+        ¡Próximas actuaciones! Virgen del Mar 2026 - Santander - Agrupación Musical Virgen de la Amargura de Santander
+    </marquee>
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMenu() {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+    </script>
+</body>
+</html>

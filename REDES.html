@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redes Sociales - Amargura Santander</title>
+    <style>
+        :root {
+            --granate: #800000;
+            --dorado: #d4af37;
+            --negro: #1a1a1a;
+            --crema: #fdfaf5;
+            --blanco: #ffffff;
+            /* Colores de redes */
+            --facebook: #1877F2;
+            --twitter: #1DA1F2;
+            --instagram: #E4405F;
+            --youtube: #FF0000;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--crema);
+            color: var(--negro);
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--granate);
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .logo-nav { text-decoration: none; display: flex; flex-direction: column; }
+        .logo-nav .main-title { color: white; font-weight: bold; font-size: 1.2rem; text-transform: uppercase; }
+        .logo-nav .sub-title { color: var(--dorado); font-size: 0.75rem; letter-spacing: 2px; }
+
+        .menu-btn {
+            width: 35px;
+            height: 25px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 3001;
+        }
+        .menu-btn span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: var(--negro);
+            z-index: 2500;
+            transition: 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            padding-top: 100px;
+        }
+        .sidebar.active { right: 0; }
+        .sidebar a { color: #ccc; text-decoration: none; padding: 18px 40px; font-size: 1rem; text-transform: uppercase; font-weight: 600; }
+        .sidebar a:hover { color: var(--dorado); background: rgba(255,255,255,0.05); }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            z-index: 2400;
+        }
+        .overlay.active { display: block; }
+
+        /* --- CONTENEDOR HERO (IMAGEN GRANDE) --- */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: var(--negro);
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* RUTA SOLICITADA: IMAGES dentro de AMARGURA */
+            background-image: url('IMAGES/WhatsApp Image 2026-05-20 at 11.58.40.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            transition: transform 8s ease;
+        }
+
+        .hero-container:hover .hero-image {
+            transform: scale(1.1);
+        }
+
+        .hero-overlay-text {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: var(--blanco);
+            border: 2px solid var(--dorado);
+            padding: 40px 60px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-overlay-text h2 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: var(--dorado);
+        }
+
+        .hero-overlay-text p {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        /* --- CONTENIDO REDES --- */
+        .social-container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .social-container h1 {
+            color: var(--granate);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .social-container p {
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .social-card {
+            background: var(--blanco);
+            padding: 40px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--negro);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--crema);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        /* Efectos Individuales */
+        .fb:hover { border-bottom: 5px solid var(--facebook); transform: translateY(-10px); }
+        .fb:hover .icon-box { background: var(--facebook); color: white; }
+
+        .tw:hover { border-bottom: 5px solid var(--twitter); transform: translateY(-10px); }
+        .tw:hover .icon-box { background: var(--twitter); color: white; }
+
+        .ig:hover { border-bottom: 5px solid var(--instagram); transform: translateY(-10px); }
+        .ig:hover .icon-box { background: var(--instagram); color: white; }
+
+        .yt:hover { border-bottom: 5px solid var(--youtube); transform: translateY(-10px); }
+        .yt:hover .icon-box { background: var(--youtube); color: white; }
+
+        .social-card h3 { margin: 10px 0 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .social-card span { font-size: 0.85rem; color: #888; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-container { height: 350px; }
+            .hero-overlay-text { padding: 15px; width: 70%; }
+            .hero-overlay-text h2 { font-size: 1.5rem; letter-spacing: 3px; }
+        }
+                footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-nav">
+            <span class="main-title">Amargura</span>
+            <span class="sub-title">SANTANDER</span>
+        </a>
+        <div class="menu-btn" id="menuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <a href="index.html">Inicio</a>
+        <div style="padding: 18px 40px 5px; color: var(--dorado); font-size: 0.8rem; letter-spacing: 2px;">HISTORIA</div>
+        <a href="HISTORIA VIRGEN DE LA AMARGURA.html">• La Virgen</a>
+        <a href="HISTORIA DE LA BANDA.html">• La Banda</a>
+        <a href="HISTORIA A.M.C. SAN MIGUEL.html">• San Miguel</a>
+        <a href="REPERTORIO.html">Música</a>
+        <a href="COMPONENTES.html">Componentes</a>
+        <a href="UNIFORMIDAD.html">Uniformidad</a>
+        <a href="ACTUACIONES.html">Actuaciones</a>
+        <a href="CONTACTO.html">Contacto</a>
+        <a href="REDES.html">Redes sociales</a>
+        <a href="VIDEOTECA.html">Vídeos de marchas</a>
+    </div>
+
+    <!-- SECCIÓN HERO (IMAGEN GRANDE) -->
+    <div class="hero-container">
+        <div class="hero-image"></div>
+        <div class="hero-overlay-text">
+            <h2>Nuestra Esencia</h2>
+            <p>Pasión por la música de nuestra tierra</p>
+        </div>
+    </div>
+
+    <div class="social-container">
+        <h1>Conecta con nosotros</h1>
+        <p>Sigue el día a día de nuestra formación a través de nuestros canales oficiales.</p>
+
+        <div class="social-grid">
+            <a href="https://www.facebook.com/amargurasdr" target="_blank" class="social-card fb">
+                <div class="icon-box">f</div>
+                <h3>Facebook</h3>
+                <span>@amargurasdr</span>
+            </a>
+
+            <a href="https://twitter.com/amargurasdr" target="_blank" class="social-card tw">
+                <div class="icon-box">𝕏</div>
+                <h3>X</h3>
+                <span>@amargurasdr</span>
+            </a>
+
+            <a href="https://www.instagram.com/amargurasdr" target="_blank" class="social-card ig">
+                <div class="icon-box">IG</div>
+                <h3>Instagram</h3>
+                <span>@amargurasdr</span>
+            </a>
+
+            <a href="https://www.youtube.com/@AMarguraSDR" target="_blank" class="social-card yt">
+                <div class="icon-box">▶</div>
+                <h3>YouTube</h3>
+                <span>Amargura Santander</span>
+            </a>
+        </div>
+    </div>
+    <footer>
+        A.M. VIRGEN DE LA AMARGURA · SANTANDER
+    </footer>
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMenu() {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+    </script>
+        <marquee style="background-color: var(--granate); color: var(--dorado); font-weight: bold; padding: 12px; position: fixed; bottom: 0; width: 100%; z-index: 1000;">
+        ¡Próximas actuaciones! Virgen del Mar 2026 - Santander - Agrupación Musical Virgen de la Amargura de Santander
+    </marquee>
+</body>
+</html>

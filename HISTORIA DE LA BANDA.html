@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia de la Banda - A.M. Amargura</title>
+    <style>
+        :root {
+            --granate: #800000;
+            --dorado: #d4af37;
+            --dorado-brillante: #f1d57d;
+            --crema: #fdfaf5;
+            --texto: #2c2c2c;
+            --sombra: rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--crema);
+            color: var(--texto);
+            line-height: 1.8;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--granate);
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .logo-nav {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-nav .main-title {
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo-nav .sub-title {
+            color: var(--dorado);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+        }
+
+        /* --- NAVBAR MODERNA --- */
+        .navbar {
+            background-color: var(--granate);
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .logo-nav {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-nav .main-title {
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo-nav .sub-title {
+            color: var(--dorado);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+        }
+
+        /* BOTÓN HAMBURGUESA ANIMADO */
+        .menu-btn {
+            width: 35px;
+            height: 25px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 3001;
+        }
+
+        .menu-btn span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* MENÚ LATERAL (SIDEBAR) */
+  .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: #111;
+            z-index: 2500;
+            transition: 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            padding-top: 100px;
+        }
+
+        .sidebar.active { right: 0; }
+
+        .sidebar a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar a:hover {
+            color: var(--dorado);
+            background: rgba(255,255,255,0.05);
+            border-left: 3px solid var(--dorado);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            z-index: 2400;
+        }
+
+        .overlay.active { display: block; }
+        /* CAPA OSCURA */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            z-index: 2400;
+        }
+
+        .overlay.active { display: block; }
+
+        /* --- CONTENIDO --- */
+        .hero-header {
+            height: 50vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('IMAGES/WhatsApp Image 2026-05-20 at 12.13.07.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-header h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            border-bottom: 3px solid var(--dorado);
+            padding-bottom: 15px;
+            margin: 0 15px;
+        }
+
+        .content-wrap {
+            max-width: 900px;
+            margin: -40px auto 60px;
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .capitular {
+            float: left;
+            font-size: 5rem;
+            line-height: 0.8;
+            padding-right: 12px;
+            padding-top: 4px;
+            color: var(--granate);
+            font-family: 'Georgia', serif;
+        }
+
+        /* --- SECCIÓN HOMENAJE A REGIDOR --- */
+        .historic-spotlight {
+            background: #fdfaf5;
+            padding: 40px 20px;
+            border-radius: 12px;
+            margin: 40px 0;
+            text-align: center;
+            border: 1px solid #e0d9c8;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.02);
+        }
+
+        .photo-frame {
+            background: white;
+            padding: 15px;
+            display: inline-block;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+        }
+
+        .photo-frame img {
+            max-width: 100%;
+            width: 350px;
+            display: block;
+            
+        }
+
+        .caption-regidor {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            color: #5d4037;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .highlight-box {
+            border-left: 4px solid var(--dorado);
+            background: #fff9e6;
+            padding: 20px 30px;
+            margin: 30px 0;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .content-wrap { padding: 25px; margin: -20px 15px 40px; }
+            .hero-header h1 { font-size: 1.8rem; }
+            .sidebar { width: 85%; }
+        }
+                footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-nav">
+            <span class="main-title">Amargura</span>
+            <span class="sub-title">SANTANDER</span>
+        </a>
+        <div class="menu-btn" id="menuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <a href="index.html">Inicio</a>
+        <div style="padding: 18px 40px 5px; color: var(--dorado); font-size: 0.8rem; letter-spacing: 2px;">HISTORIA</div>
+        <a href="HISTORIA VIRGEN DE LA AMARGURA.html">• La Virgen</a>
+        <a href="HISTORIA DE LA BANDA.html">• La Banda</a>
+        <a href="HISTORIA A.M.C. SAN MIGUEL.html">• San Miguel</a>
+        <a href="REPERTORIO.html">Música</a>
+        <a href="COMPONENTES.html">Componentes</a>
+        <a href="UNIFORMIDAD.html">Uniformidad</a>
+        <a href="ACTUACIONES.html">Actuaciones</a>
+        <a href="CONTACTO.html">Contacto</a>
+        <a href="REDES.html">Redes sociales</a>
+        <a href="VIDEOTECA.html">Vídeos de marchas</a>
+    </div>
+
+    <header class="hero-header">
+        <h1>Historia de la Agrupación</h1>
+    </header>
+
+    <div class="content-wrap">
+        <p style="font-size: 1.3rem;"><span class="capitular">L</span>os orígenes de la Agrupación Musical Virgen de la Amargura se remontan a la veterana Banda de Cornetas y Tambores de la Pasión, de la que es heredera directa. Los inicios de ésta son inciertos y se pierden en el tiempo, aunque se pueden atestiguar ya en los años 40. De hecho, en el año de fundación de la sección de nazarenos de la Archicofradía de la Pasión, 1947, pudo verse procesionando junto a ésta al menos a un tambor como acompañamiento musical. En cualquier caso, parece que no fue hasta mediados de los 50 cuando la Banda empezó a tomar forma como tal.</p>
+        <section class="historic-spotlight">
+            <div style="background:var(--granate); color:white; display:inline-block; padding:4px 15px; border-radius:20px; font-size:0.7rem; margin-bottom:15px; letter-spacing:1px;">AÑO 1947</div>
+            <br>
+            <div class="photo-frame">
+                <img style="width: 1000%; margin: 0 auto;" src="IMAGES\image.jpg" alt="Telesforo Molpeceres Regidor">
+            </div>
+            <p class="caption-regidor" style="font-size: 1rem;">
+                Al menos un tambor acompañó a la Archicofradía en 1947
+            </p>
+        </section>        
+        <p style="font-size: 1.3rem;">Es probable que en 1955 o 1956 ya se hubiera formado el embrión de lo que sería la Banda, aunque no encontramos referencia escrita hasta 1958, concretamente en la crónica de El Diario Montañés sobre la Procesión del Encuentro de ese año, que relata el paso de la Virgen de la Amargura acompañado por una batería de trompetas, cornetas en realidad, y tambores. Ni siquiera se menciona el nombre de la banda en cuestión, y al año siguiente vuelven a desaparecer las referencias a la misma en la prensa.</p>
+
+        <p style="font-size: 1.3rem;">El impulso definitivo a la nueva Banda de Cornetas y Tambores llegaría de la mano del padre Pedro en 1960, contratando entonces los servicios musicales de Basilio Gomarín Girado para la dirección del conjunto. A partir de entonces la Banda de la Pasión empieza a figurar recurrentemente en la prensa acompañando a su cofradía. Hasta 1966 procesionó con los hábitos penitenciales de la sección de nazarenos, estrenando ese año su primer uniforme de chaqueta morada y gorra de plato.</p>
+
+        <div class="highlight-box">
+            "Los ensayos se realizaban en un principio en la huerta del convento de los Padres Pasionistas... en 1966 la Banda fue mandada a ensayar fuera del recinto, al puerto."
+        </div>
+
+        <p style="font-size: 1.3rem;">La situación, cada vez más insostenible, llegó a su punto álgido el día de Martes Santo de 1972, cuando los componentes de la Banda se negaron a procesionar al no disponer de unas condiciones decentes para el ensayo. A raíz de ello se consiguió volver a la parroquia, con el nuevo edificio ya construido, cediéndose el garaje para los ensayos musicales.</p>
+
+          <p style="font-size: 1.3rem;">El desánimo hizo mella en la Banda hasta 1979. Fue entonces cuando tres de los componentes más veteranos, <strong>Telesforo Molpeceres Regidor, José Ramón Sierra de la Fuente y Eduardo López Sotelo</strong>, tomaron las riendas, reorganizaron la Banda y le insuflaron nueva vida. Comenzó entonces uno de los periodos más brillantes de su historia, que se alargó durante más de una década e hizo que la Banda protagonizara multitud de eventos en el barrio, en la ciudad e incluso en la región y fuera de ella. Gracias a Foro, siempre recordado, disponemos de una extensa crónica de esta época, recogida en varios cientos de páginas minuciosamente redactadas.</p>
+        <section class="historic-spotlight">
+            <div style="background:var(--granate); color:white; display:inline-block; padding:4px 15px; border-radius:20px; font-size:0.7rem; margin-bottom:15px; letter-spacing:1px;">FIGURAS CLAVE</div>
+            <br>
+            <div class="photo-frame">
+                <img src="IMAGES\regidor.jpg" alt="Telesforo Molpeceres Regidor">
+            </div>
+            <p class="caption-regidor" style="font-size: 1rem;">
+                <strong>Telesforo Molpeceres Regidor ("Foro")</strong><br>
+                Junto a Eduardo y José en uno de los mejores momentos de la banda
+            </p>
+        </section>
+
+        <p style="font-size: 1.3rem;">La Banda fue creciendo y acumulando decenas de actuaciones anuales, incluyendo en sus filas a mujeres por primera vez en el año 1993.</p>
+        <section class="historic-spotlight">
+            <div style="background:var(--granate); color:white; display:inline-block; padding:4px 15px; border-radius:20px; font-size:0.7rem; margin-bottom:15px; letter-spacing:1px;">AÑO 1994</div>
+            <br>
+            <div class="photo-frame">
+                <img style="width: 1000%; margin: 0 auto; font-size: 1rem;" src="IMAGES\encuentro.jpg" alt="Telesforo Molpeceres Regidor">
+            </div>
+            <p class="caption-regidor" style="font-size: 1rem;">
+             Procesión del Encuentro de 1994, con mujeres ya incorporadas a las filas de la Banda.
+            </p>
+        </section>       
+        <p style="font-size: 1.3rem;">Desgraciadamente, la sucesiva marcha de la Banda de sus principales valedores sumió al conjunto en una decadencia creciente que tocó suelo con el cambio de milenio. Sin embargo, la oportuna aparición de <strong>Manuel Ángel Gómez Sampedro</strong> e <strong>Isidro García</strong> dio vida de nuevo a la Banda. Juntos capitanearon su refundación, poniéndola bajo la advocación de la Virgen de la Amargura. Los cambios se sucedieron rápidamente, convirtiéndose en la <strong>primera Agrupación Musical de Santander</strong> pasada la Semana Santa de 2006. El conjunto se enriqueció progresivamente con la inclusión de trompetas, fliscornos, trombones, tuba y bombardinos.</p>
+
+        <p style="font-size: 1.3rem;">La enorme labor que dejaron tras de sí fue continuada por Miguel Echevarría Bonet y <a href="FERNANDO VITIENES.html" style="color: var(--granate);" class="director-link">Fernando Vitienes Santana</a>, que a partir de 2018 continúa en solitario. En esta última etapa se ha apostado por aumentar el número de instrumentistas y la riqueza musical con nuevas voces y composiciones más trabajadas.</p>
+
+        <p style="font-size: 1.3rem;">Desde finales de 2019, la Agrupación Musical fue recibida con los brazos abiertos por la Organización Juvenil Española (OJE), quien permitió a esta formación tener una nueva sede y local de ensayo en la calle Navarra, dentro del santanderino barrio de Porrúa, y ahora, una segunda sede de ensayos en la Avenida de los Castros, donde se continúa trabajando, buscando seguir mejorando y creciendo.</p>
+                <section class="historic-spotlight">
+            <div style="background:var(--granate); color:white; display:inline-block; padding:4px 15px; border-radius:20px; font-size:0.7rem; margin-bottom:15px; letter-spacing:1px;">ACTUALIDAD</div>
+            <br>
+            <div class="photo-frame">
+                <img style="width: 1000%; margin: 0 auto;" src="IMAGES\WhatsApp Image 2026-03-10 at 23.42.22.jpeg" alt="Telesforo Molpeceres Regidor">
+            </div>
+            <p class="caption-regidor" style="font-size: 1rem;">
+            La Agrupación Musical actualmente durante la Procesión del Resucitado en Santander
+            </p>
+        </section>   
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMenu() {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+    </script>
+        <footer>
+        A.M. VIRGEN DE LA AMARGURA · SANTANDER
+    </footer>
+        <marquee style="background-color: var(--granate); color: var(--dorado); font-weight: bold; padding: 12px; position: fixed; bottom: 0; width: 100%; z-index: 1000;">
+        ¡Próximas actuaciones! Virgen del Mar 2026 - Santander - Agrupación Musical Virgen de la Amargura de Santander
+    </marquee>
+</body>
+</html>

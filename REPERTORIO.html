@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repertorio Musical - A.M. Amargura</title>
+    <style>
+        :root {
+            --granate: #800000;
+            --dorado: #d4af37;
+            --crema: #fdfaf5;
+            --texto: #2c2c2c;
+            --verde-san-miguel: #1a4d2e;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--crema);
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--granate);
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .logo-nav {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-nav .main-title { color: white; font-weight: bold; font-size: 1.2rem; text-transform: uppercase; }
+        .logo-nav .sub-title { color: var(--dorado); font-size: 0.75rem; letter-spacing: 2px; }
+
+        .menu-btn {
+            width: 35px;
+            height: 25px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 3001;
+        }
+
+        .menu-btn span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; }
+
+        /* SIDEBAR */
+  .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: #111;
+            z-index: 2500;
+            transition: 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            padding-top: 100px;
+        }
+
+        .sidebar.active { right: 0; }
+
+        .sidebar a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar a:hover {
+            color: var(--dorado);
+            background: rgba(255,255,255,0.05);
+            border-left: 3px solid var(--dorado);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            z-index: 2400;
+        }
+
+        .overlay.active { display: block; }
+        /* --- CONTENIDO REPERTORIO --- */
+        .hero-repertorio {
+            height: 35vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('IMAGES/WhatsApp Image 2026-05-20 at 09.05.20.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: -30px auto 60px;
+            padding: 0 20px;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 15px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .category-title {
+            color: var(--granate);
+            border-bottom: 2px solid var(--dorado);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-title::before {
+            content: '🎼';
+            margin-right: 15px;
+        }
+
+        .marcha-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .marcha-info strong { color: #111; font-size: 1.05rem; }
+        .marcha-info span { display: block; color: #777; font-size: 0.85rem; font-style: italic; }
+
+        /* ESTRENO 2025 */
+        .estreno-box {
+            background: linear-gradient(135deg, #fff9e6, #fff);
+            border: 3px solid var(--dorado);
+            padding: 43px;
+            border-radius: 12px;
+            margin: 24px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .badge-estreno {
+            background: var(--dorado);
+            color: white;
+            padding: 4px 40px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* SECCIÓN SAN MIGUEL */
+        .san-miguel-card { border-top: 5px solid var(--verde-san-miguel); }
+        .san-miguel-card .category-title { color: var(--verde-san-miguel); border-bottom-color: var(--verde-san-miguel); }
+        .san-miguel-card .category-title::before { content: '🎺'; }
+
+        .agradecimiento {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            font-size: 1.3rem;
+            padding: 30px;
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .hero-repertorio h1 { font-size: 1.8rem; }
+            .section-card { padding: 20px; }
+            .marcha-item { flex-direction: column; align-items: flex-start; }
+        }
+                footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-nav">
+            <span class="main-title">Amargura</span>
+            <span class="sub-title">SANTANDER</span>
+        </a>
+        <div class="menu-btn" id="menuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <a href="index.html">Inicio</a>
+        <div style="padding: 18px 40px 5px; color: var(--dorado); font-size: 0.8rem; letter-spacing: 2px;">HISTORIA</div>
+        <a href="HISTORIA VIRGEN DE LA AMARGURA.html">• La Virgen</a>
+        <a href="HISTORIA DE LA BANDA.html">• La Banda</a>
+        <a href="HISTORIA A.M.C. SAN MIGUEL.html">• San Miguel</a>
+        <a href="REPERTORIO.html">Música</a>
+        <a href="COMPONENTES.html">Componentes</a>
+        <a href="UNIFORMIDAD.html">Uniformidad</a>
+        <a href="ACTUACIONES.html">Actuaciones</a>
+        <a href="CONTACTO.html">Contacto</a>
+        <a href="REDES.html">Redes sociales</a>
+        <a href="VIDEOTECA.html">Vídeos de marchas</a>
+    </div>
+
+    <header class="hero-repertorio">
+        <h1>NUESTROS SONES</h1>
+    </header>
+
+    <div class="container">
+        
+        <section class="section-card">
+            <h2 class="category-title">Repertorio de Paso Lento</h2>
+            
+            <div class="estreno-box">
+                <span class="badge-estreno">PRÓXIMO ESTRENO 2026</span>
+            <p></p>
+                <strong>La Esperanza de María</strong>
+                <span>(Alejandro Blanco Hernández)</span>
+            </div>
+            <div class="marcha-item"><div class="marcha-info"><strong>Alma Mía</strong><span>Miguel Manzano Alonso</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>A los pies de Sor Ángela</strong><span>Francisco David Álvarez Barroso</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>Christus Vincit</strong><span>Aloys Kunc</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>Cristo de la Salud y Buen Viaje</strong><span>Antonio Amodeo Ojeda</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>Estrella, Reina del Cielo</strong><span>José Manuel Mena Hervás</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>Himno de San Antonio</strong><span>Antonio Godino Villar</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>Nuestro Padre Jesús de la Victoria</strong><span>Emilio Cebrián Ruiz</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>La Oración del Huerto</strong><span>Agripino Lozano Perea</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>La Saeta</strong><span>Joan Manuel Serrat y Antonio Velasco</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>La Salve</strong><span>F. de Bourgoing y Juan José Martín</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>La Soledad del Cautivo</strong><span>Francisco José Carrasco Benítez</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>Sabed que Vendrá</strong><span>Bob Dylan y Antonio José López</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>Sanctus</strong><span>Tomás Aragüés Bernad</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>Unidos por tu Sangre</strong><span>Antonio Amodeo Ojeda</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>Virgen de la Hiniesta</strong><span>Antonio Gallego Dianez</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>Caridad del Guadalquivir</strong><span>Paco Lola</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>Corazón de San Juan</strong><span>Alejandro Blanco Hernández</span></div></div>        
+            <div class="marcha-item"><div class="marcha-info"><strong>En la Cena del Señor</strong><span>José Manuel Mena Hervás</span></div></div> </section>
+        <section class="section-card san-miguel-card">
+            <h2 class="category-title">A.M.C. San Miguel (Paso Ligero)</h2>
+            <div class="marcha-item"><strong>Bella Ciao</strong></div>
+            <div class="marcha-item"><strong>Diana (Popurrí)</strong></div>
+            <div class="marcha-item"><strong>Mi gran noche</strong></div>
+            <div class="marcha-item"><strong>Para los niños (Popurrí infantil)</strong></div>
+            <div class="marcha-item"><strong>Si te ha pillao la vaca</strong></div>
+            <div class="marcha-item"><strong>Si ves a la banda pasar</strong></div>
+            <div class="marcha-item"><strong>Tírate de la moto</strong></div>
+            <div class="marcha-item"><strong>Viva España</strong></div>
+            <div class="marcha-item"><strong>Yo te quiero dar</strong></div>
+        </section>
+
+        <section class="section-card">
+            <h2 class="category-title">Otros Sones</h2>
+
+            <div class="marcha-item"><div class="marcha-info"><strong>Himno Nacional</strong><span>Manuel Espinosa de los Monteros</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>Himno de la Guardia Civil</strong><span>Ildefonso Moreno Carrillo</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>La muerte no es el final</strong><span>Cesáreo Gabaráin Azurmendi</span></div></div>
+            <div class="marcha-item"><div class="marcha-info"><strong>Toque de oración</strong><span>José Manuel Mogino Martínez</span></div></div>
+        </section>
+
+        <div class="agradecimiento">
+            Arreglos en las partituras realizados por nuestros amigos <strong>Jesús Vellarino Andaluz</strong> y <strong>Alejandro Calleja Gútiez</strong> (entre otros).
+        </div>
+    </div>
+    <footer>
+        A.M. VIRGEN DE LA AMARGURA · SANTANDER
+    </footer>
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMenu() {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+    </script>
+        <marquee style="background-color: var(--granate); color: var(--dorado); font-weight: bold; padding: 12px; position: fixed; bottom: 0; width: 100%; z-index: 1000;">
+        ¡Próximas actuaciones! Virgen del Mar 2026 - Santander - Agrupación Musical Virgen de la Amargura de Santander
+    </marquee>
+</body>
+</html>

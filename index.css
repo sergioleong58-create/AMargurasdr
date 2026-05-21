@@ -1,0 +1,115 @@
+/* --- Variables de Color --- */
+:root {
+    --oro: #d4af37;
+    --oscuro: #1a1a1a;
+    --gris-claro: #f4f4f4;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en enlaces */
+}
+
+.container { width: 90%; max-width: 1100px; margin: auto; padding: 20px 0; }
+
+header {
+    background: var(--oscuro);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 4px solid var(--oro);
+}
+
+.subtitle { color: var(--oro); letter-spacing: 2px; font-size: 0.9rem; }
+
+/* --- Menú Interactivo --- */
+.main-nav { list-style: none; padding: 0; display: flex; justify-content: center; }
+.main-nav li { margin: 0 15px; position: relative; }
+.main-nav a { color: white; text-decoration: none; font-weight: bold; transition: 0.3s; }
+.main-nav a:hover { color: var(--oro); }
+
+/* Menú Desplegable (Dropdown) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: var(--oscuro);
+    min-width: 150px;
+    z-index: 1;
+    list-style: none;
+    padding: 10px;
+    border: 1px solid var(--oro);
+}
+
+.dropdown:hover .dropdown-content { display: block; }
+
+/* --- Sección Hero con Botón --- */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1514320298543-63e3f46df34c?auto=format&fit=crop&w=1200');
+    background-size: cover;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.btn-interactivo {
+    display: inline-block;
+    padding: 12px 25px;
+    background: var(--oro);
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.btn-interactivo:hover {
+    transform: scale(1.1);
+    background: white;
+}
+
+/* --- Galería con Efecto --- */
+.section-title { text-align: center; margin-bottom: 30px; }
+.grid-imagenes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.img-card {
+    background: white;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.img-card img { width: 100%; border-radius: 5px; }
+
+.img-card:hover {
+    transform: translateY(-10px);
+    border-bottom: 4px solid var(--oro);
+}
+
+/* --- Contacto y Redes --- */
+.contacto-section {
+    background: #eee;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.social-links { display: flex; justify-content: center; gap: 30px; margin-top: 20px; }
+.social-icon {
+    text-decoration: none;
+    color: var(--oscuro);
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.social-icon:hover { color: var(--oro); }
+
+footer { background: var(--oscuro); color: white; text-align: center; padding: 20px; }

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Componentes Agrupación - A.M. Amargura</title>
+    <style>
+        :root {
+            --granate: #800000;
+            --granate-vivo: #a30000;
+            --dorado: #d4af37;
+            --dorado-gala: #e5c158;
+            --blanco: #ffffff;
+            --gris-fondo: #f8f9fa;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--gris-fondo);
+            color: #333;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--granate);
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo-nav {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-nav .main-title {
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo-nav .sub-title {
+            color: var(--dorado);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        .menu-btn {
+            width: 35px;
+            height: 25px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 3001;
+        }
+
+        .menu-btn span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: white;
+            border-radius: 3px;
+        }
+
+        /* SIDEBAR MÓVIL */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: #111;
+            z-index: 2500;
+            transition: 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            padding-top: 100px;
+        }
+
+        .sidebar.active { right: 0; }
+
+        .sidebar a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar a:hover {
+            color: var(--dorado);
+            background: rgba(255,255,255,0.05);
+            border-left: 3px solid var(--dorado);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            z-index: 2400;
+        }
+
+        .overlay.active { display: block; }
+
+        /* --- CONTENIDO DE COMPONENTES --- */
+        .hero-componentes {
+            height: 40vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('IMAGES/Procesion14.jpg'); /* Fondo genérico o de banda */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-componentes h1 {
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border-bottom: 3px solid var(--dorado);
+            padding-bottom: 10px;
+            margin: 0 15px;
+        }
+
+        /* GRID DE CLASIFICACIÓN */
+        .main-grid {
+            max-width: 1200px;
+            margin: -30px auto 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 0 20px;
+        }
+
+        .instrumento-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-top: 5px solid var(--dorado);
+        }
+
+        .instrumento-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .instrumento-card h2 {
+            color: var(--granate);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .lista-musicos {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .lista-musicos li {
+            padding: 3px 0;
+            border-bottom: 1px dashed #f0f0f0;
+        }
+
+        /* Estilo para el Director Interactiva */
+        .director-interactivo {
+            color: var(--granate-vivo);
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            border-bottom: 1px solid transparent;
+        }
+
+        .director-interactivo:hover {
+            color: var(--dorado-gala);
+            border-bottom-color: var(--dorado-gala);
+        }
+
+        /* --- FOOTER REGRESAR --- */
+        .nav-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-bottom: 60px;
+        }
+
+        .btn-regresar {
+            display: inline-flex;
+            align-items: center;
+            background: #222;
+            color: white !important;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-regresar:hover {
+            background: var(--granate);
+            transform: scale(1.05);
+        }
+
+        /* --- AJUSTES MÓVILES --- */
+        @media (max-width: 768px) {
+            .navbar { padding: 0 15px; }
+            .hero-componentes h1 { font-size: 1.8rem; }
+            .instrumento-card { padding: 20px; }
+            .sidebar { width: 85%; }
+        }
+                footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-nav">
+            <span class="main-title">Amargura</span>
+            <span class="sub-title">SANTANDER</span>
+        </a>
+        <div class="menu-btn" id="menuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <a href="index.html">Inicio</a>
+        <div style="padding: 18px 40px 5px; color: var(--dorado); font-size: 0.8rem; letter-spacing: 2px;">HISTORIA</div>
+        <a href="HISTORIA VIRGEN DE LA AMARGURA.html">• La Virgen</a>
+        <a href="HISTORIA DE LA BANDA.html">• La Banda</a>
+        <a href="HISTORIA A.M.C. SAN MIGUEL.html">• San Miguel</a>
+        <a href="REPERTORIO.html">Música</a>
+        <a href="COMPONENTES.html">Componentes</a>
+        <a href="UNIFORMIDAD.html">Uniformidad</a>
+        <a href="ACTUACIONES.html">Actuaciones</a>
+        <a href="CONTACTO.html">Contacto</a>
+        <a href="REDES.html">Redes sociales</a>
+        <a href="VIDEOTECA.html">Vídeos de marchas</a>
+    </div>
+
+    <header class="hero-componentes">
+        <h1>Componentes de la Agrupación</h1>
+    </header>
+
+    <main class="main-grid">
+        
+        <section class="instrumento-card">
+            <h2>🎺 Cornetas</h2>
+            <ul class="lista-musicos">
+                <li><a href="FERNANDO VITIENES.html" class="director-interactivo">Fernando Vitienes Santana-Director</a></li>
+                <li>Natalia Bengochea Palacios</li>
+                <li>Alberto Galve Doblas</li>
+                <li>Álvaro Quijano Vitienes</li>
+            </ul>
+        </section>
+
+        <section class="instrumento-card">
+            <h2>🎺 Trompetas</h2>
+            <ul class="lista-musicos">
+                <li>Valentín Quijano Vitienes</li>
+                <li>Maise Bengochea Pereda</li>
+                <li>Nano Fernández</li>
+                <li>Toni González Serra</li>
+                <li>Patricia Vitienes Santana</li>
+                <li>Mario González González</li>
+                <li>Gabriel Sánchez Vitienes</li>
+                <li>Rubén Sánchez Vitienes</li>
+                <li>José Ángel Pedrajo Secada </li>
+                <li>Adrián</li>
+                <li>Romeo</li>
+                <li>Laro Ruiz</li>
+            </ul>
+        </section>
+
+        <section class="instrumento-card">
+            <h2>🎶 Trombones</h2>
+            <ul class="lista-musicos">
+                <li>Shaila Kiara Loaiza</li>
+                <li>Bruno Sánchez</li>
+            </ul>
+        </section>
+
+        <section class="instrumento-card">
+            <h2>🎼 Bombardinos</h2>
+            <ul class="lista-musicos">
+                <li>César Pajares Pérez</li>
+                <li>Olga Santana López</li>
+                <li>Gustavo</li>
+            </ul>
+        </section>
+
+        <section class="instrumento-card">
+            <h2>🎼 Tubas</h2>
+            <ul class="lista-musicos">
+                <li>Ismael Chávez Chamorro</li>
+                <li>Marcos</li>
+                <li>Viki</li>
+            </ul>
+        </section>
+
+        <section class="instrumento-card">
+            <h2>🥁 Cajas</h2>
+            <ul class="lista-musicos">
+                <li><a href="CITI.html" class="director-interactivo">F. Javier Palacios Fernández</a></li>
+                <li><a href="JORGE.html" class="director-interactivo">Jorge Aríztegui Hoya</a></li>
+            </ul>
+        </section>
+
+        <section class="instrumento-card">
+            <h2>🥁 Tambores</h2>
+            <ul class="lista-musicos">
+                <li>Cristina Quijano Vitienes</li>
+                <li>Juan Carlos Bengochea Palacios</li>
+                <li>Sergio León García Díez</li>
+                <li>Patricia García Díez</li>
+                <li>Isabel Gotia</li>
+                <li>Darío Ruiz</li>
+                <li>Ramón</li>
+            </ul>
+        </section>
+
+        <section class="instrumento-card">
+            <h2>🥁 Bombos y Timbales</h2>
+            <ul class="lista-musicos">
+                <li>Fernando Vitienes Valdecillo</li>
+                <li>José Lucena</li>
+                <li>Marco Fernández</li>
+                <li>Rubén</li>
+                <li>Ángel Puente</li>
+            </ul>
+        </section>
+
+        <section class="instrumento-card">
+            <h2>🥁 Platillos</h2>
+            <ul class="lista-musicos">
+                <li><a href="JORGE.html" class="director-interactivo">Santiago Martínez Ruiz</a></li>
+            </ul>
+        </section>
+
+        <section class="instrumento-card">
+            <h2>🚩 Guión y acompañantes</h2>
+            <ul class="lista-musicos">
+                <li>Josué</li>
+                <li>Noa</li>
+                <li>Laro</li>
+                <li>Kendra</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        A.M. VIRGEN DE LA AMARGURA · SANTANDER
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMenu() {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+    </script>
+        <marquee style="background-color: var(--granate); color: var(--dorado); font-weight: bold; padding: 12px; position: fixed; bottom: 0; width: 100%; z-index: 1000;">
+        ¡Próximas actuaciones! Virgen del Mar 2026 - Santander - Agrupación Musical Virgen de la Amargura de Santander
+    </marquee>
+</body>
+</html>

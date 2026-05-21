@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso Legal y Privacidad - Amargura Santander</title>
+    <style>
+        :root {
+            --granate: #800000;
+            --dorado: #d4af37;
+            --negro: #1a1a1a;
+            --crema: #fdfaf5;
+            --blanco: #ffffff;
+            --texto: #444;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--crema);
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--granate);
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+        }
+
+        .logo-nav { text-decoration: none; display: flex; flex-direction: column; }
+        .logo-nav .main-title { color: white; font-weight: bold; font-size: 1.2rem; text-transform: uppercase; }
+        .logo-nav .sub-title { color: var(--dorado); font-size: 0.75rem; letter-spacing: 2px; }
+
+        /* --- CONTENEDOR LEGAL --- */
+        .legal-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .legal-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .legal-header h1 {
+            color: var(--granate);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--dorado);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        /* --- ACORDEÓN --- */
+        .legal-section {
+            background: var(--blanco);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .legal-title {
+            padding: 20px 25px;
+            background: var(--blanco);
+            color: var(--granate);
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .legal-title:hover {
+            background: #fffbf0;
+            color: var(--dorado);
+        }
+
+        .legal-content {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .legal-section.active .legal-content {
+            max-height: 5000px; /* Suficiente para el texto largo */
+            padding: 20px 25px;
+            border-top: 1px solid #eee;
+        }
+
+        .legal-section.active .legal-title {
+            background: var(--granate);
+            color: white;
+        }
+
+        h3 { color: var(--granate); margin-top: 25px; font-size: 1.1rem; }
+        p { margin-bottom: 15px; }
+        ul { margin-bottom: 15px; }
+
+        .btn-volver {
+            display: block;
+            width: fit-content;
+            margin: 40px auto;
+            padding: 12px 30px;
+            background: var(--negro);
+            color: var(--dorado);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .btn-volver:hover { transform: scale(1.05); background: var(--granate); color: white; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.85rem;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th { background: #f4f4f4; color: var(--granate); }
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-nav">
+            <span class="main-title">Amargura</span>
+            <span class="sub-title">SANTANDER</span>
+        </a>
+    </nav>
+
+    <div class="legal-container">
+        <header class="legal-header">
+            <h1>Información Legal</h1>
+            <p>Cumplimiento normativo y protección de datos</p>
+        </header>
+
+        <div class="legal-section">
+            <div class="legal-title">1. Aviso Legal <span>+</span></div>
+            <div class="legal-content">
+                <p>En el presente Aviso Legal, el Usuario podrá encontrar toda la información relativa a las condiciones legales que definen las relaciones entre los usuarios y el responsable de la página web accesible en la dirección URL <strong>https://amargurasantander.netlify.app/</strong>.</p>
+                
+                <h3>Datos del responsable</h3>
+                <p><strong>Titular:</strong> Agrupación Musical Virgen de la Amargura (Amargura Santander)<br>
+                <strong>Domicilio:</strong> Calle Navarra, Santander<br>
+                <strong>CIF:</strong> G39858642<br>
+                <strong>Email:</strong> amargurasdr@gmail.com</p>
+
+                <p>Este Sitio Web garantiza la protección y confidencialidad de los datos personales de acuerdo con el RGPD (UE) 2016/679 y la LSSI-CE 34/2002.</p>
+                
+                <h3>Contenidos y Uso</h3>
+                <p>Se prohíbe el uso de los contenidos de la web para promocionar o divulgar publicidad propia o de terceros sin autorización expresa. Los derechos de propiedad intelectual de los contenidos pertenecen a Amargura Santander.</p>
+            </div>
+        </div>
+
+        <div class="legal-section">
+            <div class="legal-title">2. Política de Privacidad <span>+</span></div>
+            <div class="legal-content">
+                <p>La Agrupación Musical Virgen de la Amargura garantiza la protección y confidencialidad de los datos personales de cualquier tipo que nos proporcionen de acuerdo con el principio de responsabilidad proactiva.</p>
+                
+                <h3>¿Para qué usaremos sus datos?</h3>
+                <p>Los datos serán incluidos en ficheros imprescindibles para prestar los servicios solicitados por los usuarios o resolver dudas planteadas en el formulario de contacto.</p>
+                
+                <h3>Sus Derechos</h3>
+                <p>Usted puede ejercer sus derechos de acceso, supresión, limitación, oposición y portabilidad enviando un correo a <strong>amargurasdr@gmail.com</strong> adjuntando copia de su DNI.</p>
+            </div>
+        </div>
+
+        <div class="legal-section">
+            <div class="legal-title">3. Política de Cookies <span>+</span></div>
+            <div class="legal-content">
+                <p>Utilizamos cookies para facilitar la navegación y elaborar estadísticas. Las cookies son pequeños archivos que se graban en el navegador para recordar su visita sin identificar su identidad personal.</p>
+                
+                <h3>Cookies utilizadas</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cookie</th>
+                            <th>Origen</th>
+                            <th>Finalidad</th>
+                            <th>Duración</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>_ga</td><td>Google Analytics</td><td>Control de visitas únicas</td><td>2 años</td></tr>
+                        <tr><td>_gid</td><td>Google Analytics</td><td>Distinción de usuarios</td><td>24 horas</td></tr>
+                        <tr><td>_fbp</td><td>Facebook</td><td>Publicidad</td><td>Sesión</td></tr>
+                    </tbody>
+                </table>
+                <p>Usted puede bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador (Chrome, Firefox, Safari, Edge).</p>
+            </div>
+        </div>
+
+        <a href="index.html" class="btn-volver">VOLVER AL INICIO</a>
+    </div>
+
+    <script>
+        // Lógica para el acordeón
+        const sections = document.querySelectorAll('.legal-section');
+        
+        sections.forEach(section => {
+            const title = section.querySelector('.legal-title');
+            title.addEventListener('click', () => {
+                // Cerrar otras secciones (opcional, si quieres que solo haya una abierta)
+                // sections.forEach(s => { if(s !== section) s.classList.remove('active'); });
+                
+                section.classList.toggle('active');
+                const span = title.querySelector('span');
+                span.textContent = section.classList.contains('active') ? '-' : '+';
+            });
+        });
+    </script>
+        <footer>
+        A.M. VIRGEN DE LA AMARGURA · SANTANDER
+    </footer>
+        <marquee style="background-color: var(--granate); color: var(--dorado); font-weight: bold; padding: 12px; position: fixed; bottom: 0; width: 100%; z-index: 1000;">
+        ¡Próximas actuaciones! Virgen del Mar 2026 - Santander - Agrupación Musical Virgen de la Amargura de Santander
+    </marquee>
+</body>
+</html>

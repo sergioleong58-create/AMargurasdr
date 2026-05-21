@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - A.M. Amargura</title>
+    <style>
+        :root {
+            --granate: #800000;
+            --dorado: #d4af37;
+            --crema: #fdfaf5;
+            --texto: #2c2c2c;
+            --whatsapp: #25d366;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--crema);
+            color: var(--texto);
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--granate);
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .logo-nav { text-decoration: none; display: flex; flex-direction: column; }
+        .logo-nav .main-title { color: white; font-weight: bold; font-size: 1.2rem; text-transform: uppercase; }
+        .logo-nav .sub-title { color: var(--dorado); font-size: 0.75rem; letter-spacing: 2px; }
+
+        .menu-btn {
+            width: 35px;
+            height: 25px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 3001;
+        }
+        .menu-btn span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; }
+
+        /* SIDEBAR */
+  .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: #111;
+            z-index: 2500;
+            transition: 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            padding-top: 100px;
+        }
+
+        .sidebar.active { right: 0; }
+
+        .sidebar a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar a:hover {
+            color: var(--dorado);
+            background: rgba(255,255,255,0.05);
+            border-left: 3px solid var(--dorado);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            z-index: 2400;
+        }
+
+        .overlay.active { display: block; }
+
+        /* --- CONTENIDO CONTACTO (AJUSTADO PARA MEJOR VISIBILIDAD) --- */
+        .hero-contacto {
+            height: 45vh; /* Aumentado de 30 a 45 para ver más imagen */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('IMAGES/WhatsApp Image 2026-05-20 at 12.14.58.jpeg');
+            background-size: cover;
+            background-position: center 60%; /* Ajuste manual: 20% desde arriba para bajar el encuadre */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+
+        }
+
+        .hero-contacto h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border-bottom: 3px solid var(--dorado);
+            padding-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8); /* Sombra para que el texto destaque sobre los músicos */
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: -40px auto 60px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-bottom-color: var(--dorado);
+        }
+
+        .icon-circle {
+            width: 70px;
+            height: 70px;
+            background: #fdf5f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: var(--granate);
+        }
+
+        .contact-card h3 {
+            margin: 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--granate);
+        }
+
+        .contact-card p { color: #666; font-size: 0.95rem; margin-bottom: 20px; }
+
+        .btn-action {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-email { background: var(--granate); color: white; }
+        .btn-whatsapp { background: var(--whatsapp); color: white; }
+        .btn-maps { background: #444; color: white; }
+
+        .btn-action:hover { opacity: 0.9; transform: scale(1.05); }
+
+        /* SECCIÓN RECLUTAMIENTO */
+        .join-us {
+            grid-column: 1 / -1;
+            background: linear-gradient(rgba(128,0,0,0.85), rgba(128,0,0,0.85)), url('IMAGES/Banda_Ensayo.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            padding: 60px;
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+        }
+
+        .join-us h2 { font-size: 2rem; margin-bottom: 15px; color: var(--dorado); }
+        .join-us p { max-width: 700px; margin: 0 auto 30px; font-size: 1.1rem; }
+
+        @media (max-width: 768px) {
+            .hero-contacto { height: 35vh; }
+            .container { grid-template-columns: 1fr; margin-top: -20px; }
+            .join-us { padding: 30px; }
+        }
+                footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-nav">
+            <span class="main-title">Amargura</span>
+            <span class="sub-title">SANTANDER</span>
+        </a>
+        <div class="menu-btn" id="menuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <a href="index.html">Inicio</a>
+        <div style="padding: 18px 40px 5px; color: var(--dorado); font-size: 0.8rem; letter-spacing: 2px;">HISTORIA</div>
+        <a href="HISTORIA VIRGEN DE LA AMARGURA.html">• La Virgen</a>
+        <a href="HISTORIA DE LA BANDA.html">• La Banda</a>
+        <a href="HISTORIA A.M.C. SAN MIGUEL.html">• San Miguel</a>
+        <a href="REPERTORIO.html">Música</a>
+        <a href="COMPONENTES.html">Componentes</a>
+        <a href="UNIFORMIDAD.html">Uniformidad</a>
+        <a href="ACTUACIONES.html">Actuaciones</a>
+        <a href="CONTACTO.html">Contacto</a>
+        <a href="REDES.html">Redes sociales</a>
+        <a href="VIDEOTECA.html">Vídeos de marchas</a>
+    </div>
+
+    <header class="hero-contacto">
+        <h1>Contacta con nosotros</h1>
+    </header>
+
+    <div class="container">
+        
+        <div class="contact-card">
+            <div class="icon-circle">✉</div>
+            <h3>Correo Electrónico</h3>
+            <p>Para contrataciones, gestión de eventos o información general.</p>
+            <a href="mailto:amargurasdr@gmail.com" class="btn-action btn-email">amargurasdr@gmail.com</a>
+        </div>
+
+        <div class="contact-card">
+            <div class="icon-circle">📍</div>
+            <h3>Nuestra Sede</h3>
+            <p>Calle Navarra, s/n, bajo, 39007<br>Santander, Cantabria</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Calle+Navarra+Santander" target="_blank" class="btn-action btn-maps">Cómo llegar</a>
+        </div>
+
+        <div class="contact-card">
+            <div class="icon-circle">📞</div>
+            <h3>WhatsApp Directo</h3>
+            <p>Atención inmediata para dudas o consultas rápidas.</p>
+            <a href="https://wa.me/34636290866" target="_blank" class="btn-action btn-whatsapp">Enviar Mensaje</a>
+        </div>
+
+        <section class="join-us">
+            <h2>¿Quieres tocar con nosotros?</h2>
+            <p>Buscamos nuevos componentes para seguir creciendo. No importa tu nivel musical, nosotros te proporcionamos el instrumento y la formación necesaria desde cero.</p>
+            <a href="mailto:amargurasdr@gmail.com?subject=Interés en unirme a la banda" class="btn-action btn-email" style="background: var(--dorado); color: var(--granate); font-size: 1.2rem; padding: 15px 40px;">¡ÚNETE A LA BANDA!</a>
+        </section>
+
+    </div>
+    <footer>
+        A.M. VIRGEN DE LA AMARGURA · SANTANDER
+    </footer>
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMenu() {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+    </script>
+        <marquee style="background-color: var(--granate); color: var(--dorado); font-weight: bold; padding: 12px; position: fixed; bottom: 0; width: 100%; z-index: 1000;">
+        ¡Próximas actuaciones! Virgen del Mar 2026 - Santander - Agrupación Musical Virgen de la Amargura de Santander
+    </marquee>
+</body>
+</html>
