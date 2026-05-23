@@ -235,6 +235,41 @@
             .bio-article h1 { font-size: 2.2rem; }
             .infobox { order: -1; margin-bottom: 20px;}
         }
+        /* Corrección para la marquesina fija al final */
+.marquee-fijo {
+    background-color: var(--granate); 
+    color: var(--dorado); 
+    font-weight: bold; 
+    padding: 12px 0; /* Cambiado a 0 en los lados para que no sume ancho */
+    position: fixed; 
+    bottom: 0; 
+    left: 0;         /* Asegura que empiece exactamente al borde izquierdo */
+    width: 100%; 
+    z-index: 1000;
+    box-sizing: border-box; /* Fuerza al navegador a incluir rellenos dentro del 100% */
+}
+
+/* Ajustes de optimización para pantallas móviles muy pequeñas (Añadir dentro o abajo de tus estilos) */
+@media (max-width: 600px) {
+    .bio-article {
+        padding: 20px; /* Reduce el exceso de espacio interno en móviles */
+    }
+    
+    .bio-article h1 {
+        font-size: 1.8rem; /* Evita que el título principal rompa el contenedor */
+    }
+
+    .infobox table {
+        display: block;
+        width: 100%;
+        overflow-x: auto; /* Si la tabla es muy ancha para el móvil, permite deslizar solo la tabla */
+    }
+
+    .awards {
+        flex-direction: column; /* Pone los galardones uno debajo de otro en lugar de amontonarlos */
+        gap: 10px;
+    }
+}
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
 </head>
@@ -351,9 +386,9 @@
         </aside>
 
     </div>
-        <marquee style="background-color: var(--granate); color: var(--dorado); font-weight: bold; padding: 12px; position: fixed; bottom: 0; width: 100%; z-index: 1000;">
-        ¡Próximas actuaciones! Virgen del Mar 2026 - Santander - Agrupación Musical Virgen de la Amargura de Santander
-    </marquee>
+<marquee class="marquee-fijo">
+    ¡Próximas actuaciones! Virgen del Mar 2026 - Santander - Agrupación Musical Virgen de la Amargura de Santander
+</marquee>
     <footer class="homenaje-footer">
         <p>Homenaje oficial de la Agrupación Musical Sma. Virgen de la Amargura - Santander</p>
         <p>A.M. VIRGEN DE LA AMARGURA · SANTANDER</p>
