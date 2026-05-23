@@ -193,6 +193,42 @@
             .bio-article h1 { font-size: 2.2rem; }
             .infobox { order: -1; margin-bottom: 20px;}
         }
+        /* --- CORRECCIÓN PARA LA MARQUESINA FIJA --- */
+        .marquee-fijo {
+            background-color: var(--granate); 
+            color: var(--dorado); 
+            font-weight: bold; 
+            padding: 12px 0; /* Evita que el padding lateral sume ancho */
+            position: fixed; 
+            bottom: 0; 
+            left: 0;         /* Asegura la alineación perfecta a la izquierda */
+            width: 100%; 
+            z-index: 1000;
+            box-sizing: border-box; /* Obliga al navegador a meter el relleno dentro del 100% */
+        }
+
+        /* --- OPTIMIZACIÓN MÓVIL (PANTALLAS CHICAS) --- */
+        @media (max-width: 600px) {
+            .bio-article {
+                padding: 20px; /* Reduce espacios internos exagerados en el móvil */
+            }
+            
+            .bio-article h1 {
+                font-size: 1.8rem; /* Evita que el nombre largo de Fernando desborde el contenedor */
+                line-height: 1.3;
+            }
+
+            .infobox table {
+                display: block;
+                width: 100%;
+                overflow-x: auto; /* Permite scroll horizontal exclusivo para la tabla si el móvil es muy angosto */
+            }
+
+            .awards {
+                flex-direction: column; /* Cambia los galardones a formato vertical para que no se aplasten */
+                gap: 12px;
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
 </head>
@@ -325,8 +361,8 @@
         menuBtn.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
     </script>
-        <marquee style="background-color: var(--granate); color: var(--dorado); font-weight: bold; padding: 12px; position: fixed; bottom: 0; width: 100%; z-index: 1000;">
-        ¡Próximas actuaciones! Virgen del Mar 2026 - Santander - Agrupación Musical Virgen de la Amargura de Santander
-    </marquee>
+<marquee class="marquee-fijo">
+    ¡Próximas actuaciones! Virgen del Mar 2026 - Santander - Agrupación Musical Virgen de la Amargura de Santander
+</marquee>
 </body>
 </html>
