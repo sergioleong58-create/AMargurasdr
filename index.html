@@ -505,11 +505,12 @@
 
 .noticia-img {
     width: 60%;
-    height: 100%;
-    background-image: url('Virgen del Mar 2026.jpeg'); /* Puedes cambiar esta ruta por la imagen que prefieras */
-    background-size: cover;
+    height: 100%; /* Asegúrate de que el contenedor padre tenga una altura definida */
+    background-image: url('Virgen del Mar 2026.jpeg'); 
+    background-size: contain; /* <--- CAMBIA ESTO */
     background-position: center;
-margin: 0 auto;    
+    background-repeat: no-repeat; /* <--- AÑADE ESTO para que no se duplique */
+    margin: 0 auto;
 }
 
 .noticia-badge {
