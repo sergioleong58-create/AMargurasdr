@@ -504,12 +504,12 @@
 }
 
 .noticia-img {
-    width: 60%;
-    height: 100%; /* Asegúrate de que el contenedor padre tenga una altura definida */
+    width: 45%;               /* Le damos más ancho dentro de la tarjeta (antes era 60%) */
+    height: auto;             /* Dejamos que la altura se adapte */
+    aspect-ratio: 16 / 9;     /* OBLIGA al contenedor a tener forma horizontal */
     background-image: url('Virgen del Mar 2026.jpeg'); 
-    background-size: contain; /* <--- CAMBIA ESTO */
+    background-size: cover;   /* Ahora sí funcionará de maravilla */
     background-position: center;
-    background-repeat: no-repeat; /* <--- AÑADE ESTO para que no se duplique */
     margin: 0 auto;
 }
 
@@ -724,7 +724,7 @@
             <div class="noticia-content">
                 <span class="noticia-fecha">Temporada 2026</span>
                 <h3>¡A LA ESPERA!</h3>
-                <p>La Agrupación Musical ha concluido su actuación en la Vorgen del Mar. Ahora toca un merecido periodo de espera hasta nuestra siguiente salida. Seguiremos activos en cuanto a dudas y consultas rápidas ¡Gracias!</p>
+                <p>La Agrupación Musical ha concluido su actuación en la Virgen del Mar. Ahora toca un merecido periodo de espera hasta nuestra siguiente salida. Seguiremos activos en cuanto a dudas y consultas rápidas ¡Gracias!</p>
                 
                 <div class="noticia-detalles">
                     <span><strong>A.M. VIRGEN DE LA AMARGURA DE SANTANDER</strong></span>
