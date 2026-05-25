@@ -501,16 +501,20 @@
     position: relative;
     overflow: hidden;
     min-height: 250px;
+    display: flex;         /* Añadido: asegura que todo adentro se alinee */
+    align-items: center;   /* Añadido: centra verticalmente */
+    justify-content: center; /* Añadido: centra horizontalmente */
 }
 
 .noticia-img {
-    width: 45%;               /* Le damos más ancho dentro de la tarjeta (antes era 60%) */
-    height: auto;             /* Dejamos que la altura se adapte */
-    aspect-ratio: 16 / 9;     /* OBLIGA al contenedor a tener forma horizontal */
+    width: 100%;             /* Cambiado de 45% a 100% para que use todo su contenedor */
+    height: 100%;            /* Cambiado de auto a 100% */
+    position: absolute;      /* Añadido: para que rellene el wrap de forma exacta */
+    top: 0;
+    left: 0;
     background-image: url('Virgen del Mar 2026.jpeg'); 
-    background-size: cover;   /* Ahora sí funcionará de maravilla */
+    background-size: cover;  
     background-position: center;
-    margin: 0 auto;
 }
 
 .noticia-badge {
