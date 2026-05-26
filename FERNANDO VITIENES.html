@@ -229,6 +229,26 @@
                 gap: 12px;
             }
         }
+        /* --- RESPONSIVE NAVBAR --- */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0 15px; /* Reduce el espacio a los lados en pantallas muy pequeñas */
+    }
+    
+    .logo-nav .main-title {
+        font-size: 0.95rem; /* Achica el título principal para que no se desborde */
+    }
+
+    .logo-nav .sub-title {
+        font-size: 0.65rem; /* Achica el subtítulo en consonancia */
+        letter-spacing: 1px; /* Reduce un poco el espaciado entre letras */
+    }
+    
+    .menu-btn {
+        width: 30px; /* Hace el botón de menú ligeramente más pequeño */
+        height: 22px;
+    }
+}
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
 </head>
