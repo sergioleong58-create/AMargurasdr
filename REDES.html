@@ -55,23 +55,38 @@
         }
         .menu-btn span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; }
 
-        /* --- SIDEBAR --- */
+               /* SIDEBAR */
         .sidebar {
             position: fixed;
             top: 0;
             right: -100%;
             width: 300px;
             height: 100vh;
-            background: var(--negro);
+            background: #111;
             z-index: 2500;
             transition: 0.5s ease;
             display: flex;
             flex-direction: column;
             padding-top: 100px;
         }
+
         .sidebar.active { right: 0; }
-        .sidebar a { color: #ccc; text-decoration: none; padding: 18px 40px; font-size: 1rem; text-transform: uppercase; font-weight: 600; }
-        .sidebar a:hover { color: var(--dorado); background: rgba(255,255,255,0.05); }
+
+        .sidebar a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar a:hover {
+            color: var(--dorado);
+            background: rgba(255,255,255,0.05);
+            border-left: 3px solid var(--dorado);
+        }
 
         .overlay {
             position: fixed;
@@ -84,8 +99,8 @@
             display: none;
             z-index: 2400;
         }
-        .overlay.active { display: block; }
 
+        .overlay.active { display: block; }
         /* --- CONTENEDOR HERO (IMAGEN GRANDE) --- */
         .hero-container {
             position: relative;
