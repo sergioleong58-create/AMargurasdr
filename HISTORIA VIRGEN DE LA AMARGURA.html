@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia de la Virgen - A.M. Amargura</title>
+    <style>
+        :root {
+            --granate: #800000;
+            --dorado: #d4af37;
+            --dorado-brillante: #f1d57d;
+            --crema: #fdfaf5;
+            --texto: #2c2c2c;
+            --sombra: rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--crema);
+            color: var(--texto);
+            line-height: 1.8;
+        }
+
+         /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--granate);
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 2000;
+            box-sizing: border-box;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo-nav { text-decoration: none; display: flex; flex-direction: column; }
+        .logo-nav .main-title { color: white; font-weight: bold; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; }
+        .logo-nav .sub-title { color: var(--dorado); font-size: 0.8rem; letter-spacing: 3px; }
+
+        .menu-btn {
+            width: 35px;
+            height: 25px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 3001;
+        }
+        .menu-btn span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; transition: 0.3s; }
+
+        /* SIDEBAR */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: #111;
+            z-index: 2500;
+            transition: 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            padding-top: 100px;
+        }
+
+        .sidebar.active { right: 0; }
+
+        .sidebar a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar a:hover {
+            color: var(--dorado);
+            background: rgba(255,255,255,0.05);
+            border-left: 3px solid var(--dorado);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            z-index: 2400;
+        }
+
+        .overlay.active { display: block; }
+        /* CAPA OSCURA */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            z-index: 2400;
+        }
+
+        .overlay.active { display: block; }
+
+        /* --- CONTENIDO DE LA PÁGINA --- */
+        .hero-header {
+            height: 50vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('IMAGES/procesion del encuentro0404231135.jpeg');
+            background-size: cover;
+            background-position: center 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            border-bottom: 3px solid var(--dorado);
+            padding-bottom: 15px;
+        }
+
+        .content-wrap {
+            max-width: 850px;
+            margin: -40px auto 60px;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .intro-text {
+            font-size: 1.7rem;
+            color: var(--granate);
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* --- SECCIÓN VIRGEN ANTIGUA MEJORADA --- */
+        .historic-section {
+            background: #f4f1ea;
+            padding: 40px 20px;
+            border-radius: 12px;
+            margin: 40px 0;
+            text-align: center;
+            border: 1px dashed #d1c7b1;
+            position: relative;
+        }
+
+        .historic-label {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--granate);
+            color: var(--dorado);
+            padding: 4px 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .photo-frame {
+            background: white;
+            padding: 12px;
+            display: inline-block;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transform: rotate(-1deg); /* Ligero giro para estilo vintage */
+            transition: 0.4s;
+        }
+
+        .photo-frame:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .photo-frame img {
+            max-width: 100%;
+            width: 320px;
+            display: block;
+            filter: sepia(0.3) contrast(1.1) brightness(0.9);
+        }
+
+        .caption {
+            display: block;
+            margin-top: 20px;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            color: #7a6e5d;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .content-wrap { padding: 25px; margin: -20px 15px 40px; }
+            .hero-header h1 { font-size: 1.6rem; text-align: center; }
+            .sidebar { width: 85%; }
+        }
+                footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-nav">
+            <span class="main-title">Amargura</span>
+            <span class="sub-title">SANTANDER</span>
+        </a>
+        <div class="menu-btn" id="menuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <a href="index.html">Inicio</a>
+        <div style="padding: 18px 40px 5px; color: var(--dorado); font-size: 0.8rem; letter-spacing: 2px;">HISTORIA</div>
+        <a href="HISTORIA VIRGEN DE LA AMARGURA.html">• La Virgen</a>
+        <a href="HISTORIA DE LA BANDA.html">• La Banda</a>
+        <a href="HISTORIA A.M.C. SAN MIGUEL.html">• San Miguel</a>
+        <a href="REPERTORIO.html">Música</a>
+        <a href="COMPONENTES.html">Componentes</a>
+        <a href="UNIFORMIDAD.html">Uniformidad</a>
+        <a href="ACTUACIONES.html">Actuaciones</a>
+        <a href="CONTACTO.html">Contacto</a>
+        <a href="REDES.html">Redes sociales</a>
+        <a href="VIDEOTECA.html">Vídeos de marchas</a>
+    </div>
+
+
+    <header class="hero-header">
+        <h1>Ntra. Sra. de la Amargura</h1>
+    </header>
+
+    <div class="content-wrap">
+        <p class="intro-text">
+            "Una devoción centenaria que late en el corazón de Santander."
+        </p>
+
+        <p style="font-size: 1.3rem;">
+
+La historia de la imagen de Ntra. Sra. de la Amargura (de quien procede nuestro nombre) se remonta al año 1909, cuando es bendecida e inicia su vida en la parroquia de los Padres Pasionistas del Barrio Maliaño. El martes 6 de abril de ese mismo año encontramos en El Diario Montañés la primera referencia en la prensa:
+
+ 
+
+"El día de Viernes Santo por la tarde a las cinco, dará principio la función con el piadoso ejercicio del Sermón, seguido de la imponente ceremonia del Descendimiento, en la que los cofrades de la Pasión harán uso del grande y conmovedor Crucifijo estrenado y bendecido el año pasado por nuestro Excelentísimo Prelado y dedicado ex profeso para tan compasivo y tierno acto. Una vez sea éste terminado saldrá la procesión por las calles del barrio de Maliaño, conduciendo el cuerpo santo del Señor y la imagen de la Virgen Dolorosa, obra excelente adquirida por la Cofradía de la Pasión y que estrenará ese mismo día. Ambas imágenes serán llevadas por los cofrades de la Pasión."
+
+<p style="font-size: 1.3rem;">
+
+No está claro su paso a través de la Guerra Civil, existiendo dos tradiciones acerca de su destino. Por un lado, encontramos la versión popular, donde a través de testimonios de la época aseguran que la Virgen pasó la contienda escondida en una casa del barrio, por lo que en 1942 tan sólo se habría bendecido a la misma imagen una vez restaurada. Otra versión establece que la imagen fue destruida en el año 1936, elaborándose una nueva, ya acabada la guerra, en las Escuelas Salesianas de Sarrià, que fue bendecida en el año 1942. 
+
+ 
+
+Sea como fuere, el culto continuó y siguió siendo pieza central de la parroquia del barrio y de su cofradía; en 1947 se inauguró la sección de nazarenos, que comenzaron a acompañar a la Virgen de la Amargura en sus procesiones. Ya ese mismo año hubo acompañamiento musical con algún tambor, germen de la actual Agrupación Musical. Las Madres Adoratrices de Santander elaboraron entre 1959 y 1960 el suntuoso manto negro que luce desde esa época. En 1975 se adquirió la carroza de plata labrada con faroles a juego, diseñada por Mariano Rubio Jiménez en 1964-65 para la Cofradía de la Pasión de Madrid en los Talleres de Santa Rufina de la misma ciudad. </p>
+
+        <div class="historic-section">
+            <span class="historic-label">Documento Gráfico</span>
+            <div class="photo-frame">
+                <img src="IMAGES\virgen.jpg" alt="Imagen antigua de la Virgen">
+            </div>
+            <span class="caption">Primitiva talla de la Virgen de la Amargura, bendecida el 6 de abril de 1909.</span>
+        </div>
+
+        <p style="font-size: 1.3rem;"> Llegado el nuevo milenio, con la refundación de la ya veterana Banda de Cornetas y Tambores de la Pasión, ésta pasó a estar bajo la advocación de la Virgen de la Amargura, tomando su nombre. Se vinculaba la Banda así, de manera más estrecha, con la Virgen a la que siempre acompañó y regaló su música y su esfuerzo.
+En 2006, al transformarse la Banda en Agrupación Musical, se consumó el cambio. Desde entonces hemos tenido el orgullo de acompañarla en cada una de sus salidas procesionales como su Agrupación Musical  hasta la Semana Santa de 2019.
+
+ 
+
+Los últimos tiempos han traído un nuevo esplendor para Ntra. Sra. de la Amargura. En el verano de 2017 la Archicofradía de la Pasión inauguró una capilla para la veneración de la imagen en el coro de la parroquia, consiguiendo, por fin, un lugar propio para la Virgen. A ello se ha sumado el estreno del espectacular palio en la Semana Santa de 2018, al mismo tiempo que se procesionaba, el día de Martes Santo, con el paso a hombros por primera vez en su historia. Recientemente, el 20 de octubre de 2018, se celebró su coronación litúrgica; previamente, la Agrupación Musical ofreció un concierto de marchas procesionales en el salón de actos de la parroquia. </p>
+                    <div class="historic-section">
+            <span class="historic-label">Documento Gráfico</span>
+            <div class="photo-frame">
+                <img src="IMAGES\palio.jpg" alt="Imagen antigua de la Virgen">
+            </div>
+            <span class="caption">La Virgen de la Amargura ya montada en el palio</span>
+        </div> 
+        <p style="font-size: 1.3rem;">Hoy, su capilla en la Parroquia de los PP. Pasionistas es lugar de peregrinación y silencio, donde cada Martes Santo, a hombros de sus cargadores, la Virgen de la Amargura sale a las calles de Santander.</p>
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMenu() {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+    </script>
+        <footer>
+        A.M. VIRGEN DE LA AMARGURA · SANTANDER
+    </footer>
+        <marquee style="background-color: var(--granate); color: var(--dorado); font-weight: bold; padding: 12px; position: fixed; bottom: 0; width: 100%; z-index: 1000;">
+        ¡Próximas actuaciones! Virgen del Mar 2026 - Santander - Agrupación Musical Virgen de la Amargura de Santander
+    </marquee>
+</body>
+</html>
