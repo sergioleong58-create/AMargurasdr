@@ -459,7 +459,8 @@
             .imagen-relleno { height: 250px; }
             .manifiesto-aspiracion { padding: 25px; }
         }
-        /* --- SECCIÓN DE NOTICIAS --- */
+
+/* --- SECCIÓN DE NOTICIAS CORREGIDA --- */
 .seccion-noticias {
     max-width: 1200px;
     margin: 40px auto 0px;
@@ -489,7 +490,8 @@
     border: 2px solid var(--dorado);
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     display: grid;
-    grid-template-columns: 45% 15fr;
+    /* Cambio clave: 40% para la imagen y el resto (1fr) libre para el texto */
+    grid-template-columns: 40% 1fr; 
     overflow: hidden;
     transition: transform 0.3s ease;
 }
@@ -501,10 +503,7 @@
 .noticia-img-wrap {
     position: relative;
     overflow: hidden;
-    min-height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 100%; /* Asegura que cubra todo el alto de la tarjeta */
 }
 
 .noticia-img {
@@ -516,7 +515,7 @@
     background-image: url('escalante.jpeg'); 
     background-size: cover;  
     background-position: center;
-    z-index: 1; /* Le da una capa base a la imagen */
+    z-index: 1;
 }
 
 .noticia-badge {
@@ -531,14 +530,15 @@
     padding: 6px 12px;
     border-radius: 4px;
     letter-spacing: 1px;
-    z-index: 2; /* <--- TRUCO: Capa superior para que flote SIEMPRE sobre la imagen */
+    z-index: 2;
 }
 
 .noticia-content {
-    padding: 35px;
+    padding: 40px; /* Un poco más de aire interior */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start; /* Alinea todo el contenido al inicio izquierdo */
 }
 
 .noticia-fecha {
@@ -555,44 +555,91 @@
     color: var(--granate);
     font-size: 1.6rem;
     text-transform: uppercase;
+    text-align: left;
 }
 
 .noticia-content p {
     color: #555;
     font-size: 1rem;
     line-height: 1.6;
-    margin: 0 0 20px 0;
+    margin: 0 0 25px 0;
+    text-align: justify; /* Justificado elegante para el cuerpo de texto */
 }
 
 .noticia-detalles {
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
+    display: flex; /* Cambiado a flex completo */
+    flex-wrap: wrap; /* Si no cabe en pantallas medianas, baja limpiamente */
+    gap: 20px;
     background: #fdfaf5;
     border-left: 3px solid var(--dorado);
-    padding: 10px 15px;
+    padding: 12px 20px;
     border-radius: 0 8px 8px 0;
+    width: 100%; /* Ocupa el ancho para alinear los ítems de forma homogénea */
+    box-sizing: border-box;
 }
 
 .noticia-detalles span {
     font-size: 0.9rem;
     color: var(--texto);
+    display: flex;
+    align-items: center;
 }
 
-/* Adaptación para pantallas móviles */
-@media (max-width: 768px) {
+/* --- ADAPTACIÓN RESPONSIVE CORREGIDA --- */
+@media (max-width: 900px) {
     .tarjeta-noticia-principal {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Pasa a diseño vertical en tablets */
     }
+
     .noticia-img-wrap {
-        height: 200px;
-        min-height: auto;
+        height: 280px;
+        min-height: 280px;
     }
+
+    .noticia-content {
+        padding: 30px 25px;
+    }
+
+    .noticia-content h3 {
+        font-size: 1.4rem;
+    }
+
+    .noticia-content p {
+        font-size: 0.95rem;
+        text-align: left; /* En móvil queda mejor alineado a la izquierda */
+    }
+
+    .noticia-detalles {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .seccion-noticias {
+        padding: 0 15px;
+    }
+
+    .titulo-noticias {
+        font-size: 1.5rem;
+    }
+
+    .noticia-img-wrap {
+        height: 220px;
+        min-height: 220px;
+    }
+
     .noticia-content {
         padding: 20px;
     }
+
     .noticia-content h3 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+    }
+
+    .noticia-badge {
+        font-size: 0.65rem;
+        padding: 5px 10px;
     }
 }
         /* --- RESPONSIVE NAVBAR --- */
