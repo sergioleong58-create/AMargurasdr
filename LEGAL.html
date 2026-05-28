@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aviso Legal y Privacidad - A.M. Amargura</title>
-        <link rel="icon" type="image/png" href="Captura de pantalla 2026-05-21 115712.png">
+    <title>Aviso Legal y Privacidad - Amargura Santander</title>
     <style>
         :root {
             --granate: #800000;
@@ -23,7 +22,7 @@
             line-height: 1.6;
         }
 
-            /* --- NAVBAR --- */
+        /* --- NAVBAR --- */
         .navbar {
             background-color: var(--granate);
             height: 75px;
@@ -34,70 +33,32 @@
             position: sticky;
             top: 0;
             z-index: 2000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         .logo-nav { text-decoration: none; display: flex; flex-direction: column; }
         .logo-nav .main-title { color: white; font-weight: bold; font-size: 1.2rem; text-transform: uppercase; }
         .logo-nav .sub-title { color: var(--dorado); font-size: 0.75rem; letter-spacing: 2px; }
 
-        .menu-btn {
-            width: 35px;
-            height: 25px;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            z-index: 3001;
-        }
-        .menu-btn span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; }
-
-               /* SIDEBAR */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 300px;
-            height: 100vh;
-            background: #111;
-            z-index: 2500;
-            transition: 0.5s ease;
-            display: flex;
-            flex-direction: column;
-            padding-top: 100px;
+        /* --- CONTENEDOR LEGAL --- */
+        .legal-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
-        .sidebar.active { right: 0; }
+        .legal-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
 
-        .sidebar a {
-            color: #ddd;
-            text-decoration: none;
-            padding: 15px 40px;
-            font-size: 1rem;
+        .legal-header h1 {
+            color: var(--granate);
             text-transform: uppercase;
-            font-weight: bold;
-            border-left: 3px solid transparent;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--dorado);
+            display: inline-block;
+            padding-bottom: 10px;
         }
-
-        .sidebar a:hover {
-            color: var(--dorado);
-            background: rgba(255,255,255,0.05);
-            border-left: 3px solid var(--dorado);
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-            display: none;
-            z-index: 2400;
-        }
-
-        .overlay.active { display: block; }
 
         /* --- ACORDEÓN --- */
         .legal-section {
@@ -185,53 +146,17 @@
             font-size: 0.8rem;
             letter-spacing: 2px;
         }
-        /* --- RESPONSIVE NAVBAR --- */
-@media (max-width: 480px) {
-    .navbar {
-        padding: 0 15px; /* Reduce el espacio a los lados en pantallas muy pequeñas */
-    }
-    
-    .logo-nav .main-title {
-        font-size: 0.95rem; /* Achica el título principal para que no se desborde */
-    }
-
-    .logo-nav .sub-title {
-        font-size: 0.65rem; /* Achica el subtítulo en consonancia */
-        letter-spacing: 1px; /* Reduce un poco el espaciado entre letras */
-    }
-    
-    .menu-btn {
-        width: 30px; /* Hace el botón de menú ligeramente más pequeño */
-        height: 22px;
-    }
-}
-
-        .overlay.active { display: block; }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
         <a href="index.html" class="logo-nav">
-            <span class="main-title">A.M. Virgen de la Amargura</span>
+            <span class="main-title">Amargura</span>
             <span class="sub-title">SANTANDER</span>
         </a>
     </nav>
-    <div class="overlay" id="overlay"></div>
-    <div class="sidebar" id="sidebar">
-        <a href="index.html">Inicio</a>
-        <div style="padding: 18px 40px 5px; color: var(--dorado); font-size: 0.8rem; letter-spacing: 2px;">HISTORIA</div>
-        <a href="HISTORIA VIRGEN DE LA AMARGURA.html">• La Virgen</a>
-        <a href="HISTORIA DE LA BANDA.html">• La Banda</a>
-        <a href="HISTORIA A.M.C. SAN MIGUEL.html">• San Miguel</a>
-        <a href="REPERTORIO.html">Música</a>
-        <a href="COMPONENTES.html">Componentes</a>
-        <a href="UNIFORMIDAD.html">Uniformidad</a>
-        <a href="ACTUACIONES.html">Actuaciones</a>
-        <a href="CONTACTO.html">Contacto</a>
-        <a href="REDES.html">Redes sociales</a>
-        <a href="VIDEOTECA.html">Vídeos de marchas</a>
-    </div>
+
     <div class="legal-container">
         <header class="legal-header">
             <h1>Información Legal</h1>
@@ -241,7 +166,7 @@
         <div class="legal-section">
             <div class="legal-title">1. Aviso Legal <span>+</span></div>
             <div class="legal-content">
-                <p>En el presente Aviso Legal, el Usuario podrá encontrar toda la información relativa a las condiciones legales que definen las relaciones entre los usuarios y el responsable de la página web accesible en la dirección URL <strong>https://sergioleong58-create.github.io/AMargurasdr/index.html</strong>.</p>
+                <p>En el presente Aviso Legal, el Usuario podrá encontrar toda la información relativa a las condiciones legales que definen las relaciones entre los usuarios y el responsable de la página web accesible en la dirección URL <strong>https://amargurasantander.netlify.app/</strong>.</p>
                 
                 <h3>Datos del responsable</h3>
                 <p><strong>Titular:</strong> Agrupación Musical Virgen de la Amargura (Amargura Santander)<br>
@@ -293,6 +218,8 @@
                 <p>Usted puede bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador (Chrome, Firefox, Safari, Edge).</p>
             </div>
         </div>
+
+        <a href="index.html" class="btn-volver">VOLVER AL INICIO</a>
     </div>
 
     <script>
@@ -311,8 +238,6 @@
             });
         });
     </script>
-    <div style="background-color: var(--granate); color: var(--dorado); font-weight: bold; padding: 12px; position: fixed; bottom: 0; width: 100%; z-index: 1000; text-align: center;">
-    ¡Próximas actuaciones! No os las perdáis - Santander - Agrupación Musical Virgen de la Amargura de Santander
-</div>
- </body>
+
+</body>
 </html>
