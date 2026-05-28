@@ -167,6 +167,52 @@
         height: 22px;
     }
 }
+                       /* SIDEBAR */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: #111;
+            z-index: 2500;
+            transition: 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            padding-top: 100px;
+        }
+
+        .sidebar.active { right: 0; }
+
+        .sidebar a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar a:hover {
+            color: var(--dorado);
+            background: rgba(255,255,255,0.05);
+            border-left: 3px solid var(--dorado);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            z-index: 2400;
+        }
+
+        .overlay.active { display: block; }
     </style>
 </head>
 <body>
@@ -239,8 +285,6 @@
                 <p>Usted puede bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador (Chrome, Firefox, Safari, Edge).</p>
             </div>
         </div>
-
-        <a href="index.html" class="btn-volver">VOLVER AL INICIO</a>
     </div>
 
     <script>
