@@ -730,6 +730,34 @@ var(--blanco); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4); }
          gap: 8px; 
      } 
  } 
+          /* --- ESTILO BASE DEL BANNER INFERIOR --- */
+.banner-fijo {
+    background-color: var(--granate); 
+    color: var(--dorado); 
+    font-weight: bold; 
+    padding: 12px; 
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    text-align: center; 
+    box-sizing: border-box; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    word-break: break-word;
+    font-size: 0.95rem;
+}
+
+/* --- RESPONSIVE PARA EL BANNER (PANTALLAS PEQUEÑAS) --- */
+@media (max-width: 480px) {
+    .banner-fijo {
+        padding: 6px 10px; /* Se vuelve mucho más estrecho */
+        font-size: 0.75rem;  /* Letra más pequeña para que no genere demasiadas líneas */
+    }
+}
+
 
  /* --- MÓVILES PEQUEÑOS --- */ 
  @media (max-width: 480px) { 
@@ -1006,12 +1034,10 @@ none;" href="LEGAL.html">AVISO LEGAL - POLÍTICA DE
 PRIVACIDAD</a></p> 
      </footer> 
 
- <div style="background-color: var(--granate); color: var(--dorado); 
-font-weight: bold; padding: 12px; position: fixed; bottom: 0; left: 0; 
-width: 100%; z-index: 1000; text-align: center; box-sizing: border-box; 
-display: flex; justify-content: center; align-items: center; word-break: 
-break-word;"> ¡Próximas actuaciones! No os las perdáis - Santander - 
- Agrupación Musical Virgen de la Amargura de Santander</div> 
+<!-- Reemplaza la etiqueta del final por esta más limpia -->
+<div class="banner-fijo"> 
+    ¡Próximas actuaciones! No os las perdáis - Santander - Agrupación Musical Virgen de la Amargura de Santander
+</div>
 
      <script> 
          const menuBtn = document.getElementById('menuBtn'); 
