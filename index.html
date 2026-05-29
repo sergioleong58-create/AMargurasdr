@@ -104,22 +104,52 @@ font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; }
          .overlay.active { display: block; } 
 
 
-         /* --- HERO SECTION --- */ 
-         .hero { 
-             height: 85vh; /* Aumentado ligeramente para dar espacio al escudo */
-             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('WhatsApp Image 2026-03-03 at 14.43.34.jpeg'); 
-             background-size: cover; 
-             background-position: center 90%; 
-             display: flex; 
-             flex-direction: column; 
-             align-items: center; 
-             justify-content: center; 
-             color: white; 
-             text-align: center; 
-             padding: 0 20px; 
-             margin-top: 80px; 
-         } 
+       /* --- MODIFICACIÓN DEL HERO PARA MANEJAR CAPAS --- */ 
+.hero { 
+    height: 85vh; 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('WhatsApp Image 2026-03-03 at 14.43.34.jpeg'); 
+    background-size: cover; 
+    background-position: center 90%; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    color: white; 
+    text-align: center; 
+    padding: 0 20px; 
+    margin-top: 80px; 
+    position: relative; /* Clave para que el escudo absoluto se alinee aquí dentro */
+    overflow: hidden;    /* Evita que el escudo se salga si se escala */
+} 
 
+/* Forzamos que los textos del hero se queden siempre al frente */
+.hero h1, .hero h2, .hero p, .hero .btn-principal {
+    position: relative;
+    z-index: 2;
+}
+
+/* --- ESTILO PARA EL ESCUDO DE TRASFONDO --- */ 
+.escudo-adaptado { 
+    position: absolute;  /* Lo saca del flujo para ponerlo detrás */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Lo centra perfectamente horizontal y verticalmente */
+    width: 320px !important;  /* Tamaño más grande al actuar como fondo decorativo */
+    height: auto; 
+    z-index: 1;          /* Queda por detrás del texto (z-index: 2) pero sobre la foto de la banda */
+    opacity: 0.25;       /* Opacidad equilibrada para que no afecte la legibilidad del texto blanco */
+    filter: drop-shadow(0px 0px 20px rgba(212, 175, 55, 0.3)) brightness(1.1); 
+    pointer-events: none; /* Evita que estorbe al hacer clic en los textos o botones */
+    transition: transform 0.4s ease, opacity 0.4s ease; 
+} 
+
+/* Opcional: Reducir ligeramente el tamaño en pantallas móviles para que guarde proporción */
+@media (max-width: 480px) {
+    .escudo-adaptado {
+        width: 220px !important;
+        opacity: 0.2; /* Un pelín más tenue en pantallas pequeñas */
+    }
+}
          .hero h2 { font-size: 1.2rem; text-transform: uppercase; 
 letter-spacing: 5px; color: var(--dorado); margin-bottom: 10px; } 
 
@@ -777,14 +807,14 @@ font-size: 0.8rem; letter-spacing: 2px;">HISTORIA</div>
          <a href="VIDEOTECA.html">Vídeos de marchas</a> 
      </div> 
 
-     <section class="hero"> 
-         <img src="escudo.png" alt="Escudo A.M. Virgen de la Amargura" class="escudo-adaptado">
-         
-         <h2>Agrupación Musical</h2> 
-         <h1>Virgen de la Amargura</h1> 
-         <p><strong>"Sones de fe y tradición en el corazón de Santander"</strong></p> 
-         <a href="CONTACTO.html" class="btn-principal">¡CONTÁCTANOS!</a> 
-     </section> 
+<section class="hero"> 
+    <img src="escudo.png" alt="Escudo A.M. Virgen de la Amargura" class="escudo-adaptado">
+    
+    <h2>Agrupación Musical</h2> 
+    <h1>Virgen de la Amargura</h1> 
+    <p><strong>"Sones de fe y tradición en el corazón de Santander"</strong></p> 
+    <a href="CONTACTO.html" class="btn-principal">¡CONTÁCTANOS!</a> 
+</section>
 
      <main class="main-grid"> 
          <a href="REPERTORIO.html" class="nav-card"> 
