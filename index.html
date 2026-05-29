@@ -105,23 +105,103 @@ font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; }
          .overlay.active { display: block; } 
 
 
-       /* --- MODIFICACIÓN DEL HERO PARA MANEJAR CAPAS --- */ 
+/* --- HERO PRINCIPAL --- */
 .hero { 
     height: 85vh; 
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('WhatsApp Image 2026-03-03 at 14.43.34.jpeg'); 
+    background:
+        linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.72)),
+        url('WhatsApp Image 2026-03-03 at 14.43.34.jpeg');
+
     background-size: cover; 
     background-position: center 90%; 
+
     display: flex; 
     flex-direction: column; 
     align-items: center; 
     justify-content: center; 
+
     color: white; 
     text-align: center; 
+
     padding: 0 20px; 
     margin-top: 80px; 
-    position: relative; /* Clave para que el escudo absoluto se alinee aquí dentro */
-    overflow: hidden;    /* Evita que el escudo se salga si se escala */
-} 
+
+    position: relative; 
+    overflow: hidden;
+}
+
+/* --- CAPA DEL ESCUDO DECORATIVO --- */
+.escudo-adaptado { 
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 540px;
+    max-width: 85vw;
+
+    height: auto;
+
+    z-index: 1;
+
+    opacity: 0.18;
+
+    filter:
+        drop-shadow(0 0 25px rgba(212,175,55,0.35))
+        brightness(1.15);
+
+    pointer-events: none;
+
+    transition:
+        transform 0.5s ease,
+        opacity 0.5s ease;
+}
+
+/* Ligero movimiento visual */
+.hero:hover .escudo-adaptado {
+    transform: translate(-50%, -50%) scale(1.03);
+    opacity: 0.22;
+}
+
+/* Textos siempre por encima */
+.hero h1,
+.hero h2,
+.hero p,
+.hero .btn-principal {
+    position: relative;
+    z-index: 2;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+    .escudo-adaptado {
+        width: 340px;
+        opacity: 0.15;
+    }
+
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .escudo-adaptado {
+        width: 260px;
+        opacity: 0.12;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+}
 
 /* Forzamos que los textos del hero se queden siempre al frente */
 .hero h1, .hero h2, .hero p, .hero .btn-principal {
@@ -448,21 +528,6 @@ var(--blanco); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4); }
      font-style: italic; 
      border-top: 1px solid rgba(212, 175, 55, 0.3); 
      padding-top: 15px; 
- } 
- /* --- ESTILO PARA EL ESCUDO ADAPTADO --- */ 
- .escudo-adaptado { 
-     width: 150px !important; /* Tamaño ideal para la cabecera principal */ 
-     height: auto; 
-     margin-bottom: 20px;
-     /* En el hero usamos brillo y contraste directo sobre la imagen transparente */
-     filter: drop-shadow(0px 5px 15px rgba(212, 175, 55, 0.4)) brightness(1.1); 
-     transition: transform 0.4s ease; 
-     cursor: pointer; 
- } 
-
- /* Efecto interactivo al pasar el ratón por encima */ 
- .escudo-adaptado:hover { 
-     transform: scale(1.08); 
  } 
  /* --- BLOQUE MANIFIESTO Y BIENVENIDA --- */ 
  .manifiesto-aspiracion { 
