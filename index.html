@@ -129,26 +129,41 @@ font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; }
     z-index: 2;
 }
 
-/* --- ESTILO PARA EL ESCUDO DE TRASFONDO --- */ 
-.escudo-adaptado { 
-    position: absolute;  /* Lo saca del flujo para ponerlo detrás */
+/* --- ESCUDO DECORATIVO DEL HERO --- */
+.escudo-adaptado {
+    position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Lo centra perfectamente horizontal y verticalmente */
-     width: 600px !important; /* Nuevo tamaño modificado */    
-     height: auto; 
-    z-index: 1;          /* Queda por detrás del texto (z-index: 2) pero sobre la foto de la banda */
-     /* Opacidad equilibrada para que no afecte la legibilidad del texto blanco */
-    filter: drop-shadow(0px 0px 20px rgba(212, 175, 55, 0.3)) brightness(1.1); 
-    pointer-events: none; /* Evita que estorbe al hacer clic en los textos o botones */
-    transition: transform 0.4s ease, opacity 0.4s ease; 
-} 
+    transform: translate(-50%, -50%);
+    
+    width: 420px;
+    height: auto;
 
-/* Opcional: Reducir ligeramente el tamaño en pantallas móviles para que guarde proporción */
-@media (max-width: 480px) {
+    opacity: 0.18; /* Transparencia para no molestar al texto */
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(0 0 25px rgba(212,175,55,0.35))
+        brightness(1.1);
+}
+
+/* El texto SIEMPRE delante */
+.hero h1,
+.hero h2,
+.hero p,
+.hero .btn-principal {
+    position: relative;
+    z-index: 2;
+}
+
+/* Responsive móvil */
+@media (max-width: 768px) {
     .escudo-adaptado {
-        width: 220px !important;
-        opacity: 0.2; /* Un pelín más tenue en pantallas pequeñas */
+        width: 240px;
+        opacity: 0.12;
     }
 }
          .hero h2 { font-size: 1.2rem; text-transform: uppercase; 
@@ -837,7 +852,7 @@ font-size: 0.8rem; letter-spacing: 2px;">HISTORIA</div>
      </div> 
 
 <section class="hero"> 
-    
+        <img src="escudo.png" alt="Escudo Virgen de la Amargura" class="escudo-adaptado">
     <h2>Agrupación Musical</h2> 
     <h1>Virgen de la Amargura</h1> 
     <p><strong>"Sones de fe y tradición en el corazón de Santander"</strong></p> 
