@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Componentes Agrupación - A.M. Amargura</title>
+        <link rel="icon" type="image/png" href="escudo.png">
     <style>
         :root {
             --granate: #800000;
@@ -120,12 +121,12 @@
 
         .overlay.active { display: block; }
 
-        /* --- CONTENIDO DE COMPONENTES --- */
+/* --- CONTENIDO DE COMPONENTES --- */
         .hero-componentes {
             height: 40vh;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('WhatsApp Image 2026-05-23 at 14.40.11.jpeg'); /* Fondo genérico o de banda */
             background-size: cover;
-            background-position: center;
+            background-position: center 42%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -262,6 +263,34 @@
         height: 22px;
     }
 }
+        /* --- ESTILO BASE DEL BANNER INFERIOR --- */
+.banner-fijo {
+    background-color: var(--granate); 
+    color: var(--dorado); 
+    font-weight: bold; 
+    padding: 12px; 
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    text-align: center; 
+    box-sizing: border-box; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    word-break: break-word;
+    font-size: 0.95rem;
+}
+
+/* --- RESPONSIVE PARA EL BANNER (PANTALLAS PEQUEÑAS) --- */
+@media (max-width: 480px) {
+    .banner-fijo {
+        padding: 6px 10px; /* Se vuelve mucho más estrecho */
+        font-size: 0.75rem;  /* Letra más pequeña para que no genere demasiadas líneas */
+    }
+}
+
     </style>
 </head>
 <body>
@@ -341,7 +370,7 @@
             <ul class="lista-musicos">
                 <li>César Pajares Pérez</li>
                 <li>Olga Santana López</li>
-                <li>Gustavo</li>
+                <li>Gustavo Encizo Canales</li>
             </ul>
         </section>
 
@@ -396,7 +425,7 @@
         <section class="instrumento-card">
             <h2>🚩 Guión y acompañantes</h2>
             <ul class="lista-musicos">
-                <li>Josué</li>
+                <li>Josué - Portaestandartes</li>
                 <li>Noa</li>
                 <li>Laro</li>
                 <li>Kendra</li>
@@ -418,7 +447,10 @@
         menuBtn.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
     </script>
-        <marquee style="background-color: var(--granate); color: var(--dorado); font-weight: bold; padding: 12px; position: fixed; bottom: 0; width: 100%; z-index: 1000;">
-        ¡Próximas actuaciones! No os las perdáis - Santander - Agrupación Musical Virgen de la Amargura de Santander    </marquee>
+<!-- Reemplaza la etiqueta del final por esta más limpia -->
+<div class="banner-fijo"> 
+    ¡Próximas actuaciones! No os las perdáis - Santander - Agrupación Musical Virgen de la Amargura de Santander
+</div>
+
 </body>
 </html>

@@ -1,813 +1,1161 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.M. Virgen de la Amargura - Santander</title>
-    <style>
-        :root {
-            --granate: #800000;
-            --dorado: #d4af37;
-            --negro: #1a1a1a;
-            --crema: #fdfaf5;
-            --blanco: #ffffff;
-            --texto: #2c2c2c;
-        }
+<!DOCTYPE html> 
+<html lang="es"> 
+<head> 
+     <meta charset="UTF-8"> 
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+     <title>A.M. Virgen de la Amargura - Santander</title> 
+  <link rel="icon" href="escudo.png" type="image/png">
+<link rel="shortcut icon" href="escudo.png" type="image/x-icon">
+     <style> 
+         :root { 
+             --granate: #800000; 
+             --dorado: #d4af37; 
+             --negro: #1a1a1a; 
+             --crema: #fdfaf5; 
+             --blanco: #ffffff; 
+             --texto: #2c2c2c; 
+         } 
 
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background-color: var(--crema);
-            color: var(--texto);
-            overflow-x: hidden;
-        }
+         body { 
+             margin: 0; 
+             font-family: 'Segoe UI', sans-serif; 
+             background-color: var(--crema); 
+             color: var(--texto); 
+             overflow-x: hidden; 
+         } 
 
-        /* --- NAVBAR --- */
-        .navbar {
-            background-color: var(--granate);
-            height: 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 30px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 2000;
-            box-sizing: border-box;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
+         /* --- NAVBAR --- */ 
+         .navbar { 
+             background-color: var(--granate); 
+             height: 80px; 
+             display: flex; 
+             justify-content: space-between; 
+             align-items: center; 
+             padding: 0 30px; 
+             position: fixed; 
+             width: 100%; 
+             top: 0; 
+             z-index: 2000; 
+             box-sizing: border-box; 
+             box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+         } 
 
-        .logo-nav { text-decoration: none; display: flex; flex-direction: column; }
-        .logo-nav .main-title { color: white; font-weight: bold; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; }
-        .logo-nav .sub-title { color: var(--dorado); font-size: 0.8rem; letter-spacing: 3px; }
+         .logo-nav { text-decoration: none; display: flex; flex-direction: column; } 
 
-        .menu-btn {
-            width: 35px;
-            height: 25px;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            z-index: 3001;
-        }
-        .menu-btn span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; transition: 0.3s; }
+         .logo-nav .main-title { color: white; font-weight: bold; 
+font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; } 
+         .logo-nav .sub-title { color: var(--dorado); font-size: 0.8rem; letter-spacing: 3px; } 
 
-        /* SIDEBAR */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 300px;
-            height: 100vh;
-            background: #111;
-            z-index: 2500;
-            transition: 0.5s ease;
-            display: flex;
-            flex-direction: column;
-            padding-top: 100px;
-        }
+         .menu-btn { 
+             width: 35px; 
+             height: 25px; 
+             cursor: pointer; 
+             display: flex; 
+             flex-direction: column; 
+             justify-content: space-between; 
+             z-index: 3001; 
+         } 
+         .menu-btn span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; transition: 0.3s; } 
 
-        .sidebar.active { right: 0; }
+         /* SIDEBAR */ 
+         .sidebar { 
+             position: fixed; 
+             top: 0; 
+             right: -100%; 
+             width: 300px; 
+             height: 100vh; 
+             background: #111; 
+             z-index: 2500; 
+             transition: 0.5s ease; 
+             display: flex; 
+             flex-direction: column; 
+             padding-top: 100px; 
+         } 
 
-        .sidebar a {
-            color: #ddd;
-            text-decoration: none;
-            padding: 15px 40px;
-            font-size: 1rem;
-            text-transform: uppercase;
-            font-weight: bold;
-            border-left: 3px solid transparent;
-        }
+         .sidebar.active { right: 0; } 
 
-        .sidebar a:hover {
-            color: var(--dorado);
-            background: rgba(255,255,255,0.05);
-            border-left: 3px solid var(--dorado);
-        }
+         .sidebar a { 
+             color: #ddd; 
+             text-decoration: none; 
+             padding: 15px 40px; 
+             font-size: 1rem; 
+             text-transform: uppercase; 
+             font-weight: bold; 
+             border-left: 3px solid transparent; 
+         } 
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-            display: none;
-            z-index: 2400;
-        }
+         .sidebar a:hover { 
+             color: var(--dorado); 
+             background: rgba(255,255,255,0.05); 
+             border-left: 3px solid var(--dorado); 
+         } 
 
-        .overlay.active { display: block; }
+         .overlay { 
+             position: fixed; 
+             top: 0; 
+             left: 0; 
+             width: 100%; 
+             height: 100%; 
+             background: rgba(0,0,0,0.6); 
+             backdrop-filter: blur(4px); 
+             display: none; 
+             z-index: 2400; 
+         } 
+
+         .overlay.active { display: block; } 
 
 
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 75vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('WhatsApp Image 2026-03-03 at 14.43.34.jpeg');
-            background-size: cover;
-            background-position: center 90%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            padding: 0 20px;
-            margin-top: 80px;
-        }
+/* --- HERO PRINCIPAL --- */
+.hero { 
+    height: 85vh; 
+    background:
+        linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.72)),
+        url('WhatsApp Image 2026-03-03 at 14.43.34.jpeg');
 
-        .hero h2 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 5px; color: var(--dorado); margin-bottom: 10px; }
-        .hero h1 { font-size: 3.5rem; margin: 0; text-transform: uppercase; font-weight: 800; text-shadow: 2px 4px 15px rgba(0,0,0,0.5); }
-        .hero p { font-size: 1.2rem; max-width: 600px; margin: 20px 0 30px; font-style: italic; }
+    background-size: cover; 
+    background-position: center 90%; 
 
-        .btn-principal {
-            padding: 15px 40px;
-            background: var(--dorado);
-            color: var(--negro);
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 50px;
-            text-transform: uppercase;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-        }
-        .btn-principal:hover { transform: scale(1.05); background: var(--blanco); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4); }
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
 
-        /* --- NUEVO GRID DE TARJETAS --- */
-        .main-grid {
-            max-width: 1200px;
-            margin: -100px auto 80px; /* Sube un poco para superponerse al Hero */
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            position: relative;
-            z-index: 10;
-        }
+    color: white; 
+    text-align: center; 
 
-        .nav-card {
-            background: var(--blanco);
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            text-decoration: none;
-            color: inherit;
-        }
+    padding: 0 20px; 
+    margin-top: 80px; 
 
-        .nav-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        /* Contenedor de imagen para zoom */
-        .card-img-wrap {
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .card-img {
-            height: 100%;
-            width: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.6s ease;
-        }
-
-        .nav-card:hover .card-img {
-            transform: scale(1.1); /* Efecto zoom sin romper bordes */
-        }
-
-        /* Degradado suave sobre la imagen */
-        .card-img-wrap::after {
-            content: "";
-            position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 50%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.4));
-        }
-
-        /* Pequeña etiqueta superior */
-        .badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: var(--granate);
-            color: var(--dorado);
-            font-size: 0.75rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            padding: 6px 12px;
-            border-radius: 20px;
-            z-index: 2;
-            letter-spacing: 1px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .card-content { 
-            padding: 25px; 
-            text-align: left; /* Alineado a la izquierda da un toque más moderno */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            flex-grow: 1;
-        }
-
-        .card-content h3 { 
-            margin: 0 0 12px; 
-            font-size: 1.2rem;
-            text-transform: uppercase; 
-            color: var(--granate); 
-            letter-spacing: 0.5px; 
-            position: relative;
-        }
-
-        /* Subrayado decorativo dorado */
-        .card-content h3::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 3px;
-            background: var(--dorado);
-            margin-top: 8px;
-            transition: width 0.3s ease;
-        }
-
-        .nav-card:hover .card-content h3::after {
-            width: 60px;
-        }
-
-        .card-content p { 
-            color: #555; 
-            font-size: 0.95rem; 
-            margin: 0 0 15px 0; 
-            line-height: 1.5;
-        }
-
-        .card-footer {
-            display: flex;
-            align-items: center;
-            color: var(--dorado);
-            font-size: 0.85rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .card-footer span {
-            transition: transform 0.3s ease;
-        }
-
-        .nav-card:hover .card-footer span {
-            transform: translateX(8px); /* La flecha se mueve al pasar el ratón */
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background: var(--negro);
-            color: white;
-            text-align: center;
-            padding: 60px 20px 40px;
-            position: relative;
-        }
-
-        footer p { opacity: 0.7; font-size: 0.9rem; line-height: 1.6; }
-/* --- SECCIÓN MIXTA CORREGIDA --- */
-.seccion-mixta-pro {
-    max-width: 1200px;
-    margin: 80px auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    padding: 0 20px;
-}
-
-.videoteca-destacada-nueva {
-    /* Eliminamos el height: 816px para que sea dinámico */
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), 
-                url("Gemini_Generated_Image_lyo49tlyo49tlyo4.png");
-    background-size: cover;
-    background-position: center;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    padding: 40px;
-    border: 2px solid var(--dorado);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    color: white !important;
-    box-sizing: border-box; /* Asegura que el padding no rompa la altura */
-}
-
-/* Estilos específicos para el texto sobre la imagen */
-.videoteca-destacada-nueva h2 {
-    color: white !important;
-    font-size: 2.5rem;
-    text-transform: uppercase;
-    margin: 10px 0;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-}
-
-.videoteca-destacada-nueva p {
-    color: rgba(255,255,255,0.9) !important;
-    margin-bottom: 20px;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-}
-
-.badge-gold-video {
-    background: var(--dorado);
-    color: var(--negro);
-    padding: 5px 12px;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    border-radius: 4px;
-    display: inline-block;
-}
-
-.btn-video-alt {
-    display: inline-block;
-    padding: 12px 25px;
-    background: var(--granate);
-    color: white !important;
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    border: 2px solid var(--dorado);
-    transition: 0.4s;
-}
-
-.btn-video-alt:hover {
-    background: var(--dorado);
-    color: var(--negro) !important;
-}
-
-/* --- BOX DE INSPIRACIÓN POTENCIADO --- */
-.inspiracion-box {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column; /* Cambiado a vertical para que la imagen sea grande */
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-    padding: 30px;
-    background: linear-gradient(to bottom, #ffffff, var(--crema));
-    border-radius: 15px;
-    border: 2px solid var(--dorado);
-    box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.1);
-    position: relative;
-}
-
-.inspiracion-box img {
-    width: 120px; /* Tamaño mucho más grande */
-    height: auto;
-    filter: drop-shadow(5px 10px 15px rgba(0,0,0,0.3));
-    transition: transform 0.4s ease;
-    cursor: pointer;
-}
-
-.inspiracion-box img:hover {
-    transform: scale(1.1) rotate(2deg); /* Efecto de movimiento al pasar el ratón */
-}
-
-.inspiracion-box::before {
-    content: "GRAN ÉXITO";
-    position: absolute;
-    top: -12px;
-    background: var(--dorado);
-    color: var(--negro);
-    padding: 2px 15px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 10px;
-    letter-spacing: 1px;
-}
-
-.inspiracion-text {
-    font-size: 1rem;
-    color: #444;
-    line-height: 1.6;
-    font-style: italic;
-    border-top: 1px solid rgba(212, 175, 55, 0.3);
-    padding-top: 15px;
-}
-/* --- ESTILO PARA EL ESCUDO ADAPTADO --- */
-.escudo-adaptado {
-    width: 140px !important; /* Tamaño ideal para el escudo */
-    height: auto;
-    /* mix-blend-mode elimina el fondo blanco haciéndolo transparente */
-    mix-blend-mode: multiply; 
-    /* Este filtro transforma el negro original del escudo en el tono granate (#800000) de tu web */
-    filter: sepia(1) saturate(10) hue-rotate(315deg) brightness(0.5) drop-shadow(2px 5px 10px rgba(128, 0, 0, 0.15));
-    transition: transform 0.4s ease, filter 0.4s ease;
-    cursor: pointer;
-}
-
-/* Efecto interactivo al pasar el ratón por encima */
-.escudo-adaptado:hover {
-    transform: scale(1.08) rotate(1deg);
-    filter: sepia(1) saturate(12) hue-rotate(315deg) brightness(0.6) drop-shadow(4px 8px 15px rgba(128, 0, 0, 0.25));
-}
-/* --- BLOQUE MANIFIESTO Y BIENVENIDA --- */
-.manifiesto-aspiracion {
-    padding: 40px;
-    background: var(--blanco);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-sizing: border-box; /* Asegura que el padding no rompa la altura */
-}
-
-.manifiesto-aspiracion h2 {
-    color: var(--granate);
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    margin-top: 0;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-/* Subrayado elegante a juego con las tarjetas */
-.manifiesto-aspiracion h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: var(--dorado);
-    margin-top: 8px;
-}
-
-.manifiesto-aspiracion p {
-    color: #555;
-    font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 25px;
-}
-/* --- RESPONSIVE MÓVIL --- */
-        @media (max-width: 992px) {
-            .seccion-mixta-pro { grid-template-columns: 1fr; gap: 30px; }
-            .hero h1 { font-size: 2.2rem; }
-            .main-grid { margin-top: -50px; }
-            .videoteca-destacada-nueva h2 { font-size: 1.8rem; }
-            .videoteca-destacada-nueva { padding: 30px 20px; }
-            .imagen-relleno { height: 250px; }
-            .manifiesto-aspiracion { padding: 25px; }
-        }
-        /* --- SECCIÓN DE NOTICIAS --- */
-.seccion-noticias {
-    max-width: 1200px;
-    margin: 40px auto 0px;
-    padding: 0 20px;
-}
-
-.titulo-noticias {
-    color: var(--granate);
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    margin-bottom: 30px;
-    position: relative;
-}
-
-.titulo-noticias::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: var(--dorado);
-    margin-top: 8px;
-}
-
-.tarjeta-noticia-principal {
-    background: var(--blanco);
-    border-radius: 15px;
-    border: 2px solid var(--dorado);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    display: grid;
-    grid-template-columns: 45% 15fr;
+    position: relative; 
     overflow: hidden;
-    transition: transform 0.3s ease;
 }
 
-.tarjeta-noticia-principal:hover {
-    transform: translateY(-5px);
+/* --- CAPA DEL ESCUDO DECORATIVO --- */
+.escudo-adaptado { 
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 650px;
+    max-width: 90vw;
+
+    height: auto;
+
+    z-index: 1;
+
+    /* SIN TRANSPARENCIA */
+    opacity: 1;
+
+    /* Aspecto elegante */
+    filter:
+        drop-shadow(0 0 35px rgba(212,175,55,0.45))
+        brightness(1.08)
+        contrast(1.05);
+
+    pointer-events: none;
+
+    transition:
+        transform 0.5s ease;
 }
 
-.noticia-img-wrap {
+/* Ligero movimiento visual */
+.hero:hover .escudo-adaptado {
+    transform: translate(-50%, -50%) scale(1.03);
+    opacity: 0.22;
+}
+
+/* Textos siempre por encima */
+.hero h1,
+.hero h2,
+.hero p,
+.hero .btn-principal {
+.hero h2 {
+    margin-top: 120px;
+    letter-spacing: 6px;
+    text-shadow:
+        0 0 12px rgba(0,0,0,0.9);
+}
+
+.hero h1 {
+    margin-top: 10px;
+
+    text-shadow:
+        0 0 15px rgba(0,0,0,1),
+        0 0 30px rgba(0,0,0,0.9),
+        0 0 45px rgba(0,0,0,0.8);
+
+    font-size: 4.2rem;
+}
+
+.hero p {
+    margin-top: 25px;
+
+    text-shadow:
+        0 0 10px rgba(0,0,0,0.9);
+
+    font-size: 1.3rem;
+}
     position: relative;
-    overflow: hidden;
-    min-height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index: 2;
 }
 
-.noticia-img {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-image: url('Virgen del Mar 2026.jpeg'); 
-    background-size: cover;  
-    background-position: center;
-    z-index: 1; /* Le da una capa base a la imagen */
-}
-
-.noticia-badge {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: var(--granate);
-    color: var(--dorado);
-    font-size: 0.75rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding: 6px 12px;
-    border-radius: 4px;
-    letter-spacing: 1px;
-    z-index: 2; /* <--- TRUCO: Capa superior para que flote SIEMPRE sobre la imagen */
-}
-
-.noticia-content {
-    padding: 35px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.noticia-fecha {
-    font-size: 0.85rem;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-    display: block;
-}
-
-.noticia-content h3 {
-    margin: 0 0 15px 0;
-    color: var(--granate);
-    font-size: 1.6rem;
-    text-transform: uppercase;
-}
-
-.noticia-content p {
-    color: #555;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin: 0 0 20px 0;
-}
-
-.noticia-detalles {
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    background: #fdfaf5;
-    border-left: 3px solid var(--dorado);
-    padding: 10px 15px;
-    border-radius: 0 8px 8px 0;
-}
-
-.noticia-detalles span {
-    font-size: 0.9rem;
-    color: var(--texto);
-}
-
-/* Adaptación para pantallas móviles */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    .tarjeta-noticia-principal {
-        grid-template-columns: 1fr;
+
+    .escudo-adaptado {
+        width: 340px;
     }
-    .noticia-img-wrap {
-        height: 200px;
-        min-height: auto;
-    }
-    .noticia-content {
-        padding: 20px;
-    }
-    .noticia-content h3 {
-        font-size: 1.3rem;
+
+    .hero h1 {
+        font-size: 2.4rem;
     }
 }
-        /* --- RESPONSIVE NAVBAR --- */
+
 @media (max-width: 480px) {
-    .navbar {
-        padding: 0 15px; /* Reduce el espacio a los lados en pantallas muy pequeñas */
-    }
-    
-    .logo-nav .main-title {
-        font-size: 0.95rem; /* Achica el título principal para que no se desborde */
+
+    .escudo-adaptado {
+        width: 260px;
+        opacity: 0.12;
     }
 
-    .logo-nav .sub-title {
-        font-size: 0.65rem; /* Achica el subtítulo en consonancia */
-        letter-spacing: 1px; /* Reduce un poco el espaciado entre letras */
+    .hero h1 {
+        font-size: 2rem;
     }
-    
-    .menu-btn {
-        width: 30px; /* Hace el botón de menú ligeramente más pequeño */
-        height: 22px;
+
+    .hero p {
+        font-size: 1rem;
     }
 }
-    </style>
-</head>
-<body>
 
-    <nav class="navbar">
-        <a href="index.html" class="logo-nav">
-            <span class="main-title">A.M. Virgen de la Amargura</span>
-            <span class="sub-title">SANTANDER</span>
-        </a>
-        <div class="menu-btn" id="menuBtn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
+/* Forzamos que los textos del hero se queden siempre al frente */
+.hero h1, .hero h2, .hero p, .hero .btn-principal {
+    position: relative;
+    z-index: 2;
+}
 
-    <div class="overlay" id="overlay"></div>
-    <div class="sidebar" id="sidebar">
-        <a href="index.html">Inicio</a>
-        <div style="padding: 18px 40px 5px; color: var(--dorado); font-size: 0.8rem; letter-spacing: 2px;">HISTORIA</div>
-        <a href="HISTORIA VIRGEN DE LA AMARGURA.html">• La Virgen</a>
-        <a href="HISTORIA DE LA BANDA.html">• La Banda</a>
-        <a href="HISTORIA A.M.C. SAN MIGUEL.html">• San Miguel</a>
-        <a href="REPERTORIO.html">Música</a>
-        <a href="COMPONENTES.html">Componentes</a>
-        <a href="UNIFORMIDAD.html">Uniformidad</a>
-        <a href="ACTUACIONES.html">Actuaciones</a>
-        <a href="CONTACTO.html">Contacto</a>
-        <a href="REDES.html">Redes sociales</a>
-        <a href="VIDEOTECA.html">Vídeos de marchas</a>
-    </div>
-
-    <section class="hero">
-        <h2>Agrupación Musical</h2>
-        <h1>Virgen de la Amargura</h1>
-        <p><strong>"Sones de fe y tradición en el corazón de Santander"</strong></p>
-        <a href="CONTACTO.html" class="btn-principal">¡CONTÁCTANOS!</a>
-    </section>
-
-    <main class="main-grid">
-        <a href="REPERTORIO.html" class="nav-card">
-            <div class="card-img-wrap">
-                <div class="badge">Repertorio</div>
-                <div class="card-img" style="background-image: url('WhatsApp Image 2026-05-20 at 08.51.06.jpeg');"></div>
-            </div>
-            <div class="card-content">
-                <div>
-                    <h3>Música</h3>
-                    <p>Desde marchas clásicas hasta composiciones infantiles y festivas de pasacalles.</p>
-                </div>
-                <div class="card-footer">Ver repertorio <span>&rarr;</span></div>
-            </div>
-        </a>
-
-        <a href="HISTORIA DE LA BANDA.html" class="nav-card">
-            <div class="card-img-wrap">
-                <div class="badge">Trayectoria</div>
-                <div class="card-img" style="background-image: url('WhatsApp Image 2026-05-20 at 12.47.54.jpeg');"></div>
-            </div>
-            <div class="card-content">
-                <div>
-                    <h3>Nuestra Historia</h3>
-                    <p>Más de 70 años de trayectoria ininterrumpida como la banda decana de Santander.</p>
-                </div>
-                <div class="card-footer">Leer historia <span>&rarr;</span></div>
-            </div>
-        </a>
-
-        <a href="COMPONENTES.html" class="nav-card">
-            <div class="card-img-wrap">
-                <div class="badge">Músicos</div>
-                <div class="card-img" style="background-image: url('Ayuntanmiento.jpeg');"></div>
-            </div>
-            <div class="card-content">
-                <div>
-                    <h3>Componentes</h3>
-                    <p>Conoce a las personas que ponen el alma y el corazón en nuestra agrupación.</p>
-                </div>
-                <div class="card-footer">Conócenos <span>&rarr;</span></div>
-            </div>
-        </a>
-
-        <a href="UNIFORMIDAD.html" class="nav-card">
-            <div class="card-img-wrap">
-                <div class="badge">Patrimonio</div>
-                <div class="card-img" style="background-image: url('https://i.ytimg.com/vi/Y7ZY09SZrw4/maxresdefault.jpg');"></div>
-            </div>
-            <div class="card-content">
-                <div>
-                    <h3>Uniformidad</h3>
-                    <p>La elegancia y el rigor militar inspirados en la histórica Infantería de Marina española.</p>
-                </div>
-                <div class="card-footer">Ver detalles <span>&rarr;</span></div>
-            </div>
-        </a>
-
-        <a href="ACTUACIONES.html" class="nav-card">
-            <div class="card-img-wrap">
-                <div class="badge">Agenda</div>
-                <div class="card-img" style="background-image: url('https://s1.ppllstatics.com/eldiariomontanes/www/multimedia/2023/04/09/Procesion01.jpg');"></div>
-            </div>
-            <div class="card-content">
-                <div>
-                    <h3>Actuaciones</h3>
-                    <p>Repaso por nuestras estaciones de penitencia, procesiones y eventos civiles.</p>
-                </div>
-                <div class="card-footer">Ver calendario <span>&rarr;</span></div>
-            </div>
-        </a>
-
-        <a href="CONTACTO.html" class="nav-card">
-            <div class="card-img-wrap">
-                <div class="badge">¡Llama!</div>
-                <div class="card-img" style="background-image: url('https://lh3.googleusercontent.com/gps-cs-s/APNQkAF8bnhgMzTXekLCKvpOKVayhiaOh3KtSmdwduLXxlxCpbj9rq6jJAIfdoYk27oulNCss28jqV6x9a5MxTlkzuCUVt_llx6vm-0mVmdK90clvW0uMYB0_vxx9Ag6qYW8c_ghqSVsGGKuSAuX=s680-w680-h510');"></div>
-            </div>
-            <div class="card-content">
-                <div>
-                    <h3>Contacto</h3>
-                    <p>¿Quieres contar con nosotros para tu hermandad o incorporarte a nuestras filas? Envíanos un mensaje.</p>
-                </div>
-                <div class="card-footer">Escríbenos <span>&rarr;</span></div>
-            </div>
-        </a>
-    </main>
-    <!-- --- SECCIÓN DE NOTICIAS --- -->
-    <section class="seccion-noticias">
-        <h2 class="titulo-noticias">Últimas Noticias</h2>
-        
-        <article class="tarjeta-noticia-principal">
-            <div class="noticia-img-wrap">
-                <span class="noticia-badge">¡Descanso!</span>
-                <div class="noticia-img"></div>
-            </div>
-            <div class="noticia-content">
-                <span class="noticia-fecha">Temporada 2026</span>
-                <h3>¡A LA ESPERA!</h3>
-                <p>La Agrupación Musical ha concluido su actuación en la Virgen del Mar. Ahora toca un merecido periodo de espera hasta nuestra siguiente salida. Seguiremos activos en cuanto a dudas y consultas rápidas ¡Gracias!</p>
-                
-                <div class="noticia-detalles">
-                    <span><strong>A.M. VIRGEN DE LA AMARGURA DE SANTANDER</strong></span>
-                </div>
-            </div>
-        </article>
-    </section>
-    <section class="seccion-mixta-pro">
-    <div class="videoteca-destacada-nueva">
-        <div zclass="video-content-box">
-            <span class="badge-gold-video">Multimedia</span>
-            <h2>Nuestros Sones</h2>
-            <p>Revive la última temporada en alta definición y siente la fuerza de nuestra música.</p>
-            <a href="VIDEOTECA.html" class="btn-video-alt">Ver Vídeos <span>→</span></a>
-        </div>
-    </div>
-
-<div class="manifiesto-aspiracion">
-    <h2>¡Página Web Oficial!</h2>
+/* --- ESCUDO DECORATIVO DEL HERO --- */
+.escudo-adaptado {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     
-    <p>¡Bienvenidos al portal oficial de nuestra formación! A través de estos acordes digitales, os invitamos a sumergiros en la historia viva, la pasión y el patrimonio de una institución que late al ritmo de su ciudad. Custodios de un legado musical ininterrumpido, abrimos las puertas de nuestra casa para compartir la fe hecha melodía, el rigor de nuestros ensayos y el latido unísono de unos músicos entregados a su tierra. Adentraros en nuestros sones y formad parte de nuestra trayectoria.</p>
-    <div class="inspiracion-box">
-        <img src="Captura de pantalla 2026-05-21 115712.png" alt="Estandarte A.M. Virgen de los Reyes">
-        
-        <div class="inspiracion-text">
-            <strong style="color: var(--granate); display: block; margin-bottom: 15px; font-style: normal; font-size: 1.2rem; text-transform: uppercase;">
-                NUESTRO CRECIMIENTO: UNA GRAN VICTORIA
-            </strong>
-            <p style="font-size: 0.95rem; margin-bottom: 15px;">
-La Agrupación Musical Virgen de la Amargura ha experimentado en estos dos últimos años un crecimiento vertiginoso tanto en lo musical como en lo humano. Este impetuoso renacer, fruto del esfuerzo incansable en cada ensayo y de una fe inquebrantable, ha consolidado a nuestra formación como una fuerza musical imparable en Cantabria. Con la incorporación de savia nueva que enriquece nuestras filas, la renovación profunda de nuestro repertorio y una madurez interpretativa que estremece en cada revirá, la banda decana de Santander no solo custodia con orgullo su historia de más de 70 años, sino que redefine su futuro a pasos agigantados. Hoy, con más potencia, elegancia y compromiso que nunca, miramos al horizonte listos para seguir conquistando los corazones cofrades del norte y alcanzar cotas de excelencia que antes parecían inalcanzables.
-            </p>
-        </div>
-    </div>
-</div>
+    width: 420px;
+    height: auto;
+
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(0 0 25px rgba(212,175,55,0.35))
+        brightness(1.1);
+}
+
+/* El texto SIEMPRE delante */
+.hero h1,
+.hero h2,
+.hero p,
+.hero .btn-principal {
+    position: relative;
+    z-index: 2;
+}
+
+/* Responsive móvil */
+@media (max-width: 768px) {
+    .escudo-adaptado {
+        width: 240px;
+        opacity: 0.12;
+    }
+}
+         .hero h2 { font-size: 1.2rem; text-transform: uppercase; 
+letter-spacing: 5px; color: var(--dorado); margin-bottom: 10px; } 
+
+         .hero h1 { font-size: 3.5rem; margin: 0; text-transform: 
+uppercase; font-weight: 800; text-shadow: 2px 4px 15px rgba(0,0,0,0.5); } 
+
+         .hero p { font-size: 1.2rem; max-width: 600px; margin: 20px 0 30px; font-style: italic; } 
+
+         .btn-principal { 
+             padding: 15px 40px; 
+             background: var(--dorado); 
+             color: var(--negro); 
+             text-decoration: none; 
+             font-weight: bold; 
+             border-radius: 50px; 
+             text-transform: uppercase; 
+             transition: 0.3s; 
+             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); 
+         } 
+
+         .btn-principal:hover { transform: scale(1.05); background: 
+var(--blanco); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4); } 
+
+         /* --- NUEVO GRID DE TARJETAS --- */ 
+         .main-grid { 
+             max-width: 1200px; 
+             margin: -100px auto 80px; /* Sube un poco para superponerse al Hero */ 
+             padding: 0 20px; 
+             display: grid; 
+             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+             gap: 30px; 
+             position: relative; 
+             z-index: 10; 
+         } 
+
+         .nav-card { 
+             background: var(--blanco); 
+             border-radius: 16px; 
+             overflow: hidden; 
+             display: flex; 
+             flex-direction: column; 
+             box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+             text-decoration: none; 
+             color: inherit; 
+         } 
+
+         .nav-card:hover { 
+             transform: translateY(-12px); 
+             box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
+         } 
+
+         /* Contenedor de imagen para zoom */ 
+         .card-img-wrap { 
+             height: 220px; 
+             overflow: hidden; 
+             position: relative; 
+         } 
+
+         .card-img { 
+             height: 100%; 
+             width: 100%; 
+             background-size: cover; 
+             background-position: center; 
+             transition: transform 0.6s ease; 
+         } 
+
+         .nav-card:hover .card-img { 
+             transform: scale(1.1); /* Efecto zoom sin romper bordes */ 
+         } 
+
+         /* Degradado suave sobre la imagen */ 
+         .card-img-wrap::after { 
+             content: ""; 
+             position: absolute; 
+             bottom: 0; left: 0; width: 100%; height: 50%; 
+             background: linear-gradient(transparent, rgba(0,0,0,0.4)); 
+         } 
+
+         /* Pequeña etiqueta superior */ 
+         .badge { 
+             position: absolute; 
+             top: 15px; 
+             left: 15px; 
+             background: var(--granate); 
+             color: var(--dorado); 
+             font-size: 0.75rem; 
+             font-weight: bold; 
+             text-transform: uppercase; 
+             padding: 6px 12px; 
+             border-radius: 20px; 
+             z-index: 2; 
+             letter-spacing: 1px; 
+             box-shadow: 0 2px 10px rgba(0,0,0,0.2); 
+         } 
+
+         .card-content {  
+             padding: 25px;  
+             text-align: left; /* Alineado a la izquierda da un toque más moderno */ 
+             display: flex; 
+             flex-direction: column; 
+             justify-content: space-between; 
+             flex-grow: 1; 
+         } 
+
+         .card-content h3 {  
+             margin: 0 0 12px;  
+             font-size: 1.2rem; 
+             text-transform: uppercase;  
+             color: var(--granate);  
+             letter-spacing: 0.5px;  
+             position: relative; 
+         } 
+
+         /* Subrayado decorativo dorado */ 
+         .card-content h3::after { 
+             content: ''; 
+             display: block; 
+             width: 40px; 
+             height: 3px; 
+             background: var(--dorado); 
+             margin-top: 8px; 
+             transition: width 0.3s ease; 
+         } 
+
+         .nav-card:hover .card-content h3::after { 
+             width: 60px; 
+         } 
+
+         .card-content p {  
+             color: #555;  
+             font-size: 0.95rem;  
+             margin: 0 0 15px 0;  
+             line-height: 1.5; 
+         } 
+
+         .card-footer { 
+             display: flex; 
+             align-items: center; 
+             color: var(--dorado); 
+             font-size: 0.85rem; 
+             font-weight: bold; 
+             text-transform: uppercase; 
+             letter-spacing: 1px; 
+         } 
+
+         .card-footer span { 
+             transition: transform 0.3s ease; 
+         } 
+
+         .nav-card:hover .card-footer span { 
+             transform: translateX(8px); /* La flecha se mueve al pasar el ratón */ 
+         } 
+
+         /* --- FOOTER --- */ 
+         footer { 
+             background: var(--negro); 
+             color: white; 
+             text-align: center; 
+             padding: 60px 20px 40px; 
+             position: relative; 
+         } 
+
+         footer p { opacity: 0.7; font-size: 0.9rem; line-height: 1.6; } 
+ /* --- SECCIÓN MIXTA CORREGIDA --- */ 
+ .seccion-mixta-pro { 
+     max-width: 1200px; 
+     margin: 80px auto; 
+     display: grid; 
+     grid-template-columns: 1fr 1fr; 
+     gap: 40px; 
+     padding: 0 20px; 
+ } 
+
+ .videoteca-destacada-nueva { 
+     /* Eliminamos el height: 816px para que sea dinámico */ 
+     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)),  
+                 url("Gemini_Generated_Image_lyo49tlyo49tlyo4.png"); 
+     background-size: cover; 
+     background-position: center; 
+     border-radius: 15px; 
+     display: flex; 
+     align-items: center; 
+     padding: 40px; 
+     border: 2px solid var(--dorado); 
+     box-shadow: 0 15px 40px rgba(0,0,0,0.3); 
+     color: white !important; 
+     box-sizing: border-box; /* Asegura que el padding no rompa la altura */ 
+ } 
+
+ /* Estilos específicos para el texto sobre la imagen */ 
+ .videoteca-destacada-nueva h2 { 
+     color: white !important; 
+     font-size: 2.5rem; 
+     text-transform: uppercase; 
+     margin: 10px 0; 
+     text-shadow: 2px 2px 10px rgba(0,0,0,0.8); 
+ } 
+
+ .videoteca-destacada-nueva p { 
+     color: rgba(255,255,255,0.9) !important; 
+     margin-bottom: 20px; 
+     text-shadow: 1px 1px 5px rgba(0,0,0,0.5); 
+ } 
+
+ .badge-gold-video { 
+     background: var(--dorado); 
+     color: var(--negro); 
+     padding: 5px 12px; 
+     font-weight: bold; 
+     text-transform: uppercase; 
+     font-size: 0.75rem; 
+     border-radius: 4px; 
+     display: inline-block; 
+ } 
+
+ .btn-video-alt { 
+     display: inline-block; 
+     padding: 12px 25px; 
+     background: var(--granate); 
+     color: white !important; 
+     text-decoration: none; 
+     font-weight: bold; 
+     text-transform: uppercase; 
+     border: 2px solid var(--dorado); 
+     transition: 0.4s; 
+ } 
+
+ .btn-video-alt:hover { 
+     background: var(--dorado); 
+     color: var(--negro) !important; 
+ } 
+
+ /* --- BOX DE INSPIRACIÓN POTENCIADO --- */ 
+ .inspiracion-box { 
+     margin-top: 30px; 
+     display: flex; 
+     flex-direction: column; /* Cambiado a vertical para que la imagen sea grande */ 
+     align-items: center; 
+     text-align: center; 
+     gap: 20px; 
+     padding: 30px; 
+     background: linear-gradient(to bottom, #ffffff, var(--crema)); 
+     border-radius: 15px; 
+     border: 2px solid var(--dorado); 
+     box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.1); 
+     position: relative; 
+ } 
+
+ .inspiracion-box img { 
+     width: 120px; /* Tamaño mucho más grande */ 
+     height: auto; 
+     filter: drop-shadow(5px 10px 15px rgba(0,0,0,0.3)); 
+     transition: transform 0.4s ease; 
+     cursor: pointer; 
+ } 
+
+ .inspiracion-box img:hover { 
+     transform: scale(1.1) rotate(2deg); /* Efecto de movimiento al pasar el ratón */ 
+ } 
+
+ .inspiracion-box::before { 
+     content: "GRAN ÉXITO"; 
+     position: absolute; 
+     top: -12px; 
+     background: var(--dorado); 
+     color: var(--negro); 
+     padding: 2px 15px; 
+     font-size: 0.7rem; 
+     font-weight: bold; 
+     text-transform: uppercase; 
+     border-radius: 10px; 
+     letter-spacing: 1px; 
+ } 
+
+ .inspiracion-text { 
+     font-size: 1rem; 
+     color: #444; 
+     line-height: 1.6; 
+     font-style: italic; 
+     border-top: 1px solid rgba(212, 175, 55, 0.3); 
+     padding-top: 15px; 
+ } 
+ /* --- BLOQUE MANIFIESTO Y BIENVENIDA --- */ 
+ .manifiesto-aspiracion { 
+     padding: 40px; 
+     background: var(--blanco); 
+     border-radius: 15px; 
+     box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+     display: flex; 
+     flex-direction: column; 
+     justify-content: space-between; 
+     box-sizing: border-box; /* Asegura que el padding no rompa la altura */ 
+ } 
+
+ .manifiesto-aspiracion h2 { 
+     color: var(--granate); 
+     font-size: 1.8rem; 
+     text-transform: uppercase; 
+     margin-top: 0; 
+     margin-bottom: 20px; 
+     position: relative; 
+ } 
+
+ /* Subrayado elegante a juego con las tarjetas */ 
+ .manifiesto-aspiracion h2::after { 
+     content: ''; 
+     display: block; 
+     width: 60px; 
+     height: 3px; 
+     background: var(--dorado); 
+     margin-top: 8px; 
+ } 
+
+ .manifiesto-aspiracion p { 
+     color: #555; 
+     font-size: 1rem; 
+     line-height: 1.7; 
+     margin-bottom: 25px; 
+ } 
+ /* --- RESPONSIVE MÓVIL --- */ 
+         @media (max-width: 992px) { 
+             .seccion-mixta-pro { grid-template-columns: 1fr; gap: 30px; } 
+             .hero h1 { font-size: 2.2rem; } 
+             .main-grid { margin-top: -50px; } 
+             .videoteca-destacada-nueva h2 { font-size: 1.8rem; } 
+             .videoteca-destacada-nueva { padding: 30px 20px; } 
+             .imagen-relleno { height: 250px; } 
+             .manifiesto-aspiracion { padding: 25px; } 
+             .escudo-adaptado { width: 110px !important; }
+         } 
+
+ /* --- SECCIÓN DE NOTICIAS CORREGIDA --- */ 
+ .seccion-noticias { 
+     max-width: 1200px; 
+     margin: 40px auto 0px; 
+     padding: 0 20px; 
+ } 
+
+ .titulo-noticias { 
+     color: var(--granate); 
+     font-size: 1.8rem; 
+     text-transform: uppercase; 
+     margin-bottom: 30px; 
+     position: relative; 
+ } 
+
+ .titulo-noticias::after { 
+     content: ''; 
+     display: block; 
+     width: 60px; 
+     height: 3px; 
+     background: var(--dorado); 
+     margin-top: 8px; 
+ } 
+
+ .tarjeta-noticia-principal { 
+     background: var(--blanco); 
+     border-radius: 15px; 
+     border: 2px solid var(--dorado); 
+     box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+     display: grid; 
+     /* Cambio clave: 40% para la imagen y el resto (1fr) libre para el texto */ 
+     grid-template-columns: 40% 1fr;  
+     overflow: hidden; 
+     transition: transform 0.3s ease; 
+ } 
+
+ .tarjeta-noticia-principal:hover { 
+     transform: translateY(-5px); 
+ } 
+
+ .noticia-img-wrap { 
+     position: relative; 
+     overflow: hidden; 
+     min-height: 100%; /* Asegura que cubra todo el alto de la tarjeta */ 
+ } 
+
+ .noticia-img { 
+     width: 100%; 
+     height: 100%; 
+     position: absolute; 
+     top: 0; 
+     left: 0; 
+     background-image: url('escalante.jpeg');  
+     background-size: cover;   
+     background-position: center; 
+     z-index: 1; 
+ } 
+
+ .noticia-badge { 
+     position: absolute; 
+     top: 15px; 
+     left: 15px; 
+     background: var(--granate); 
+     color: var(--dorado); 
+     font-size: 0.75rem; 
+     font-weight: bold; 
+     text-transform: uppercase; 
+     padding: 6px 12px; 
+     border-radius: 4px; 
+     letter-spacing: 1px; 
+     z-index: 2; 
+ } 
+
+ .noticia-content { 
+     padding: 40px; /* Un poco más de aire interior */ 
+     display: flex; 
+     flex-direction: column; 
+     justify-content: center; 
+     align-items: flex-start; /* Alinea todo el contenido al inicio izquierdo */ 
+ } 
+
+ .noticia-fecha { 
+     font-size: 0.85rem; 
+     color: #888; 
+     text-transform: uppercase; 
+     letter-spacing: 1px; 
+     margin-bottom: 10px; 
+     display: block; 
+ } 
+
+ .noticia-content h3 { 
+     margin: 0 0 15px 0; 
+     color: var(--granate); 
+     font-size: 1.6rem; 
+     text-transform: uppercase; 
+     text-align: left; 
+ } 
+
+ .noticia-content p { 
+     color: #555; 
+     font-size: 1rem; 
+     line-height: 1.6; 
+     margin: 0 0 25px 0; 
+     text-align: justify; /* Justificado elegante para el cuerpo de texto */ 
+ } 
+
+ .noticia-detalles { 
+     display: flex; /* Cambiado a flex completo */ 
+     flex-wrap: wrap; /* Si no cabe en pantallas medianas, baja limpiamente */ 
+     gap: 20px; 
+     background: #fdfaf5; 
+     border-left: 3px solid var(--dorado); 
+     padding: 12px 20px; 
+     border-radius: 0 8px 8px 0; 
+     width: 100%; /* Ocupa el ancho para alinear los ítems de forma homogénea */ 
+     box-sizing: border-box; 
+ } 
+
+ .noticia-detalles span { 
+     font-size: 0.9rem; 
+     color: var(--texto); 
+     display: flex; 
+     align-items: center; 
+ } 
+
+ /* --- ADAPTACIÓN RESPONSIVE CORREGIDA --- */ 
+ @media (max-width: 900px) { 
+     .tarjeta-noticia-principal { 
+         grid-template-columns: 1fr; /* Pasa a diseño vertical en tablets */ 
+     } 
+
+     .noticia-img-wrap { 
+         height: 280px; 
+         min-height: 280px; 
+     } 
+
+     .noticia-content { 
+         padding: 30px 25px; 
+     } 
+
+     .noticia-content h3 { 
+         font-size: 1.4rem; 
+     } 
+
+     .noticia-content p { 
+         font-size: 0.95rem; 
+         text-align: left; /* En móvil queda mejor alineado a la izquierda */ 
+     } 
+
+     .noticia-detalles { 
+         flex-direction: column; 
+         gap: 10px; 
+     } 
+ } 
+
+ @media (max-width: 480px) { 
+     .seccion-noticias { 
+         padding: 0 15px; 
+     } 
+
+     .titulo-noticias { 
+         font-size: 1.5rem; 
+     } 
+
+     .noticia-img-wrap { 
+         height: 220px; 
+         min-height: 220px; 
+     } 
+
+     .noticia-content { 
+         padding: 20px; 
+     } 
+
+     .noticia-content h3 { 
+         font-size: 1.2rem; 
+     } 
+
+     .noticia-badge { 
+         font-size: 0.65rem; 
+         padding: 5px 10px; 
+     } 
+ } 
+          /* --- RESPONSIVE NAVBAR --- */ 
+ @media (max-width: 480px) { 
+     .navbar { 
+         padding: 0 15px; /* Reduce el espacio a los lados en pantallas muy pequeñas */ 
+     } 
+      
+     .logo-nav .main-title { 
+         font-size: 0.95rem; /* Achica el título principal para que no se desborde */ 
+     } 
+
+     .logo-nav .sub-title { 
+         font-size: 0.65rem; /* Achica el subtítulo en consonancia */ 
+         letter-spacing: 1px; /* Reduce un poco el espaciado entre letras */ 
+     } 
+      
+     .menu-btn { 
+         width: 30px; /* Hace el botón de menú ligeramente más pequeño */ 
+         height: 22px; 
+     } 
+ } 
+          /* --- RESPONSIVE NOTICIAS PARA MÓVIL Y TABLET --- */ 
+ @media (max-width: 900px) { 
+
+     .tarjeta-noticia-principal { 
+         grid-template-columns: 1fr; 
+     } 
+
+     .noticia-img-wrap { 
+         height: 260px; 
+         min-height: 260px; 
+     } 
+
+     .noticia-content { 
+         padding: 25px; 
+     } 
+
+     .noticia-content h3 { 
+         font-size: 1.4rem; 
+         line-height: 1.3; 
+     } 
+
+     .noticia-content p { 
+         font-size: 0.95rem; 
+     } 
+
+     .noticia-detalles { 
+         flex-direction: column; 
+         align-items: flex-start; 
+         gap: 8px; 
+     } 
+ } 
+          /* --- ESTILO BASE DEL BANNER INFERIOR --- */
+.banner-fijo {
+    background-color: var(--granate); 
+    color: var(--dorado); 
+    font-weight: bold; 
+    padding: 12px; 
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    text-align: center; 
+    box-sizing: border-box; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    word-break: break-word;
+    font-size: 0.95rem;
+}
+
+/* --- RESPONSIVE PARA EL BANNER (PANTALLAS PEQUEÑAS) --- */
+@media (max-width: 480px) {
+    .banner-fijo {
+        padding: 6px 10px; /* Se vuelve mucho más estrecho */
+        font-size: 0.75rem;  /* Letra más pequeña para que no genere demasiadas líneas */
+    }
+}
+
+
+ /* --- MÓVILES PEQUEÑOS --- */ 
+ @media (max-width: 480px) { 
+
+     .seccion-noticias { 
+         padding: 0 15px; 
+     } 
+
+     .titulo-noticias { 
+         font-size: 1.5rem; 
+     } 
+
+     .noticia-img-wrap { 
+         height: 220px; 
+         min-height: 220px; 
+     } 
+
+     .noticia-content { 
+         padding: 20px; 
+     } 
+
+     .noticia-content h3 { 
+         font-size: 1.15rem; 
+     } 
+
+     .noticia-content p { 
+         font-size: 0.9rem; 
+         line-height: 1.5; 
+     } 
+
+     .noticia-detalles { 
+         padding: 12px; 
+     } 
+
+     .noticia-detalles span { 
+         font-size: 0.82rem; 
+     } 
+
+     .noticia-badge { 
+         font-size: 0.65rem; 
+         padding: 5px 10px; 
+     } 
+ } 
+     </style> 
+</head> 
+<body> 
+
+     <nav class="navbar"> 
+         <a href="index.html" class="logo-nav"> 
+             <span class="main-title">A.M. Virgen de la Amargura</span> 
+             <span class="sub-title">SANTANDER</span> 
+         </a> 
+         <div class="menu-btn" id="menuBtn"> 
+             <span></span> 
+             <span></span> 
+             <span></span> 
+         </div> 
+     </nav> 
+
+     <div class="overlay" id="overlay"></div> 
+     <div class="sidebar" id="sidebar"> 
+         <a href="index.html">Inicio</a> 
+
+         <div style="padding: 18px 40px 5px; color: var(--dorado); 
+font-size: 0.8rem; letter-spacing: 2px;">HISTORIA</div> 
+         <a href="HISTORIA VIRGEN DE LA AMARGURA.html">• La Virgen</a> 
+         <a href="HISTORIA DE LA BANDA.html">• La Banda</a> 
+         <a href="HISTORIA A.M.C. SAN MIGUEL.html">• San Miguel</a> 
+         <a href="REPERTORIO.html">Música</a> 
+         <a href="COMPONENTES.html">Componentes</a> 
+         <a href="UNIFORMIDAD.html">Uniformidad</a> 
+         <a href="ACTUACIONES.html">Actuaciones</a> 
+         <a href="CONTACTO.html">Contacto</a> 
+         <a href="REDES.html">Redes sociales</a> 
+         <a href="VIDEOTECA.html">Vídeos de marchas</a> 
+     </div>
+<section class="hero"> 
+    <h2>Agrupación Musical</h2> 
+    <h1>Virgen de la Amargura</h1> 
+    <p><strong>"Sones de fe y tradición en el corazón de Santander"</strong></p> 
+    <a href="CONTACTO.html" class="btn-principal">¡CONTÁCTANOS!</a> 
 </section>
-    <footer>
-        <h2 style="color: var(--dorado); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Amargura Santander</h2>
-        <p>&copy;Agrupación Musical Sma. Virgen de la Amargura.<br>Banda Decana de Santander.</p>
-        <p><a style="color: var(--dorado); text-decoration: none;" href="LEGAL.html">AVISO LEGAL - POLÍTICA DE PRIVACIDAD</a></p>
-    </footer>
 
-    <marquee style="background-color: var(--granate); color: var(--dorado); font-weight: bold; padding: 12px; position: fixed; bottom: 0; width: 100%; z-index: 1000;">
-        ¡Próximas actuaciones! No os las perdáis - Santander - Agrupación Musical Virgen de la Amargura de Santander
-    </marquee>
+     <main class="main-grid"> 
+         <a href="REPERTORIO.html" class="nav-card"> 
+             <div class="card-img-wrap"> 
+                 <div class="badge">Repertorio</div> 
 
-    <script>
-        const menuBtn = document.getElementById('menuBtn');
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('overlay');
+                 <div class="card-img" style="background-image: 
+url('WhatsApp Image 2026-05-20 at 08.51.06.jpeg');"></div> 
+             </div> 
+             <div class="card-content"> 
+                 <div> 
+                     <h3>Música</h3> 
+                     <p>Desde marchas clásicas hasta composiciones infantiles y festivas de pasacalles.</p> 
+                 </div> 
+                 <div class="card-footer">Ver repertorio <span>→</span></div> 
+             </div> 
+         </a> 
 
-        function toggleMenu() {
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
+         <a href="HISTORIA DE LA BANDA.html" class="nav-card"> 
+             <div class="card-img-wrap"> 
+                 <div class="badge">Trayectoria</div> 
 
-        menuBtn.addEventListener('click', toggleMenu);
-        overlay.addEventListener('click', toggleMenu);
-    </script>
-</body>
-</html>>
+                 <div class="card-img" style="background-image: 
+url('WhatsApp Image 2026-05-20 at 12.47.54.jpeg');"></div> 
+             </div> 
+             <div class="card-content"> 
+                 <div> 
+                     <h3>Nuestra Historia</h3> 
+                     <p>Más de 70 años de trayectoria ininterrumpida como la banda decana de Santander.</p> 
+                 </div> 
+                 <div class="card-footer">Leer historia <span>→</span></div> 
+             </div> 
+         </a> 
+
+         <a href="COMPONENTES.html" class="nav-card"> 
+             <div class="card-img-wrap"> 
+                 <div class="badge">Músicos</div> 
+                 <div class="card-img" style="background-image: url('Ayuntanmiento.jpeg');"></div> 
+             </div> 
+             <div class="card-content"> 
+                 <div> 
+                     <h3>Componentes</h3> 
+                     <p>Conoce a las personas que ponen el alma y el corazón en nuestra agrupación.</p> 
+                 </div> 
+                 <div class="card-footer">Conócenos <span>→</span></div> 
+             </div> 
+         </a> 
+
+         <a href="UNIFORMIDAD.html" class="nav-card"> 
+             <div class="card-img-wrap"> 
+                 <div class="badge">Patrimonio</div> 
+
+                 <div class="card-img" style="background-image: 
+url('WhatsApp Image 2026-03-03 at 14.43.46.jpeg');"></div> 
+             </div> 
+             <div class="card-content"> 
+                 <div> 
+                     <h3>Uniformidad</h3> 
+
+                     <p>La elegancia y el rigor militar inspirados
+ en la histórica Infantería de Marina española.</p> 
+                 </div> 
+                 <div class="card-footer">Ver detalles <span>→</span></div> 
+             </div> 
+         </a> 
+
+         <a href="ACTUACIONES.html" class="nav-card"> 
+             <div class="card-img-wrap"> 
+                 <div class="badge">Agenda</div> 
+
+                 <div class="card-img" style="background-image: 
+url('WhatsApp Image 2026-05-27 at 11.31.25.jpeg');"></div> 
+             </div> 
+             <div class="card-content"> 
+                 <div> 
+                     <h3>Actuaciones</h3> 
+                     <p>Repaso por nuestras estaciones de penitencia, procesiones y eventos civiles.</p> 
+                 </div> 
+                 <div class="card-footer">Ver calendario <span>→</span></div> 
+             </div> 
+         </a> 
+
+         <a href="CONTACTO.html" class="nav-card"> 
+             <div class="card-img-wrap"> 
+                 <div class="badge">¡Llama!</div> 
+
+                 <div class="card-img" style="background-image: 
+url('https://lh3.googleusercontent.com/gps-cs-s/APNQkAF8bnhgMzTXekLCKvpOKVayhiaOh3KtSmdwduLXxlxCpbj9rq6jJAIfdoYk27oulNCss28jqV6x9a5MxTlkzuCUVt_llx6vm-0mVmdK90clvW0uMYB0_vxx9Ag6qYW8c_ghqSVsGGKuSAuX=s680-w680-h510');"></div> 
+             </div> 
+             <div class="card-content"> 
+                 <div> 
+                     <h3>Contacto</h3> 
+
+                     <p>¿Quieres contar con nosotros para tu 
+hermandad o incorporarte a nuestras filas? Envíanos un 
+mensaje.</p> 
+                 </div> 
+                 <div class="card-footer">Escríbenos <span>→</span></div> 
+             </div> 
+         </a> 
+     </main> 
+     <section class="seccion-noticias"> 
+         <h2 class="titulo-noticias">Últimas Noticias</h2> 
+          
+         <article class="tarjeta-noticia-principal"> 
+             <div class="noticia-img-wrap"> 
+                 <div class="noticia-img"></div> 
+             </div> 
+             <div class="noticia-content"> 
+                 <span class="noticia-fecha">Temporada 2026</span> 
+                 <h3>FIESTAS DE LA VIRGEN DE LA CAMA</h3> 
+
+                 <p>Volvemos a los ensayos esperando nuestra 
+siguiente actuación. El próximo 22 de agosto tendremos el honor de 
+participar durante toda la jornada en las fiestas de la Virgen de la 
+Cama, en Escalante. Desde la Agrupación Musical Virgen de la Amargura de 
+ Santander afrontamos este día con mucha ilusión, acompañando cada acto y 
+ compartiendo nuestra música con todos los vecinos y asistentes en una 
+celebración tan especial</p> 
+                  
+                 <div class="noticia-detalles"> 
+                     <span>📅 <strong>Día 22 de Agosto</strong></span> 
+                     <span>⏰ <strong>Participación durante todo el día</strong></span> 
+                     <span>📍 <strong>Escalante, Cantabria</strong></span> 
+                 </div> 
+             </div> 
+         </article> 
+     </section> 
+     <section class="seccion-mixta-pro"> 
+     <div class="videoteca-destacada-nueva"> 
+         <div zclass="video-content-box"> 
+             <span class="badge-gold-video">Multimedia</span> 
+             <h2>Nuestras marchas</h2> 
+             <p>Revive la última temporada en alta definición y siente la fuerza de nuestra música.</p> 
+             <a href="VIDEOTECA.html" class="btn-video-alt">Ver Vídeos <span>→</span></a> 
+         </div> 
+     </div> 
+
+ <div class="manifiesto-aspiracion"> 
+     <h2>¡Página Web Oficial!</h2> 
+      
+
+     <p>¡Bienvenidos al portal oficial de nuestra formación! A 
+través de estos acordes digitales, os invitamos a sumergiros en la 
+historia viva, la pasión y el patrimonio de una institution que late al 
+ritmo de su ciudad. Custodios de un legado musical ininterrumpido, 
+abrimos las puertas de nuestra casa para compartir la fe hecha melodía, 
+el rigor de nuestros ensayos y el latido unísono de unos músicos 
+entregados a su tierra. Adentraros en nuestros sones y formad parte de 
+nuestra trayectoria.</p> 
+     <div class="inspiracion-box"> 
+         <img src="escudo.png" alt="Estandarte A.M. Virgen de la Amargura"> 
+          
+         <div class="inspiracion-text"> 
+
+             <strong style="color: var(--granate); display: block; 
+margin-bottom: 15px; font-style: normal; font-size: 1.2rem; 
+text-transform: uppercase;"> 
+                 NUESTRO CRECIMIENTO: UNA GRAN VICTORIA 
+             </strong> 
+             <p style="font-size: 0.95rem; margin-bottom: 15px;"> 
+
+ La Agrupación Musical Virgen de la Amargura ha experimentado en estos 
+dos últimos años un crecimiento vertiginoso tanto en lo musical como en 
+lo humano. Este impetuoso renacer, fruto del esfuerzo incansable en cada 
+ensayo y de una fe inquebrantable, ha consolidado a nuestra formación 
+como una fuerza musical imparable en Cantabria. Con la incorporación de 
+savia nueva que enriquece nuestras filas, la renovación profunda de 
+nuestro repertorio y una madurez interpretativa que estremece en cada 
+revirá, la banda decana de Santander no solo custodia con orgullo su 
+historia de más de 70 años, sino que redefine su futuro a pasos 
+agigantados. Hoy, con más potencia, elegancia y compromiso que nunca, 
+miramos al horizonte listos para seguir conquistando los corazones 
+cofrades del norte y alcanzar cotas de excelencia que antes parecían 
+inalcanzables. 
+             </p> 
+         </div> 
+     </div> 
+ </div> 
+ </section> 
+     <footer> 
+
+         <h2 style="color: var(--dorado); text-transform: uppercase; 
+letter-spacing: 2px; margin-bottom: 10px;">Amargura 
+Santander</h2> 
+         <p>©Agrupación Musical Sma. Virgen de la Amargura.<br>Banda Decana de Santander</p> 
+
+         <p><a style="color: var(--dorado); text-decoration: 
+none;" href="LEGAL.html">AVISO LEGAL - POLÍTICA DE 
+PRIVACIDAD</a></p> 
+     </footer> 
+
+<!-- Reemplaza la etiqueta del final por esta más limpia -->
+<div class="banner-fijo"> 
+    ¡Próximas actuaciones! No os las perdáis - Santander - Agrupación Musical Virgen de la Amargura de Santander
+</div>
+
+     <script> 
+         const menuBtn = document.getElementById('menuBtn'); 
+         const sidebar = document.getElementById('sidebar'); 
+         const overlay = document.getElementById('overlay'); 
+
+         function toggleMenu() { 
+             sidebar.classList.toggle('active'); 
+             overlay.classList.toggle('active'); 
+         } 
+
+         menuBtn.addEventListener('click', toggleMenu); 
+         overlay.addEventListener('click', toggleMenu); 
+     </script> 
+</body> 
+</html>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actuaciones - A.M. Amargura</title>
+        <link rel="icon" type="image/png" href="escudo.png">
     <style>
         :root {
             --granate: #800000;
@@ -219,6 +220,34 @@
         height: 22px;
     }
 }
+        /* --- ESTILO BASE DEL BANNER INFERIOR --- */
+.banner-fijo {
+    background-color: var(--granate); 
+    color: var(--dorado); 
+    font-weight: bold; 
+    padding: 12px; 
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    text-align: center; 
+    box-sizing: border-box; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    word-break: break-word;
+    font-size: 0.95rem;
+}
+
+/* --- RESPONSIVE PARA EL BANNER (PANTALLAS PEQUEÑAS) --- */
+@media (max-width: 480px) {
+    .banner-fijo {
+        padding: 6px 10px; /* Se vuelve mucho más estrecho */
+        font-size: 0.75rem;  /* Letra más pequeña para que no genere demasiadas líneas */
+    }
+}
+
     </style>
 </head>
 <body>
@@ -268,7 +297,8 @@
                 <div class="event-item"><span class="event-name">Concierto en el santuario de Ntra. Sra de Latas</span><span class="event-detail">3 abril 2025. Latas.</span></div>
                 <div class="event-item"><span class="event-name">Procesión Viernes Santo - Santo Entierro</span><span class="event-detail">3 abril 2026. Carrión de los Condes (Palencia).</span></div>
                 <div class="event-item"><span class="event-name">Procesión del Domingo de Resurrección</span><span class="event-detail">5 abril 2026. Santander.</span></div>        
-                <div class="event-item"><span class="event-name">Procesión de la Virgen del Mar</span><span class="event-detail">25 mayo 2026. Santander.</span></div>        
+                <div class="event-item"><span class="event-name">Procesión de la Virgen del Mar</span><span class="event-detail">25 mayo 2026. Santander.</span></div>
+                <div class="event-item"><span class="event-name">Fiestas Virgen de la Cama</span><span class="event-detail">22 agosto 2026. Escalante.</span></div>
             </div>
         </div>
 
@@ -375,7 +405,10 @@
             });
         });
     </script>
-        <marquee style="background-color: var(--granate); color: var(--dorado); font-weight: bold; padding: 12px; position: fixed; bottom: 0; width: 100%; z-index: 1000;">
-        ¡Próximas actuaciones! No os las perdáis - Santander - Agrupación Musical Virgen de la Amargura de Santander    </marquee>
+ <!-- Reemplaza la etiqueta del final por esta más limpia -->
+<div class="banner-fijo"> 
+    ¡Próximas actuaciones! No os las perdáis - Santander - Agrupación Musical Virgen de la Amargura de Santander
+</div>
+
 </body>
 </html>

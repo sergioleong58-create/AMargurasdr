@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historia de la Virgen - A.M. Amargura</title>
+        <link rel="icon" type="image/png" href="escudo.png">
     <style>
         :root {
             --granate: #800000;
@@ -22,41 +23,26 @@
             line-height: 1.8;
         }
 
-        /* --- NAVBAR MODERNA --- */
+         /* --- NAVBAR --- */
         .navbar {
             background-color: var(--granate);
-            height: 75px;
+            height: 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 25px;
-            position: sticky;
+            padding: 0 30px;
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 2000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-sizing: border-box;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .logo-nav {
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-        }
+        .logo-nav { text-decoration: none; display: flex; flex-direction: column; }
+        .logo-nav .main-title { color: white; font-weight: bold; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; }
+        .logo-nav .sub-title { color: var(--dorado); font-size: 0.8rem; letter-spacing: 3px; }
 
-        .logo-nav .main-title {
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .logo-nav .sub-title {
-            color: var(--dorado);
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-        }
-
-        /* BOTÓN HAMBURGUESA ANIMADO */
         .menu-btn {
             width: 35px;
             height: 25px;
@@ -66,18 +52,10 @@
             justify-content: space-between;
             z-index: 3001;
         }
+        .menu-btn span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; transition: 0.3s; }
 
-        .menu-btn span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background: white;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
-        /* MENÚ LATERAL (SIDEBAR) */
-  .sidebar {
+        /* SIDEBAR */
+        .sidebar {
             position: fixed;
             top: 0;
             right: -100%;
@@ -139,10 +117,10 @@
 
         /* --- CONTENIDO DE LA PÁGINA --- */
         .hero-header {
-            height: 50vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('procesion del encuentro0404231135.jpeg');
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('VIRGEN.jpg');
             background-size: cover;
-            background-position: center 50%;
+            background-position: center 44%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -245,8 +223,7 @@
             font-size: 0.8rem;
             letter-spacing: 2px;
         }
-        /* --- RESPONSIVE NAVBAR --- */
-@media (max-width: 480px) {
+        @media (max-width: 480px) {
     .navbar {
         padding: 0 15px; /* Reduce el espacio a los lados en pantallas muy pequeñas */
     }
@@ -264,6 +241,33 @@
         width: 30px; /* Hace el botón de menú ligeramente más pequeño */
         height: 22px;
     }
+        }
+        /* --- ESTILO BASE DEL BANNER INFERIOR --- */
+.banner-fijo {
+    background-color: var(--granate); 
+    color: var(--dorado); 
+    font-weight: bold; 
+    padding: 12px; 
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    text-align: center; 
+    box-sizing: border-box; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    word-break: break-word;
+    font-size: 0.95rem;
+}
+
+/* --- RESPONSIVE PARA EL BANNER (PANTALLAS PEQUEÑAS) --- */
+@media (max-width: 480px) {
+    .banner-fijo {
+        padding: 6px 10px; /* Se vuelve mucho más estrecho */
+        font-size: 0.75rem;  /* Letra más pequeña para que no genere demasiadas líneas */
+    }
 }
     </style>
 </head>
@@ -274,7 +278,6 @@
             <span class="main-title">A.M. Virgen de la Amargura</span>
             <span class="sub-title">SANTANDER</span>
         </a>
-        
         <div class="menu-btn" id="menuBtn">
             <span></span>
             <span></span>
@@ -337,7 +340,7 @@ En 2006, al transformarse la Banda en Agrupación Musical, se consumó el cambio
 
  
 
-Los últimos tiempos han traído un nuevo esplendor para Ntra. Sra. de la Amargura. En el verano de 2017 la Archicofradía de la Pasión inauguró una capilla para la veneración de la imagen en el coro de la parroquia, consiguiendo, por fin, un lugar propio para la Virgen. A ello se ha sumado el estreno del espectacular palio en la Semana Santa de 2018, al mismo tiempo que se procesionaba, el día de Martes Santo, con el paso a hombros por primera vez en su historia. Fue entones cuando el día 20 de octubre de 2018, se celebró su coronación litúrgica; previamente, la Agrupación Musical ofreció un concierto de marchas procesionales en el salón de actos de la parroquia. </p>
+Los últimos tiempos han traído un nuevo esplendor para Ntra. Sra. de la Amargura. En el verano de 2017 la Archicofradía de la Pasión inauguró una capilla para la veneración de la imagen en el coro de la parroquia, consiguiendo, por fin, un lugar propio para la Virgen. A ello se ha sumado el estreno del espectacular palio en la Semana Santa de 2018, al mismo tiempo que se procesionaba, el día de Martes Santo, con el paso a hombros por primera vez en su historia. Asimismo, el 20 de octubre de 2018, se celebró su coronación litúrgica; previamente, la Agrupación Musical ofreció un concierto de marchas procesionales en el salón de actos de la parroquia. </p>
                     <div class="historic-section">
             <span class="historic-label">Documento Gráfico</span>
             <div class="photo-frame">
@@ -361,8 +364,8 @@ Los últimos tiempos han traído un nuevo esplendor para Ntra. Sra. de la Amargu
         menuBtn.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
     </script>
-        <marquee style="background-color: var(--granate); color: var(--dorado); font-weight: bold; padding: 12px; position: fixed; bottom: 0; width: 100%; z-index: 1000;">
-        ¡Próximas actuaciones! No os las perdáis - Santander - Agrupación Musical Virgen de la Amargura de Santander    </marquee>
-</body>
+<!-- Reemplaza la etiqueta del final por esta más limpia -->
+<div class="banner-fijo"> 
+    ¡Próximas actuaciones! No os las perdáis - Santander - Agrupación Musical Virgen de la Amargura de Santander
+</div></body>
 </html>
-
