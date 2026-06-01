@@ -48,9 +48,9 @@ El ecosistema de la web se divide en varias páginas conectadas mediante enlaces
 
 1. **Inicio (`index.html`):** Portal de bienvenida, resumen institucional, últimas noticias y accesos rápidos.
 2. **Historia:** Dividida minuciosamente en tres subsecciones de gran valor documental:
-* *La Virgen* (`HISTORIA VIRGEN DE LA AMARGURA.html`)
+* *La Virgen* (`HISTORIA VIRGEN DE LA AMARGURA.html`): Historia de la titular de nuestra banda
 * *La Banda* (`HISTORIA DE LA BANDA.html`): Información sobre los más de 70 años como banda decana.
-* *San Miguel* (`HISTORIA A.M.C. SAN MIGUEL.html`): Contexto o vinculación histórica asociada.
+* *San Miguel* (`HISTORIA A.M.C. SAN MIGUEL.html`): Información vital sobre la cara más dinámica de la Agrupación.
 
 
 3. **Música (`REPERTORIO.html`):** Catálogo de marchas clásicas, composiciones infantiles y piezas festivas/pasacalles.
