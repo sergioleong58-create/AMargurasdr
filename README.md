@@ -1,8 +1,3 @@
-# AMargurasdr
-Aquí tienes un texto largo, profesional y sumamente detallado diseñado para el archivo `README.md` del repositorio de la página web. Está estructurado siguiendo las mejores prácticas del desarrollo web moderno y enriquecido con toda la información técnica, de diseño y contextual deducida a partir del código fuente de tu `index.html`.
-
----
-
 # Agrupación Musical Virgen de la Amargura - Sitio Web Oficial 🎺🥁
 
 ¡Bienvenido al repositorio del sitio web oficial de la **Agrupación Musical Virgen de la Amargura** de Santander (Cantabria)! Este proyecto comprende el desarrollo de una plataforma web estática, adaptativa (responsive) y de alto impacto visual, diseñada para difundir la historia, la música, el patrimonio y la agenda de la banda decana de Santander, una institución con más de 70 años de trayectoria ininterrumpida.
