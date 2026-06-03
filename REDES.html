@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redes Sociales - A.M. Amargura</title>
-        <link rel="icon" type="image/png" href="escudo.png">
+    <link rel="icon" type="image/png" href="escudo.png">
+    
+    <!-- CDN de Font Awesome para iconos reales de alta calidad -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     <style>
         :root {
             --granate: #800000;
@@ -12,10 +16,11 @@
             --negro: #1a1a1a;
             --crema: #fdfaf5;
             --blanco: #ffffff;
-            /* Colores de redes */
+            
+            /* Colores de marca de redes sociales */
             --facebook: #1877F2;
-            --twitter: #1DA1F2;
-            --instagram: #E4405F;
+            --twitter: #000000; /* Actualizado al negro de X */
+            --instagram: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             --youtube: #FF0000;
         }
 
@@ -56,7 +61,7 @@
         }
         .menu-btn span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; }
 
-               /* SIDEBAR */
+        /* SIDEBAR */
         .sidebar {
             position: fixed;
             top: 0;
@@ -102,7 +107,8 @@
         }
 
         .overlay.active { display: block; }
-        /* --- CONTENEDOR HERO (IMAGEN GRANDE) --- */
+        
+        /* --- CONTENEDOR HERO --- */
         .hero-container {
             position: relative;
             width: 100%;
@@ -120,7 +126,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* RUTA SOLICITADA: IMAGES dentro de AMARGURA */
             background-image: url('WhatsApp Image 2026-05-20 at 11.58.40.jpeg'); 
             background-size: cover;
             background-position: center;
@@ -156,10 +161,10 @@
             letter-spacing: 1px;
         }
 
-        /* --- CONTENIDO REDES --- */
+        /* --- SECCIÓN REDES MEJORADA --- */
         .social-container {
-            max-width: 1000px;
-            margin: 60px auto;
+            max-width: 1100px;
+            margin: 60px auto 100px;
             padding: 0 20px;
             text-align: center;
         }
@@ -169,62 +174,118 @@
             text-transform: uppercase;
             letter-spacing: 3px;
             margin-bottom: 10px;
+            font-size: 2.2rem;
         }
 
         .social-container p {
             color: #666;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
         }
 
         .social-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
         }
 
         .social-card {
             background: var(--blanco);
-            padding: 40px 20px;
-            border-radius: 20px;
+            padding: 40px 25px 30px;
+            border-radius: 24px;
             text-decoration: none;
             color: var(--negro);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid #eee;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.04);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            border: 1px solid #eaeaea;
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .icon-box {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            background: var(--crema);
+            background: #fff6f6;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            transition: 0.3s;
+            font-size: 2.2rem;
+            color: var(--granate);
+            transition: all 0.4s ease;
+            box-shadow: inset 0 0 0 1px rgba(128, 0, 0, 0.05);
         }
 
-        /* Efectos Individuales */
-        .fb:hover { border-bottom: 5px solid var(--facebook); transform: translateY(-10px); }
-        .fb:hover .icon-box { background: var(--facebook); color: white; }
+        .social-card h3 {
+            margin: 10px 0 5px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 1.25rem;
+            transition: color 0.3s;
+        }
 
-        .tw:hover { border-bottom: 5px solid var(--twitter); transform: translateY(-10px); }
-        .tw:hover .icon-box { background: var(--twitter); color: white; }
+        .social-card span {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 25px;
+            transition: color 0.3s;
+        }
 
-        .ig:hover { border-bottom: 5px solid var(--instagram); transform: translateY(-10px); }
-        .ig:hover .icon-box { background: var(--instagram); color: white; }
+        /* Botones de acción dentro de las tarjetas */
+        .social-btn {
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--crema);
+            color: var(--granate);
+            border: 1px solid rgba(128, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
 
-        .yt:hover { border-bottom: 5px solid var(--youtube); transform: translateY(-10px); }
-        .yt:hover .icon-box { background: var(--youtube); color: white; }
+        /* --- EFECTOS HOVER DINÁMICOS POR RED SOCIAL --- */
+        .social-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            border-color: transparent;
+        }
 
-        .social-card h3 { margin: 10px 0 5px; text-transform: uppercase; letter-spacing: 1px; }
-        .social-card span { font-size: 0.85rem; color: #888; }
+        .social-card:hover h3, 
+        .social-card:hover span {
+            color: var(--blanco);
+        }
+
+        .social-card:hover .social-btn {
+            background: var(--blanco);
+            border-color: var(--blanco);
+        }
+
+        /* Facebook */
+        .fb:hover { background: var(--facebook); }
+        .fb:hover .icon-box { color: var(--facebook); background: var(--blanco); }
+        .fb:hover .social-btn { color: var(--facebook); }
+
+        /* X (Twitter) */
+        .tw:hover { background: var(--twitter); }
+        .tw:hover .icon-box { color: var(--twitter); background: var(--blanco); }
+        .tw:hover .social-btn { color: var(--twitter); }
+
+        /* Instagram */
+        .ig:hover { background: var(--instagram); }
+        .ig:hover .icon-box { color: #cc2366; background: var(--blanco); }
+        .ig:hover .social-btn { color: #cc2366; }
+
+        /* YouTube */
+        .yt:hover { background: var(--youtube); }
+        .yt:hover .icon-box { color: var(--youtube); background: var(--blanco); }
+        .yt:hover .social-btn { color: var(--youtube); }
+
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -232,61 +293,51 @@
             .hero-overlay-text { padding: 15px; width: 70%; }
             .hero-overlay-text h2 { font-size: 1.5rem; letter-spacing: 3px; }
         }
-                footer {
+
+        footer {
             text-align: center;
             padding: 40px;
-            border-top: 1px solid #222;
+            border-top: 1px solid #eaeaea;
             color: #555;
             font-size: 0.8rem;
             letter-spacing: 2px;
+            background-color: var(--blanco);
         }
-        /* --- RESPONSIVE NAVBAR --- */
-@media (max-width: 480px) {
-    .navbar {
-        padding: 0 15px; /* Reduce el espacio a los lados en pantallas muy pequeñas */
-    }
-    
-    .logo-nav .main-title {
-        font-size: 0.95rem; /* Achica el título principal para que no se desborde */
-    }
 
-    .logo-nav .sub-title {
-        font-size: 0.65rem; /* Achica el subtítulo en consonancia */
-        letter-spacing: 1px; /* Reduce un poco el espaciado entre letras */
-    }
-    
-    .menu-btn {
-        width: 30px; /* Hace el botón de menú ligeramente más pequeño */
-        height: 22px;
-    }
-}
+        @media (max-width: 480px) {
+            .navbar { padding: 0 15px; }
+            .logo-nav .main-title { font-size: 0.95rem; }
+            .logo-nav .sub-title { font-size: 0.65rem; letter-spacing: 1px; }
+            .menu-btn { width: 30px; height: 22px; }
+        }
+
         /* --- ESTILO BASE DEL BANNER INFERIOR --- */
-.banner-fijo {
-    background-color: var(--granate); 
-    color: var(--dorado); 
-    font-weight: bold; 
-    padding: 12px; 
-    position: fixed; 
-    bottom: 0; 
-    left: 0; 
-    width: 100%; 
-    z-index: 1000; 
-    text-align: center; 
-    box-sizing: border-box; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    word-break: break-word;
-    font-size: 0.95rem;
-}
+        .banner-fijo {
+            background-color: var(--granate); 
+            color: var(--dorado); 
+            font-weight: bold; 
+            padding: 12px; 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            width: 100%; 
+            z-index: 1000; 
+            text-align: center; 
+            box-sizing: border-box; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            word-break: break-word;
+            font-size: 0.95rem;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+        }
 
-/* --- RESPONSIVE PARA EL BANNER (PANTALLAS PEQUEÑAS) --- */
-@media (max-width: 480px) {
-    .banner-fijo {
-        padding: 6px 10px; /* Se vuelve mucho más estrecho */
-        font-size: 0.75rem;  /* Letra más pequeña para que no genere demasiadas líneas */
-    }
-}
+        @media (max-width: 480px) {
+            .banner-fijo {
+                padding: 8px 10px;
+                font-size: 0.75rem;  
+            }
+        }
     </style>
 </head>
 <body>
@@ -328,36 +379,58 @@
         </div>
     </div>
 
+    <!-- SECCIÓN REDES SOCIALES MEJORADA -->
     <div class="social-container">
         <h1>Conecta con nosotros</h1>
         <p>Sigue el día a día de nuestra formación a través de nuestros canales oficiales.</p>
 
         <div class="social-grid">
+            <!-- Facebook -->
             <a href="https://www.facebook.com/amargurasdr" target="_blank" class="social-card fb">
-                <div class="icon-box">f</div>
+                <div class="icon-box">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </div>
                 <h3>Facebook</h3>
                 <span>@amargurasdr</span>
+                <div class="social-btn">Seguir</div>
             </a>
 
+            <!-- X / Twitter -->
             <a href="https://twitter.com/amargurasdr" target="_blank" class="social-card tw">
-                <div class="icon-box">𝕏</div>
-                <h3>X</h3>
+                <div class="icon-box">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </div>
+                <h3>X / Twitter</h3>
                 <span>@amargurasdr</span>
+                <div class="social-btn">Seguir</div>
             </a>
 
+            <!-- Instagram -->
             <a href="https://www.instagram.com/amargurasdr" target="_blank" class="social-card ig">
-                <div class="icon-box">IG</div>
+                <div class="icon-box">
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
                 <h3>Instagram</h3>
                 <span>@amargurasdr</span>
+                <div class="social-btn">Perfil</div>
             </a>
 
+            <!-- YouTube -->
             <a href="https://www.youtube.com/@AMarguraSDR" target="_blank" class="social-card yt">
-                <div class="icon-box">▶</div>
+                <div class="icon-box">
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
                 <h3>YouTube</h3>
                 <span>Amargura Santander</span>
+                <div class="social-btn">Suscribirse</div>
             </a>
         </div>
     </div>
+
+    <footer>
+        &copy; 2026 Agrupación Musical Virgen de la Amargura de Santander. Todos los derechos reservados.
+    </footer>
+
     <script>
         const menuBtn = document.getElementById('menuBtn');
         const sidebar = document.getElementById('sidebar');
@@ -371,8 +444,9 @@
         menuBtn.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
     </script>
-<!-- Reemplaza la etiqueta del final por esta más limpia -->
-<div class="banner-fijo"> 
-    ¡Próximas actuaciones! No os las perdáis - Santander - Agrupación Musical Virgen de la Amargura de Santander
-</div></body>
+
+    <div class="banner-fijo"> 
+        ¡Próximas actuaciones! No os las perdáis - Santander - Agrupación Musical Virgen de la Amargura de Santander
+    </div>
+</body>
 </html>
