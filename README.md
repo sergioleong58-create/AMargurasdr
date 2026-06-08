@@ -8,19 +8,19 @@ El sitio actúa como el portal de referencia tanto para los componentes de la ag
 
 ## 📌 Índice
 
-1. [Descripción General](https://www.google.com/search?q=%23-descripci%C3%B3n-general)
-2. [Características Principales de la Web](https://www.google.com/search?q=%23-caracter%C3%ADsticas-principales-de-la-web)
-3. [Estructura del Sitio y Navegación](https://www.google.com/search?q=%23-estructura-del-sitio-y-navegaci%C3%B3n)
-4. [Análisis de Diseño y Arquitectura de CSS](https://www.google.com/search?q=%23-an%C3%A1lisis-de-dise%C3%B1o-y-arquitectura-de-css)
-* [Paleta de Colores (Variables CSS)](https://www.google.com/search?q=%23paleta-de-colores-variables-css)
-* [Componentes Clave Analizados](https://www.google.com/search?q=%23componentes-clave-analizados)
+1. [Descripción General]
+2. [Características Principales de la Web]
+3. [Estructura del Sitio y Navegación]
+4. [Análisis de Diseño y Arquitectura de CSS]
+* [Paleta de Colores (Variables CSS)]
+* [Componentes Clave Analizados]
 
 
-5. [Estrategia de Diseño Adaptativo (Responsive)](https://www.google.com/search?q=%23-estrategia-de-dise%C3%B1o-adaptativo-responsive)
-6. [Estructura de Archivos del Proyecto](https://www.google.com/search?q=%23-estructura-de-archivos-del-proyecto)
-7. [Tecnologías Utilizadas](https://www.google.com/search?q=%23-tecnolog%C3%ADas-utilizadas)
-8. [Despliegue y Mantenimiento](https://www.google.com/search?q=%23-despliegue-y-mantenimiento)
-9. [Créditos e Institución](https://www.google.com/search?q=%23-cr%C3%A9ditos-e-instituci%C3%B3n)
+5. [Estrategia de Diseño Adaptativo (Responsive)]
+6. [Estructura de Archivos del Proyecto]
+7. [Tecnologías Utilizadas]
+8. [Despliegue y Mantenimiento]
+9. [Créditos e Institución]
 
 ---
 
