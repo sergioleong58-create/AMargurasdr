@@ -98,33 +98,18 @@
         }
 
         .overlay.active { display: block; }
-        /* --- SECCIÓN HERO --- */
+/* --- SECCIÓN HERO ACTUALIZADA --- */
         .hero-sm {
-            height: 50vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('WhatsApp Image 2026-03-05 at 16.20.18.jpeg');
+            height: 45vh; /* Ajusta la altura a tu gusto (45% de la pantalla) */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(18,12,12,0.9)), url('WhatsApp Image 2026-06-08 at 08.30.53.jpeg');
             background-size: cover;
             background-position: center;
+            background-attachment: scroll;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            text-align: center;
+            box-shadow: inset 0 -10px 20px rgba(0,0,0,0.8);
         }
-
-        .hero-sm h1 {
-            font-size: 2.8rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            border-bottom: 3px solid var(--dorado);
-            padding-bottom: 10px;
-        }
-
-        .overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
-            display: none; z-index: 2400;
-        }
-        .overlay.active { display: block; }
 
         /* --- HEADER SECCIÓN --- */
         .video-header {
@@ -537,7 +522,15 @@
         <a href="REDES.html">Redes sociales</a>
         <a href="VIDEOTECA.html">Vídeos de marchas</a>
     </div>
-
+<!-- Contenedor principal con la nueva imagen de fondo -->
+    <div class="hero-sm">
+        <header class="video-header" style="background: transparent; border: none; padding: 0;">
+            <h1 class="titulo-audiovisuales">VIDEOTECA</h1>
+            <div class="divisor-dorado"></div>
+            <p class="subtitulo-audiovisuales">MEMORIA MUSICAL · SONES DE AMARGURA</p>
+            <h3 class="llamada-accion">¡Si queréis ver todo nuestro repertorio estamos activos en YouTube!</h3>
+        </header>
+    </div>
 <header class="video-header">
     <h1 class="titulo-audiovisuales">VIDEOTECA</h1>
     <div class="divisor-dorado"></div>
@@ -559,7 +552,7 @@
             <iframe src="https://www.youtube.com/embed/wKxGZvaC9IY" allowfullscreen></iframe>
             <div class="video-info">
                 <h3>HIMNO DE SAN ANTONIO</h3>
-                <span>Jueves Santo Santander 2025l</span>
+                <span>Jueves Santo Santander 2025</span>
             </div>
         </div>
 
