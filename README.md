@@ -8,19 +8,19 @@ El sitio actúa como el portal de referencia tanto para los componentes de la ag
 
 ## 📌 Índice
 
-1. [Descripción General]
-2. [Características Principales de la Web]
-3. [Estructura del Sitio y Navegación]
-4. [Análisis de Diseño y Arquitectura de CSS]
-* [Paleta de Colores (Variables CSS)]
-* [Componentes Clave Analizados]
+1. Descripción General
+2. Características Principales de la Web
+3. Estructura del Sitio y Navegación
+4. Análisis de Diseño y Arquitectura de CSS
+* Paleta de Colores (Variables CSS)
+* Componentes Clave Analizados
 
 
-5. [Estrategia de Diseño Adaptativo (Responsive)]
-6. [Estructura de Archivos del Proyecto]
-7. [Tecnologías Utilizadas]
-8. [Despliegue y Mantenimiento]
-9. [Créditos e Institución]
+5. Estrategia de Diseño Adaptativo (Responsive)
+6. Estructura de Archivos del Proyecto
+7. Tecnologías Utilizadas
+8. Despliegue y Mantenimiento
+9. Créditos e Institución
 
 ---
 
