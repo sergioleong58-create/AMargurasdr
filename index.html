@@ -39,6 +39,45 @@
              box-sizing: border-box; 
              box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
          } 
+          .logo-nav{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    text-decoration:none;
+}
+
+.logo-escudo{
+    width:58px;
+    height:58px;
+    object-fit:contain;
+    filter:
+        drop-shadow(0 0 8px rgba(212,175,55,0.45));
+    transition:0.3s ease;
+}
+
+.logo-nav:hover .logo-escudo{
+    transform:scale(1.08) rotate(-3deg);
+}
+
+.logo-texto{
+    display:flex;
+    flex-direction:column;
+}
+
+.main-title{
+    color:white;
+    font-weight:700;
+    font-size:1.2rem;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    line-height:1.1;
+}
+
+.sub-title{
+    color:var(--dorado);
+    font-size:0.75rem;
+    letter-spacing:4px;
+}
 
          .logo-nav { text-decoration: none; display: flex; flex-direction: column; } 
 
@@ -912,17 +951,20 @@ var(--blanco); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4); }
 </head> 
 <body> 
 
-     <nav class="navbar"> 
-         <a href="index.html" class="logo-nav"> 
-             <span class="main-title">A.M. Virgen de la Amargura</span> 
-             <span class="sub-title">SANTANDER</span> 
-         </a> 
-         <div class="menu-btn" id="menuBtn"> 
-             <span></span> 
-             <span></span> 
-             <span></span> 
-         </div> 
-     </nav> 
+<nav class="navbar">
+    <a href="index.html" class="logo-nav">
+        <img src="escudo.png" alt="Escudo Virgen de la Amargura" class="logo-escudo">
+        <div class="logo-texto">
+            <span class="main-title">A.M. Virgen de la Amargura</span>
+            <span class="sub-title">SANTANDER</span>
+        </div>
+    </a>
+    <div class="menu-btn" id="menuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
 
      <div class="overlay" id="overlay"></div> 
      <div class="sidebar" id="sidebar"> 
