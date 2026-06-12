@@ -44,64 +44,7 @@
 font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; } 
          .logo-nav .sub-title { color: var(--dorado); font-size: 0.8rem; letter-spacing: 3px; } 
 
-         .menu-btn { 
-             width: 35px; 
-             height: 25px; 
-             cursor: pointer; 
-             display: flex; 
-             flex-direction: column; 
-             justify-content: space-between; 
-             z-index: 3001; 
-         } 
-         .menu-btn span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; transition: 0.3s; } 
-
-         /* SIDEBAR */ 
-         .sidebar { 
-             position: fixed; 
-             top: 0; 
-             right: -100%; 
-             width: 300px; 
-             height: 100vh; 
-             background: #111; 
-             z-index: 2500; 
-             transition: 0.5s ease; 
-             display: flex; 
-             flex-direction: column; 
-             padding-top: 100px; 
-         } 
-
-         .sidebar.active { right: 0; } 
-
-         .sidebar a { 
-             color: #ddd; 
-             text-decoration: none; 
-             padding: 15px 40px; 
-             font-size: 1rem; 
-             text-transform: uppercase; 
-             font-weight: bold; 
-             border-left: 3px solid transparent; 
-         } 
-
-         .sidebar a:hover { 
-             color: var(--dorado); 
-             background: rgba(255,255,255,0.05); 
-             border-left: 3px solid var(--dorado); 
-         } 
-
-         .overlay { 
-             position: fixed; 
-             top: 0; 
-             left: 0; 
-             width: 100%; 
-             height: 100%; 
-             background: rgba(0,0,0,0.6); 
-             backdrop-filter: blur(4px); 
-             display: none; 
-             z-index: 2400; 
-         } 
-
-         .overlay.active { display: block; } 
-
+       
         /* --- CONTENEDOR LEGAL --- */
         .legal-container {
             max-width: 900px;
@@ -266,23 +209,7 @@ font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; }
             <span class="sub-title">SANTANDER</span>
         </a>
     </nav>
-    
-    <div class="overlay" id="overlay"></div>
-    <div class="sidebar" id="sidebar">
-        <a href="index.html">Inicio</a>
-        <div style="padding: 18px 40px 5px; color: var(--dorado); font-size: 0.8rem; letter-spacing: 2px;">HISTORIA</div>
-        <a href="HISTORIA VIRGEN DE LA AMARGURA.html">• La Virgen</a>
-        <a href="HISTORIA DE LA BANDA.html">• La Banda</a>
-        <a href="HISTORIA A.M.C. SAN MIGUEL.html">• San Miguel</a>
-        <a href="REPERTORIO.html">Música</a>
-        <a href="COMPONENTES.html">Componentes</a>
-        <a href="UNIFORMIDAD.html">Uniformidad</a>
-        <a href="ACTUACIONES.html">Actuaciones</a>
-        <a href="CONTACTO.html">Contacto</a>
-        <a href="REDES.html">Redes sociales</a>
-        <a href="VIDEOTECA.html">Vídeos de marchas</a>
-    </div>
-    
+
     <div class="legal-container">
         <header class="legal-header">
             <h1>Información Legal</h1>
