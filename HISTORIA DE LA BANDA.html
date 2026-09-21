@@ -378,6 +378,49 @@
         padding: 6px 10px; /* Se vuelve mucho más estrecho */
         font-size: 0.75rem;  /* Letra más pequeña para que no genere demasiadas líneas */
     }
+
+            /* --- RESPONSIVE PARA LA TABLA EN MÓVIL --- */
+        @media (max-width: 600px) {
+            .tabla-aniversario-wrap {
+                padding: 15px 10px;
+                margin: 25px 0;
+            }
+
+            .tabla-80-anos, 
+            .tabla-80-anos tbody, 
+            .tabla-80-anos tr, 
+            .tabla-80-anos td {
+                display: block;
+                width: 100%;
+            }
+
+            .tabla-80-anos thead {
+                display: none; /* Ocultamos la cabecera tradicional en móvil para ganar espacio */
+            }
+
+            .tabla-80-anos tr {
+                margin-bottom: 12px;
+                border-bottom: 2px solid var(--dorado);
+                padding-bottom: 8px;
+            }
+
+            .tabla-80-anos td {
+                padding: 6px 0;
+                border: none;
+                text-align: left;
+            }
+
+            /* Estilo especial para la celda del año en móvil */
+            .tabla-80-anos td:first-child {
+                color: var(--granate);
+                font-size: 1.1rem;
+                font-weight: bold;
+                border-bottom: 1px dashed rgba(212, 175, 55, 0.4);
+                padding-bottom: 4px;
+                margin-bottom: 4px;
+            }
+        }
+
 }
     </style>
 </head>
