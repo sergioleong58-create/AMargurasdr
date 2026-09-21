@@ -213,6 +213,68 @@
             color: var(--granate);
             font-family: 'Georgia', serif;
         }
+        /* --- ESTILOS TABLA 80 ANIVERSARIO --- */
+        .tabla-aniversario-wrap {
+            margin: 40px 0;
+            background: #ffffff;
+            border: 2px solid var(--dorado);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+
+        .tabla-header-badge {
+            background: var(--granate);
+            color: var(--dorado);
+            display: inline-block;
+            padding: 5px 18px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+
+        .tabla-80-anos {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .tabla-80-anos th {
+            background-color: var(--crema);
+            color: var(--granate);
+            padding: 12px 15px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--dorado);
+        }
+
+        .tabla-80-anos td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            color: var(--texto);
+            line-height: 1.5;
+        }
+
+        .tabla-80-anos tr:last-child td {
+            border-bottom: none;
+            background-color: rgba(212, 175, 55, 0.08); /* Sutil toque dorado en la fila del 80 aniversario */
+        }
+
+        @media (max-width: 600px) {
+            .tabla-aniversario-wrap {
+                padding: 15px;
+            }
+            .tabla-80-anos th, .tabla-80-anos td {
+                padding: 10px 8px;
+                font-size: 0.85rem;
+            }
+        }
 
         /* --- SECCIÓN HOMENAJE A REGIDOR --- */
         .historic-spotlight {
@@ -355,6 +417,45 @@
 
     <div class="content-wrap">
         <p style="font-size: 1.3rem;"><span class="capitular">L</span>os orígenes de la Agrupación Musical Virgen de la Amargura se remontan a la veterana Banda de Cornetas y Tambores de la Pasión, de la que es heredera directa. Los inicios de ésta son inciertos y se pierden en el tiempo, aunque se pueden atestiguar ya en los años 40. De hecho, en el año de fundación de la sección de nazarenos de la Archicofradía de la Pasión, 1947, pudo verse procesionando junto a ésta al menos a un tambor como acompañamiento musical. En cualquier caso, parece que no fue hasta mediados de los 50 cuando la Banda empezó a tomar forma como tal.</p>
+                <!-- TABLA RESUMEN: 80 ANIVERSARIO (1947 - 2027) -->
+        <div class="tabla-aniversario-wrap">
+            <div class="tabla-header-badge">Hitos Clave • 80 Aniversario</div>
+            <table class="tabla-80-anos">
+                <thead>
+                    <tr>
+                        <th>Año / Hito</th>
+                        <th>Acontecimiento Histórico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1947</strong></td>
+                        <td>Primer acompañamiento musical documentado con un tambor en la Archicofradía de la Pasión.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1960 - 1966</strong></td>
+                        <td>Impulso del Padre Pedro, dirección de Basilio Gomarín y estreno del primer uniforme de chaqueta morada.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1979</strong></td>
+                        <td>Reorganización de la mano de Telesforo Molpeceres ("Foro"), Eduardo López y José Ramón Sierra.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1993</strong></td>
+                        <td>Incorporación histórica de mujeres a las filas de la banda.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2006</strong></td>
+                        <td>Refundación y paso a convertirse en la <strong>primera Agrupación Musical de Santander</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2027</strong></td>
+                        <td><strong style="color: var(--granate);">¡Celebración del 80 Aniversario!</strong> Ocho décadas de legado musical ininterrumpido.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
         <section class="historic-spotlight">
             <div style="background:var(--granate); color:white; display:inline-block; padding:4px 15px; border-radius:20px; font-size:0.7rem; margin-bottom:15px; letter-spacing:1px;">AÑO 1947</div>
             <br>
