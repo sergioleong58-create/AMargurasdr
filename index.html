@@ -130,6 +130,99 @@ font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; }
     overflow: hidden;
 }
 
+          /* --- SECCIÓN 80 ANIVERSARIO --- */
+     .seccion-aniversario {
+         max-width: 1200px;
+         margin: 60px auto 0;
+         padding: 0 20px;
+     }
+
+     .aniversario-contenedor {
+         background: linear-gradient(135deg, var(--negro), #2a1a1a);
+         border: 2px solid var(--dorado);
+         border-radius: 16px;
+         padding: 50px 40px;
+         text-align: center;
+         color: white;
+         box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+         position: relative;
+         overflow: hidden;
+     }
+
+     .aniversario-badge-oro {
+         display: inline-block;
+         background: var(--dorado);
+         color: var(--negro);
+         font-weight: bold;
+         text-transform: uppercase;
+         font-size: 0.8rem;
+         padding: 6px 16px;
+         border-radius: 20px;
+         letter-spacing: 2px;
+         margin-bottom: 20px;
+     }
+
+     .aniversario-contenedor h2 {
+         color: var(--dorado);
+         font-size: 2.5rem;
+         text-transform: uppercase;
+         margin: 0 0 20px 0;
+         letter-spacing: 1px;
+     }
+
+     .aniversario-sub {
+         font-size: 1.1rem;
+         max-width: 800px;
+         margin: 0 auto 35px auto;
+         line-height: 1.7;
+         color: rgba(255, 255, 255, 0.85);
+     }
+
+     .aniversario-detalles {
+         display: flex;
+         justify-content: center;
+         gap: 40px;
+         margin-bottom: 30px;
+         flex-wrap: wrap;
+     }
+
+     .item-aniversario {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+     }
+
+     .item-aniversario .num {
+         font-size: 2.2rem;
+         font-weight: bold;
+         color: var(--dorado);
+     }
+
+     .item-aniversario [txt] {
+         font-size: 0.85rem;
+         text-transform: uppercase;
+         letter-spacing: 1px;
+         color: rgba(255, 255, 255, 0.7);
+     }
+
+     @media (max-width: 768px) {
+         .aniversario-contenedor {
+             padding: 35px 20px;
+         }
+         .aniversario-contenedor h2 {
+             font-size: 1.8rem;
+         }
+         .aniversario-sub {
+             font-size: 0.95rem;
+         }
+         .aniversario-detalles {
+             gap: 20px;
+         }
+         .item-aniversario .num {
+             font-size: 1.8rem;
+         }
+     }
+
 /* --- CAPA DEL ESCUDO DECORATIVO --- */
 .escudo-adaptado { 
     position: absolute;
