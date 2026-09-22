@@ -1,1 +1,418 @@
+<!DOCTYPE html> 
+<html lang="es"> 
+<head>
+     <meta charset="UTF-8"> 
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+     <title>Eventos Más Destacados - A.M. Virgen de la Amargura</title> 
+     <!-- Favicon principal -->
+     <link rel="icon" href="escudo.png" type="image/png">
+     <link rel="shortcut icon" href="escudo.png" type="image/x-icon">
+     <link rel="apple-touch-icon" href="escudo.png"> 
+     <style> 
+         :root { 
+             --granate: #800000; 
+             --dorado: #d4af37; 
+             --negro: #1a1a1a; 
+             --crema: #fdfaf5; 
+             --blanco: #ffffff; 
+             --texto: #2c2c2c; 
+         } 
+
+         body { 
+             margin: 0; 
+             font-family: 'Segoe UI', sans-serif; 
+             background-color: var(--crema); 
+             color: var(--texto); 
+             overflow-x: hidden; 
+         } 
+
+         /* --- NAVBAR --- */ 
+         .navbar { 
+             background-color: var(--granate); 
+             height: 80px; 
+             display: flex; 
+             justify-content: space-between; 
+             align-items: center; 
+             padding: 0 30px; 
+             position: fixed; 
+             width: 100%; 
+             top: 0; 
+             z-index: 2000; 
+             box-sizing: border-box; 
+             box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+         } 
+  
+         .logo-nav { text-decoration: none; display: flex; flex-direction: column; } 
+         .logo-nav .main-title { color: white; font-weight: bold; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; } 
+         .logo-nav .sub-title { color: var(--dorado); font-size: 0.8rem; letter-spacing: 3px; } 
+
+         .menu-btn { 
+             width: 35px; 
+             height: 25px; 
+             cursor: pointer; 
+             display: flex; 
+             flex-direction: column; 
+             justify-content: space-between; 
+             z-index: 3001; 
+         } 
+         .menu-btn span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; transition: 0.3s; } 
+
+         /* SIDEBAR */ 
+         .sidebar { 
+             position: fixed; 
+             top: 0; 
+             right: -100%; 
+             width: 300px; 
+             height: 100vh; 
+             background: #111; 
+             z-index: 2500; 
+             transition: 0.5s ease; 
+             display: flex; 
+             flex-direction: column; 
+             padding-top: 100px; 
+             overflow-y: auto; 
+         } 
+
+         .sidebar.active { right: 0; } 
+
+         .sidebar a { 
+             color: #ddd; 
+             text-decoration: none; 
+             padding: 15px 40px; 
+             font-size: 1rem; 
+             text-transform: uppercase; 
+             font-weight: bold; 
+             border-left: 3px solid transparent; 
+         } 
+
+         .sidebar a:hover { 
+             color: var(--dorado); 
+             background: rgba(255,255,255,0.05); 
+             border-left: 3px solid var(--dorado); 
+         } 
+
+         .overlay { 
+             position: fixed; 
+             top: 0; 
+             left: 0; 
+             width: 100%; 
+             height: 100%; 
+             background: rgba(0,0,0,0.6); 
+             backdrop-filter: blur(4px); 
+             display: none; 
+             z-index: 2400; 
+         } 
+
+         .overlay.active { display: block; } 
+
+         /* --- HERO ESPECÍFICO --- */
+         .hero-interior { 
+             height: 50vh; 
+             background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('WhatsApp Image 2026-03-03 at 14.43.34.jpeg');
+             background-size: cover; 
+             background-position: center; 
+             display: flex; 
+             flex-direction: column; 
+             align-items: center; 
+             justify-content: center; 
+             color: white; 
+             text-align: center; 
+             padding: 0 20px; 
+             margin-top: 80px; 
+         } 
+
+         .hero-interior h1 { 
+             font-size: 3rem; 
+             margin: 0 0 10px 0; 
+             text-transform: uppercase; 
+             font-weight: 800; 
+             color: var(--dorado);
+             text-shadow: 2px 4px 15px rgba(0,0,0,0.5); 
+         } 
+
+         .hero-interior p { 
+             font-size: 1.2rem; 
+             max-width: 700px; 
+             margin: 0; 
+             font-style: italic; 
+         } 
+
+         /* --- CONTENIDO PRINCIPAL --- */
+         .contenedor-principal {
+             max-width: 1100px;
+             margin: 60px auto;
+             padding: 0 20px;
+         }
+
+         .seccion-intro-texto {
+             background: var(--blanco);
+             padding: 40px;
+             border-radius: 15px;
+             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+             margin-bottom: 50px;
+             border-left: 5px solid var(--granate);
+         }
+
+         .seccion-intro-texto h2 {
+             color: var(--granate);
+             font-size: 2rem;
+             text-transform: uppercase;
+             margin-top: 0;
+             margin-bottom: 20px;
+         }
+
+         .seccion-intro-texto p {
+             font-size: 1.05rem;
+             line-height: 1.7;
+             color: #555;
+             margin: 0;
+         }
+
+         /* BLOQUES DE EVENTOS DESTACADOS */
+         .evento-destacado-card {
+             background: var(--blanco);
+             border-radius: 16px;
+             border: 2px solid var(--dorado);
+             display: grid;
+             grid-template-columns: 1fr 1fr;
+             gap: 30px;
+             margin-bottom: 40px;
+             overflow: hidden;
+             box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+         }
+
+         .evento-destacado-card.inverso {
+             grid-template-columns: 1fr 1fr;
+         }
+         
+         /* Invertir orden en pantallas grandes si se prefiere visualmente */
+         .evento-destacado-card.inverso .evento-info {
+             order: 1;
+         }
+         .evento-destacado-card.inverso .evento-img {
+             order: 2;
+         }
+
+         .evento-img {
+             background-size: cover;
+             background-position: center;
+             min-height: 320px;
+         }
+
+         .evento-info {
+             padding: 40px;
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+         }
+
+         .badge-evento {
+             display: inline-block;
+             background: var(--granate);
+             color: var(--dorado);
+             font-size: 0.75rem;
+             font-weight: bold;
+             text-transform: uppercase;
+             padding: 6px 14px;
+             border-radius: 20px;
+             margin-bottom: 15px;
+             letter-spacing: 1px;
+             align-self: flex-start;
+         }
+
+         .evento-info h3 {
+             color: var(--granate);
+             font-size: 1.8rem;
+             text-transform: uppercase;
+             margin: 0 0 15px 0;
+         }
+
+         .evento-info p {
+             color: #555;
+             font-size: 1rem;
+             line-height: 1.6;
+             margin: 0 0 20px 0;
+         }
+
+         .colaboracion-destacada {
+             background: linear-gradient(135deg, var(--negro), #2a1a1a);
+             color: white;
+             border-radius: 16px;
+             padding: 50px 40px;
+             border: 2px solid var(--dorado);
+             margin-top: 60px;
+             text-align: center;
+             box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+         }
+
+         .colaboracion-destacada h2 {
+             color: var(--dorado);
+             font-size: 2.2rem;
+             text-transform: uppercase;
+             margin-top: 0;
+             margin-bottom: 20px;
+         }
+
+         .colaboracion-destacada p {
+             font-size: 1.1rem;
+             line-height: 1.7;
+             color: rgba(255, 255, 255, 0.85);
+             max-width: 850px;
+             margin: 0 auto 30px auto;
+         }
+
+         /* --- FOOTER --- */ 
+         footer { 
+             background: var(--negro); 
+             color: white; 
+             text-align: center; 
+             padding: 60px 20px 40px; 
+             position: relative; 
+             margin-top: 80px;
+         } 
+
+         footer p { opacity: 0.7; font-size: 0.9rem; line-height: 1.6; } 
+
+         /* BANNER FIJO */
+         .banner-fijo {
+             background-color: var(--granate); 
+             color: var(--dorado); 
+             font-weight: bold; 
+             padding: 12px; 
+             position: fixed; 
+             bottom: 0; 
+             left: 0; 
+             width: 100%; 
+             z-index: 1000; 
+             text-align: center; 
+             box-sizing: border-box; 
+             font-size: 0.95rem;
+         }
+
+         /* RESPONSIVE */
+         @media (max-width: 900px) {
+             .evento-destacado-card, .evento-destacado-card.inverso {
+                 grid-template-columns: 1fr;
+             }
+             .evento-img {
+                 min-height: 250px;
+                 order: initial !important;
+             }
+             .evento-info {
+                 padding: 30px 20px;
+                 order: initial !important;
+             }
+             .hero-interior h1 {
+                 font-size: 2.2rem;
+             }
+         }
+     </style> 
+</head> 
+<body> 
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="index.html" class="logo-nav">
+        <span class="main-title">A.M. Virgen de la Amargura</span>
+        <span class="sub-title">SANTANDER</span>
+    </a>
+    <div class="menu-btn" id="menuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+<!-- SIDEBAR -->
+<div class="overlay" id="overlay"></div> 
+<div class="sidebar" id="sidebar"> 
+     <a href="index.html">Inicio</a> 
+     <div style="padding: 18px 40px 5px; color: var(--dorado); font-size: 0.8rem; letter-spacing: 2px;">HISTORIA</div> 
+     <a href="HISTORIA VIRGEN DE LA AMARGURA.html">• La Virgen</a> 
+     <a href="HISTORIA DE LA BANDA.html">• La Banda</a> 
+     <a href="HISTORIA A.M.C. SAN MIGUEL.html">• San Miguel</a> 
+     
+     <div style="padding: 18px 40px 5px; color: var(--dorado); font-size: 0.8rem; letter-spacing: 2px;">SECCIÓN ESPECIAL</div>
+     <a href="EVENTOS MÁS DESTACADOS.html" style="color: var(--dorado); border-left: 3px solid var(--dorado);">• Eventos Destacados</a>
+
+     <a href="REPERTORIO.html">Música</a> 
+     <a href="COMPONENTES.html">Componentes</a> 
+     <a href="UNIFORMIDAD.html">Uniformidad</a> 
+     <a href="ACTUACIONES.html">Actuaciones</a> 
+     <a href="CONTACTO.html">Contacto</a> 
+     <a href="REDES.html">Redes sociales</a> 
+     <a href="VIDEOTECA.html">Vídeos de marchas</a> 
+</div>
+
+<!-- HERO INTERIOR -->
+<section class="hero-interior"> 
+    <h1>Eventos Más Destacados</h1> 
+    <p>"La grandeza de nuestras procesiones y grandes citas cofrades en Santander"</p> 
+</section>
+
+<!-- CONTENIDO DE EVENTOS -->
+<main class="contenedor-principal">
+
+    <div class="seccion-intro-texto">
+        <h2>Citas Ineludibles del Calendario Cofrade</h2>
+        <p>A lo largo del año, y de forma muy especial durante la Cuaresma y la Semana Santa, la Agrupación Musical Virgen de la Amargura protagoniza momentos de máxima solemnidad y emoción. Las calles de Santander y localidades vecinas se impregnan de acordes de fe, aunando fuerzas con hermandades y formaciones hermanas para engrandecer nuestro patrimonio musical.</p>
+    </div>
+
+    <!-- BLOQUE 1: SEMANA SANTA -->
+    <div class="evento-destacado-card">
+        <div class="evento-img" style="background-image: url('WhatsApp Image 2026-03-03 at 14.43.34.jpeg');"></div>
+        <div class="evento-info">
+            <span class="badge-evento">Semana Santa en Santander</span>
+            <h3>Estaciones de Penitencia</h3>
+            <p>El culmen de nuestro trabajo anual se refleja en cada salida procesional. Acompañando a los sagrados titulares por las calles de Santander, nuestra formación pone el compás de misterio y recogimiento, regalando momentos inolvidables en cada revirá y marcando profundamente el sentir cofrade del norte.</p>
+        </div>
+    </div>
+
+    <!-- BLOQUE 2: CONCIERTOS EXTRAORDINARIOS Y HERMANDAD MUSICAL -->
+    <div class="evento-destacado-card inverso">
+        <div class="evento-info">
+            <span class="badge-evento">Conciertos de Cuaresma</span>
+            <h3>Conciertos de Marchas Procesionales</h3>
+            <p>Los ciclos de conciertos previos a la Semana Santa representan auténticas cumbres musicales. Destacan especialmente los encuentros compartidos y certámenes junto a la <strong>Banda de Cornetas y Tambores de la Archicofradía de la Merced</strong> y la <strong>Banda de Cornetas y Tambores de San Celedonio de Santander</strong>, uniendo estilos, pasiones y hermandad en un mismo escenario.</p>
+        </div>
+        <div class="evento-img" style="background-image: url('PA.jpeg');"></div>
+    </div>
+
+    <!-- BLOQUE DESTACADO DE COLABORACIÓN -->
+    <div class="colaboracion-destacada">
+        <h2>Unión y Sintonía Musical</h2>
+        <p>La colaboración constante con formaciones tan queridas como la Archicofradía de la Merced y San Celedonio enriquece el panorama musical cofrade de nuestra ciudad. Estos eventos conjuntos demuestran que la música procesional en Santander vive una época dorada de fraternidad, nivel interpretativo y entrega absoluta al público.</p>
+        <a href="ACTUACIONES.html" style="display: inline-block; padding: 12px 30px; background: var(--dorado); color: var(--negro); text-decoration: none; font-weight: bold; border-radius: 50px; text-transform: uppercase;">Ver calendario completo</a>
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer> 
+    <h2 style="color: var(--dorado); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Amargura Santander</h2> 
+    <p>©Agrupación Musical Sma. Virgen de la Amargura.<br>Banda Decana de Santander</p> 
+    <p><a style="color: var(--dorado); text-decoration: none;" href="LEGAL.html">AVISO LEGAL - POLÍTICA DE PRIVACIDAD</a></p> 
+</footer> 
+
+<div class="banner-fijo"> 
+    ¡Próximas actuaciones! No os las perdáis - Santander - Agrupación Musical Virgen de la Amargura de Santander
+</div>
+
+<!-- SCRIPT MENÚ -->
+<script> 
+     const menuBtn = document.getElementById('menuBtn'); 
+     const sidebar = document.getElementById('sidebar'); 
+     const overlay = document.getElementById('overlay'); 
+
+     function toggleMenu() { 
+         sidebar.classList.toggle('active'); 
+         overlay.classList.toggle('active'); 
+     } 
+
+     menuBtn.addEventListener('click', toggleMenu); 
+     overlay.addEventListener('click', toggleMenu); 
+</script> 
+
+</body> 
+</html>
 
