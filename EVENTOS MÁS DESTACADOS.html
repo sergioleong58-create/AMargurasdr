@@ -57,7 +57,7 @@
          } 
          .menu-btn span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; transition: 0.3s; } 
 
-         /* SIDEBAR */ 
+         /* SIDEBAR (Idéntica a la principal) */ 
          .sidebar { 
              position: fixed; 
              top: 0; 
@@ -137,10 +137,42 @@
              font-style: italic; 
          } 
 
+         /* --- BOTÓN VOLVER AL MENÚ --- */
+         .contenedor-btn-volver {
+             max-width: 1100px;
+             margin: 30px auto -20px;
+             padding: 0 20px;
+             display: flex;
+             justify-content: flex-start;
+         }
+
+         .btn-volver {
+             display: inline-flex;
+             align-items: center;
+             gap: 8px;
+             background: var(--granate);
+             color: white;
+             padding: 10px 22px;
+             border-radius: 50px;
+             text-decoration: none;
+             font-weight: bold;
+             font-size: 0.9rem;
+             text-transform: uppercase;
+             border: 2px solid var(--dorado);
+             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+             transition: 0.3s ease;
+         }
+
+         .btn-volver:hover {
+             background: var(--dorado);
+             color: var(--negro);
+             transform: scale(1.03);
+         }
+
          /* --- CONTENIDO PRINCIPAL --- */
          .contenedor-principal {
              max-width: 1100px;
-             margin: 60px auto;
+             margin: 40px auto 60px;
              padding: 0 20px;
          }
 
@@ -181,11 +213,6 @@
              box-shadow: 0 15px 35px rgba(0,0,0,0.08);
          }
 
-         .evento-destacado-card.inverso {
-             grid-template-columns: 1fr 1fr;
-         }
-         
-         /* Invertir orden en pantallas grandes si se prefiere visualmente */
          .evento-destacado-card.inverso .evento-info {
              order: 1;
          }
@@ -323,17 +350,15 @@
     </div>
 </nav>
 
-<!-- SIDEBAR -->
+<!-- SIDEBAR (Exactamente igual a la original) -->
 <div class="overlay" id="overlay"></div> 
 <div class="sidebar" id="sidebar"> 
      <a href="index.html">Inicio</a> 
+
      <div style="padding: 18px 40px 5px; color: var(--dorado); font-size: 0.8rem; letter-spacing: 2px;">HISTORIA</div> 
      <a href="HISTORIA VIRGEN DE LA AMARGURA.html">• La Virgen</a> 
      <a href="HISTORIA DE LA BANDA.html">• La Banda</a> 
      <a href="HISTORIA A.M.C. SAN MIGUEL.html">• San Miguel</a> 
-     
-     <div style="padding: 18px 40px 5px; color: var(--dorado); font-size: 0.8rem; letter-spacing: 2px;">SECCIÓN ESPECIAL</div>
-     <a href="EVENTOS MÁS DESTACADOS.html" style="color: var(--dorado); border-left: 3px solid var(--dorado);">• Eventos Destacados</a>
 
      <a href="REPERTORIO.html">Música</a> 
      <a href="COMPONENTES.html">Componentes</a> 
@@ -349,6 +374,13 @@
     <h1>Eventos Más Destacados</h1> 
     <p>"La grandeza de nuestras procesiones y grandes citas cofrades en Santander"</p> 
 </section>
+
+<!-- BOTÓN VOLVER AL MENÚ PRINCIPAL -->
+<div class="contenedor-btn-volver">
+    <a href="index.html" class="btn-volver">
+        <span>←</span> Volver al Menú Principal
+    </a>
+</div>
 
 <!-- CONTENIDO DE EVENTOS -->
 <main class="contenedor-principal">
